@@ -21,8 +21,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
-    { name: "Faculty", path: "/teachers" },
-    { name: "Gallery", path: "/gallery" },
+    { name: "Faculty", path: "/faculty" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -50,6 +49,10 @@ const Navbar = () => {
         : "text-slate-700 after:w-0 hover:text-[#a51620] hover:after:w-full"
     }`;
 
+  const courseActive = courses.some(
+    (course) => window.location.pathname === course.path
+  );
+
   return (
     <header className="relative z-50 w-full shrink-0 bg-white">
 
@@ -58,9 +61,7 @@ const Navbar = () => {
         <div className="flex w-full items-center justify-between gap-4 px-6 lg:px-10">
           <div className="flex items-center gap-2 text-xs font-medium text-red-50">
             <GraduationCap size={16} />
-            <span>
-              Welcome to Gyan Sagar NET Classes
-            </span>
+            <span>Welcome to Gyan Sagar NET Classes</span>
           </div>
 
           <div className="flex items-center gap-6">
@@ -113,32 +114,44 @@ const Navbar = () => {
               </NavLink>
             ))}
 
-            {/* COURSES DROPDOWN */}
+            {/* DESKTOP COURSES */}
             <div
               className="group relative flex h-full items-center"
               onMouseEnter={() => setCourseOpen(true)}
               onMouseLeave={() => setCourseOpen(false)}
             >
-              <button
-                type="button"
-                onClick={() => setCourseOpen((prev) => !prev)}
-                aria-expanded={courseOpen}
-                className={`flex items-center gap-1.5 py-2 text-sm font-bold transition ${
-                  courseOpen
-                    ? "text-[#a51620]"
-                    : "text-slate-700 hover:text-[#a51620]"
-                }`}
-              >
-                Courses
+              <div className="flex items-center gap-1">
+                <NavLink
+                  to="/courses"
+                  className={() =>
+                    `relative whitespace-nowrap py-2 text-sm font-bold transition-colors duration-200 ${
+                      courseActive ||
+                      window.location.pathname === "/courses"
+                        ? "text-[#a51620]"
+                        : "text-slate-700 hover:text-[#a51620]"
+                    }`
+                  }
+                >
+                  Courses
+                </NavLink>
 
-                <ChevronDown
-                  size={16}
-                  className={`transition-transform duration-300 ${
-                    courseOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
+                <button
+                  type="button"
+                  onClick={() => setCourseOpen((prev) => !prev)}
+                  aria-label="Open courses dropdown"
+                  aria-expanded={courseOpen}
+                  className="flex h-8 w-7 items-center justify-center text-slate-700 transition hover:text-[#a51620]"
+                >
+                  <ChevronDown
+                    size={16}
+                    className={`transition-transform duration-300 ${
+                      courseOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
 
+              {/* DROPDOWN */}
               <div
                 className={`absolute left-0 top-full z-50 w-64 rounded-xl border border-slate-100 bg-white p-2 shadow-xl transition-all duration-200 ${
                   courseOpen
@@ -157,18 +170,24 @@ const Navbar = () => {
 
                 <div className="py-1">
                   {courses.map((course) => (
-                    <Link
+                    <NavLink
                       key={course.name}
                       to={course.path}
                       onClick={() => setCourseOpen(false)}
-                      className="group/item flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-slate-700 transition hover:bg-red-50 hover:text-[#a51620]"
+                      className={({ isActive }) =>
+                        `group/item flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold transition ${
+                          isActive
+                            ? "bg-red-50 text-[#a51620]"
+                            : "text-slate-700 hover:bg-red-50 hover:text-[#a51620]"
+                        }`
+                      }
                     >
                       <span>{course.name}</span>
                       <ArrowUpRight
                         size={15}
                         className="text-slate-400 transition group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-[#a51620]"
                       />
-                    </Link>
+                    </NavLink>
                   ))}
                 </div>
 
@@ -252,32 +271,57 @@ const Navbar = () => {
 
           {/* MOBILE COURSES */}
           <div>
-            <button
-              type="button"
-              onClick={() => setCourseOpen((prev) => !prev)}
-              aria-expanded={courseOpen}
-              className="flex w-full items-center justify-between rounded-lg px-4 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:text-[#a51620]"
-            >
-              Our Courses
-              <ChevronDown
-                size={18}
-                className={`transition-transform duration-300 ${
-                  courseOpen ? "rotate-180 text-[#a51620]" : ""
-                }`}
-              />
-            </button>
+            <div className="flex items-center justify-between rounded-lg px-4 py-3 transition hover:bg-slate-50">
+              <NavLink
+                to="/courses"
+                onClick={closeMobileMenu}
+                className={({ isActive }) =>
+                  `text-sm font-bold ${
+                    isActive ||
+                    courses.some(
+                      (course) => window.location.pathname === course.path
+                    )
+                      ? "text-[#a51620]"
+                      : "text-slate-700"
+                  }`
+                }
+              >
+                Our Courses
+              </NavLink>
+
+              <button
+                type="button"
+                onClick={() => setCourseOpen((prev) => !prev)}
+                aria-label="Expand courses"
+                aria-expanded={courseOpen}
+                className="flex h-7 w-7 items-center justify-center text-slate-700"
+              >
+                <ChevronDown
+                  size={18}
+                  className={`transition-transform duration-300 ${
+                    courseOpen ? "rotate-180 text-[#a51620]" : ""
+                  }`}
+                />
+              </button>
+            </div>
 
             {courseOpen && (
               <div className="ml-4 flex flex-col border-l-2 border-red-100 pl-3">
                 {courses.map((course) => (
-                  <Link
+                  <NavLink
                     key={course.name}
                     to={course.path}
                     onClick={closeMobileMenu}
-                    className="rounded-lg px-4 py-2.5 text-sm font-medium text-slate-600 transition hover:bg-red-50 hover:text-[#a51620]"
+                    className={({ isActive }) =>
+                      `rounded-lg px-4 py-2.5 text-sm font-medium transition ${
+                        isActive
+                          ? "bg-red-50 text-[#a51620]"
+                          : "text-slate-600 hover:bg-red-50 hover:text-[#a51620]"
+                      }`
+                    }
                   >
                     {course.name}
-                  </Link>
+                  </NavLink>
                 ))}
 
                 <Link

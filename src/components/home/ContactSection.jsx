@@ -37,7 +37,9 @@ Mobile: ${formData.phone}
 Course: ${formData.course}
 Message: ${formData.message}`;
 
-    const whatsappUrl = `https://wa.me/919728306888?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/919728306888?text=${encodeURIComponent(
+      message
+    )}`;
 
     window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
@@ -67,14 +69,14 @@ Message: ${formData.message}`;
   ];
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#faf7f7] py-8 sm:py-10 lg:py-12">
+    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 lg:py-12">
 
       {/* BACKGROUND DECORATION */}
-      <div className="pointer-events-none absolute -right-32 top-0 h-80 w-80 rounded-full bg-red-100/50 blur-3xl" />
+      <div className="pointer-events-none absolute -right-32 top-0 h-80 w-80 rounded-full bg-red-50/40 blur-3xl" />
 
-      <div className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-red-100/50 blur-3xl" />
+      <div className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-red-50/40 blur-3xl" />
 
-      <div className="relative w-full px-5 sm:px-8 lg:px-14 xl:px-24">
+      <div className="relative w-full px-3 sm:px-4 lg:px-6 xl:px-8 2xl:px-10">
 
         {/* SECTION HEADER */}
         <motion.div
@@ -86,9 +88,11 @@ Message: ${formData.message}`;
         >
           <div className="mb-4 flex items-center justify-center gap-3">
             <span className="h-[2px] w-9 bg-[#a51620]" />
+
             <span className="font-['Lato'] text-xs font-extrabold tracking-[2px] text-[#a51620]">
               GET IN TOUCH
             </span>
+
             <span className="h-[2px] w-9 bg-[#a51620]" />
           </div>
 
@@ -96,7 +100,7 @@ Message: ${formData.message}`;
             Contact <span className="italic text-[#a51620]">Us</span>
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl font-['Lato'] text-sm leading-7 text-black sm:text-base">
+          <p className="mx-auto mt-4 max-w-2xl font-['Lato'] text-sm leading-7 text-black/65 sm:text-base">
             Have questions about our courses or admissions? Get in touch with
             Gyan Sagar NET Classes. We are here to guide you.
           </p>
@@ -140,8 +144,16 @@ Message: ${formData.message}`;
                     <a
                       key={index}
                       href={item.link}
-                      target={item.title === "Visit Our Institute" ? "_blank" : undefined}
-                      rel={item.title === "Visit Our Institute" ? "noopener noreferrer" : undefined}
+                      target={
+                        item.title === "Visit Our Institute"
+                          ? "_blank"
+                          : undefined
+                      }
+                      rel={
+                        item.title === "Visit Our Institute"
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                       className="group flex items-start gap-4"
                     >
                       <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-white/10 text-white transition group-hover:bg-white group-hover:text-[#850f18]">
@@ -174,11 +186,11 @@ Message: ${formData.message}`;
               {/* TIMING NOTE */}
               <div className="mt-8 flex items-center gap-3 border-t border-white/20 pt-5">
                 <Clock size={19} className="shrink-0 text-red-200" />
+
                 <p className="font-['Lato'] text-xs leading-5 text-white/80">
                   Contact us for current batch timings and admission details.
                 </p>
               </div>
-
             </div>
 
             {/* WHATSAPP CTA */}
@@ -197,7 +209,8 @@ Message: ${formData.message}`;
                   <p className="font-['Lato'] text-sm font-extrabold text-black">
                     Chat With Us
                   </p>
-                  <p className="mt-1 font-['Lato'] text-xs text-black">
+
+                  <p className="mt-1 font-['Lato'] text-xs text-black/60">
                     Connect directly on WhatsApp
                   </p>
                 </div>
@@ -223,7 +236,7 @@ Message: ${formData.message}`;
               Get In Touch With Us
             </h3>
 
-            <p className="mt-3 font-['Lato'] text-sm leading-6 text-black">
+            <p className="mt-3 font-['Lato'] text-sm leading-6 text-black/60">
               Fill in your details and our team will connect with you.
             </p>
 
@@ -231,28 +244,37 @@ Message: ${formData.message}`;
 
               {/* NAME */}
               <div>
-                <label className="mb-2 block font-['Lato'] text-sm font-bold text-black">
+                <label
+                  htmlFor="contact-name"
+                  className="mb-2 block font-['Lato'] text-sm font-bold text-black"
+                >
                   Your Name *
                 </label>
 
                 <input
+                  id="contact-name"
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your full name"
+                  autoComplete="name"
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#a51620] focus:ring-2 focus:ring-[#a51620]/10"
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40"
                 />
               </div>
 
               {/* PHONE */}
               <div>
-                <label className="mb-2 block font-['Lato'] text-sm font-bold text-black">
+                <label
+                  htmlFor="contact-phone"
+                  className="mb-2 block font-['Lato'] text-sm font-bold text-black"
+                >
                   Mobile Number *
                 </label>
 
                 <input
+                  id="contact-phone"
                   type="tel"
                   name="phone"
                   value={formData.phone}
@@ -260,45 +282,61 @@ Message: ${formData.message}`;
                   placeholder="Enter your mobile number"
                   pattern="[6-9][0-9]{9}"
                   maxLength={10}
+                  autoComplete="tel"
+                  inputMode="numeric"
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#a51620] focus:ring-2 focus:ring-[#a51620]/10"
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 "
                 />
               </div>
 
               {/* COURSE */}
               <div>
-                <label className="mb-2 block font-['Lato'] text-sm font-bold text-black">
+                <label
+                  htmlFor="contact-course"
+                  className="mb-2 block font-['Lato'] text-sm font-bold text-black"
+                >
                   Select Course *
                 </label>
 
                 <select
+                  id="contact-course"
                   name="course"
                   value={formData.course}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#a51620] focus:ring-2 focus:ring-[#a51620]/10"
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition "
                 >
                   <option value="">Choose your course</option>
-                  <option value="UGC NET / CSIR NET">UGC NET / CSIR NET</option>
-                  <option value="Assistant Professor">Assistant Professor</option>
+                  <option value="UGC NET / CSIR NET">
+                    UGC NET / CSIR NET
+                  </option>
+                  <option value="Assistant Professor">
+                    Assistant Professor
+                  </option>
                   <option value="PGT / TGT">PGT / TGT</option>
-                  <option value="HTET / CTET / DSSSB">HTET / CTET / DSSSB</option>
+                  <option value="HTET / CTET / DSSSB">
+                    HTET / CTET / DSSSB
+                  </option>
                 </select>
               </div>
 
               {/* MESSAGE */}
               <div>
-                <label className="mb-2 block font-['Lato'] text-sm font-bold text-black">
+                <label
+                  htmlFor="contact-message"
+                  className="mb-2 block font-['Lato'] text-sm font-bold text-black"
+                >
                   Your Message
                 </label>
 
                 <textarea
+                  id="contact-message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
                   placeholder="Tell us what you would like to know..."
-                  className="w-full resize-none rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#a51620] focus:ring-2 focus:ring-[#a51620]/10"
+                  className="w-full resize-none rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 "
                 />
               </div>
 
@@ -308,19 +346,18 @@ Message: ${formData.message}`;
                 className="group flex w-full items-center justify-center gap-3 rounded-lg bg-[#850f18] px-6 py-4 font-['Lato'] text-sm font-extrabold text-white transition hover:bg-[#650b12]"
               >
                 Send Enquiry on WhatsApp
+
                 <Send
                   size={17}
                   className="transition group-hover:translate-x-1"
                 />
               </button>
 
-              <p className="text-center font-['Lato'] text-xs text-black">
+              <p className="text-center font-['Lato'] text-xs text-black/50">
                 Your enquiry will open directly in WhatsApp.
               </p>
-
             </form>
           </motion.div>
-
         </div>
 
         {/* GOOGLE MAP */}
@@ -335,13 +372,15 @@ Message: ${formData.message}`;
             <div>
               <div className="flex items-center gap-2">
                 <MapPin size={18} className="text-[#a51620]" />
+
                 <h3 className="font-['Playfair_Display'] text-xl font-bold text-black">
                   Find Our Location
                 </h3>
               </div>
 
-              <p className="mt-1 font-['Lato'] text-xs leading-5 text-black">
-                DSS 67, Rajgarh Road, Old Courts Commercial Complex, Hisar, Haryana 125004
+              <p className="mt-1 font-['Lato'] text-xs leading-5 text-black/60">
+                DSS 67, Rajgarh Road, Old Courts Commercial Complex, Hisar,
+                Haryana 125004
               </p>
             </div>
 
@@ -349,7 +388,7 @@ Message: ${formData.message}`;
               href="https://www.google.com/maps/search/?api=1&query=DSS+67+Rajgarh+Road+Hisar+Haryana+125004"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-fit shrink-0 items-center gap-2 font-['Lato'] text-sm font-extrabold text-[#a51620] hover:text-[#650b12]"
+              className="inline-flex w-fit shrink-0 items-center gap-2 font-['Lato'] text-sm font-extrabold text-[#a51620] transition hover:text-[#650b12]"
             >
               Get Directions
               <Navigation size={16} />
@@ -367,7 +406,6 @@ Message: ${formData.message}`;
             allowFullScreen
           />
         </motion.div>
-
       </div>
     </section>
   );

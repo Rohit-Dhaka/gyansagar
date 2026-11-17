@@ -1,4 +1,3 @@
-
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
@@ -25,7 +24,7 @@ const AboutHero = () => {
         }}
       />
 
-      {/* DARK GRADIENT */}
+      
       <div className="absolute inset-0 -z-20 bg-black/45" />
       <div className="absolute inset-0 -z-20 bg-gradient-to-r from-black via-black/85 to-black/25" />
       <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#650b12]/65 via-transparent to-black/20" />
@@ -33,7 +32,6 @@ const AboutHero = () => {
       {/* MAIN CONTENT */}
       <div className="relative z-10 w-full px-5 sm:px-8 lg:px-14 xl:px-24">
         <div className="grid items-center lg:grid-cols-[1fr_auto] lg:gap-10">
-
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
@@ -62,18 +60,14 @@ const AboutHero = () => {
             <h1 className="font-['Playfair_Display'] text-5xl font-bold leading-[1.12] text-white sm:text-6xl md:text-7xl xl:text-[88px]">
               Education
               <br />
-              With A
-              
-              <span className="italic text-red-300">
-                Purpose.
-              </span>
+              With A<span className="italic text-red-300">Purpose.</span>
             </h1>
 
             {/* DESCRIPTION */}
             <p className="mt-7 max-w-xl text-sm leading-7 text-white/75 sm:text-base sm:leading-8">
-              Since 2018, Gyan Sagar NET Classes has been helping
-              aspiring educators turn their teaching dreams into
-              meaningful careers through knowledge and guidance.
+              Since 2018, Gyan Sagar NET Classes has been helping aspiring
+              educators turn their teaching dreams into meaningful careers
+              through knowledge and guidance.
             </p>
 
             {/* BUTTON */}
@@ -117,9 +111,6 @@ const AboutHero = () => {
           </motion.div>
         </div>
       </div>
-
-      
-     
 
       <div className="absolute bottom-7 right-5 hidden text-xs font-bold tracking-[3px] text-white/50 sm:block lg:right-14">
         HISAR, HARYANA

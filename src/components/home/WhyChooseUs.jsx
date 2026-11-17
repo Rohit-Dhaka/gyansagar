@@ -143,7 +143,7 @@ const WhyChooseUs = () => {
 
       <div className="pointer-events-none absolute -right-20 -top-20 h-[300px] w-[300px] rounded-full border border-[#a51620]/[0.06]" />
 
-      <div className="relative grid w-full grid-cols-1 gap-10 px-5 sm:gap-12 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 lg:px-14 xl:px-24">
+      <div className="relative grid w-full grid-cols-1 gap-10 sm:gap-12  lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* LEFT SIDE */}
         <motion.div

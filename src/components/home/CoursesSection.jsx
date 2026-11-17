@@ -62,7 +62,7 @@ const CoursesSection = () => {
 
       <div className="pointer-events-none absolute -right-32 bottom-0 h-80 w-80 rounded-full bg-red-50/60 blur-3xl" />
 
-      <div className="relative w-full px-5 sm:px-8 lg:px-14 xl:px-24">
+      <div className="relative w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* SECTION HEADER */}
         <motion.div

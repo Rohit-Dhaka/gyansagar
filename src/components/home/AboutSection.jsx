@@ -31,7 +31,7 @@ const highlights = [
 const AboutSection = () => {
   return (
     <section className="w-full overflow-hidden bg-white py-8 sm:py-10 lg:py-12">
-      <div className="grid w-full grid-cols-1 items-center gap-8 px-5 sm:px-8 md:gap-10 lg:grid-cols-2 lg:gap-12 lg:px-14 xl:px-20">
+      <div className="grid w-full grid-cols-1 items-center gap-8 md:gap-10 lg:grid-cols-2 lg:gap-12 px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* LEFT IMAGE */}
         <motion.div

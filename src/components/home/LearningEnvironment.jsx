@@ -110,7 +110,7 @@ const LearningEnvironment = () => {
 
   return (
     <section className="w-full overflow-hidden bg-[#faf7f7] py-8 sm:py-10 lg:py-12">
-      <div className="w-full px-5 sm:px-8 lg:px-14 xl:px-24">
+      <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* SECTION HEADER */}
         <div className="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">

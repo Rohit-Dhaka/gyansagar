@@ -10,76 +10,51 @@ import {
   Award,
 } from "lucide-react";
 
-const facultyMembers = [
-  {
-    id: 1,
-    name: "Faculty Member 01",
-    role: "Senior Faculty",
-    qualification: "M.A. / UGC NET Qualified",
-    subject: "UGC NET & Assistant Professor",
-    experience: "Experienced Educator",
-    image:
-      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=90",
-    description:
-      "Focused on building strong concepts and helping students prepare confidently for competitive examinations through structured learning and personal guidance.",
-    expertise: ["UGC NET", "Assistant Professor", "Teaching"],
-  },
-  {
-    id: 2,
-    name: "Faculty Member 02",
-    role: "Subject Specialist",
-    qualification: "Post Graduate / NET Qualified",
-    subject: "CTET, HTET & Teaching Exams",
-    experience: "Experienced Educator",
-    image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=90",
-    description:
-      "Dedicated to providing clear explanations, practical learning and exam-oriented preparation to help students develop confidence and subject knowledge.",
-    expertise: ["HTET", "CTET", "DSSSB"],
-  },
-  {
-    id: 3,
-    name: "Faculty Member 03",
-    role: "Academic Mentor",
-    qualification: "Post Graduate / Subject Expert",
-    subject: "CSIR NET & PGT / TGT",
-    experience: "Experienced Educator",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=90",
-    description:
-      "Encourages analytical thinking and helps students develop a deeper understanding of their subjects with focused academic mentoring.",
-    expertise: ["CSIR NET", "PGT", "TGT"],
-  },
-];
+
+import facultyData from "../data/facultyData";
 
 const FacultySection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const activeFaculty = facultyMembers[activeIndex];
+  const totalFaculty = facultyData.length;
+
+  // Handle empty data safely
+  if (!totalFaculty) {
+    return null;
+  }
+
+  const activeFaculty = facultyData[activeIndex];
 
   const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % facultyMembers.length);
+    setActiveIndex((prev) => (prev + 1) % totalFaculty);
   };
 
   const prevSlide = () => {
-    setActiveIndex(
-      (prev) => (prev - 1 + facultyMembers.length) % facultyMembers.length
-    );
+    setActiveIndex((prev) => (prev - 1 + totalFaculty) % totalFaculty);
   };
 
+  // Auto slider
   useEffect(() => {
+    if (isPaused || totalFaculty <= 1) return;
+
     const interval = setInterval(() => {
-      setActiveIndex((prev) => (prev + 1) % facultyMembers.length);
+      setActiveIndex((prev) => (prev + 1) % totalFaculty);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [isPaused, totalFaculty]);
+
+  // Keep index valid if faculty data changes
+  useEffect(() => {
+    setActiveIndex((prev) => Math.min(prev, totalFaculty - 1));
+  }, [totalFaculty]);
 
   return (
-    <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 lg:py-12">
-      <div className="w-full px-5 sm:px-8 lg:px-14 xl:px-24">
+    <section className="relative w-full overflow-hidden bg-[#f8f5f1] py-8 sm:py-10 lg:py-12">
+      <div className="w-full px-3 sm:px-4 lg:px-6 xl:px-8 2xl:px-10">
 
-        {/* TOP HEADING */}
+        {/* SECTION HEADING */}
         <div className="mb-7 flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
           <div>
             <div className="mb-2 flex items-center gap-2">
@@ -89,19 +64,29 @@ const FacultySection = () => {
               </span>
             </div>
 
-            <h2 className="font-['Playfair_Display'] text-3xl font-bold text-black sm:text-4xl">
+            <h2 className="font-['Playfair_Display'] text-3xl font-bold text-[#201b1b] sm:text-4xl">
               Meet The Minds Behind{" "}
               <span className="text-[#a51620]">Your Success</span>
             </h2>
           </div>
 
-          <p className="max-w-sm text-sm leading-6 text-black">
+          <p className="max-w-sm text-sm leading-6 text-[#625959]">
             Dedicated educators. Expert guidance. A better learning journey.
           </p>
         </div>
 
-        {/* EDITORIAL FACULTY LAYOUT */}
-        <div className="relative grid grid-cols-1 items-center gap-6 overflow-hidden rounded-2xl bg-[#faf5f5] p-4 sm:p-6 lg:grid-cols-[0.8fr_0.9fr_1.3fr] lg:gap-8 lg:p-7">
+        {/* FACULTY EDITORIAL LAYOUT */}
+        <div
+          className="relative grid grid-cols-1 items-center gap-6 overflow-hidden rounded-2xl border border-[#eadbd7] bg-[#fffdfb] p-4 shadow-sm sm:p-6 lg:grid-cols-[0.8fr_0.9fr_1.3fr] lg:gap-8 lg:p-7"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onFocusCapture={() => setIsPaused(true)}
+          onBlurCapture={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              setIsPaused(false);
+            }
+          }}
+        >
 
           {/* LEFT INTRO */}
           <div className="order-2 flex flex-col justify-center lg:order-1">
@@ -109,36 +94,36 @@ const FacultySection = () => {
               Our Educators
             </span>
 
-            <h3 className="mt-3 font-['Playfair_Display'] text-2xl font-bold leading-snug text-black sm:text-3xl">
+            <h3 className="mt-3 font-['Playfair_Display'] text-2xl font-bold leading-snug text-[#201b1b] sm:text-3xl">
               Knowledge That
               <br />
               <span className="text-[#a51620]">Inspires Growth.</span>
             </h3>
 
-            <p className="mt-3 max-w-xs text-sm leading-6 text-black">
+            <p className="mt-3 max-w-xs text-sm leading-6 text-[#625959]">
               At Gyan Sagar NET Classes, our educators focus on conceptual
               clarity, individual guidance and exam-oriented preparation.
             </p>
 
-            <div className="mt-5 flex items-center gap-3 border-t border-red-200 pt-4">
+            <div className="mt-5 flex items-center gap-3 border-t border-[#eadbd7] pt-4">
               <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#850f18] text-white">
                 <Award size={20} />
               </div>
 
               <div>
-                <p className="text-sm font-extrabold text-black">
+                <p className="text-sm font-extrabold text-[#201b1b]">
                   Expert Mentorship
                 </p>
-                <p className="text-xs text-black">
+                <p className="text-xs text-[#746868]">
                   Learn with confidence
                 </p>
               </div>
             </div>
           </div>
 
-          {/* CENTER PORTRAIT */}
+          {/* CENTER FACULTY IMAGE */}
           <div className="relative order-1 mx-auto w-full max-w-[280px] lg:order-2 lg:max-w-none">
-            <div className="relative h-[260px] overflow-hidden rounded-xl bg-red-100 sm:h-[300px] lg:h-[340px]">
+            <div className="relative h-[260px] overflow-hidden rounded-xl bg-[#f1e5e1] sm:h-[300px] lg:h-[340px]">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeFaculty.id}
@@ -152,7 +137,7 @@ const FacultySection = () => {
                 />
               </AnimatePresence>
 
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
 
               <div className="absolute bottom-4 left-4 right-4">
                 <span className="inline-flex rounded-full border border-white/30 bg-white/15 px-3 py-1.5 text-[10px] font-bold text-white backdrop-blur-md">
@@ -170,7 +155,7 @@ const FacultySection = () => {
             </div>
           </div>
 
-          {/* RIGHT DETAILS */}
+          {/* RIGHT FACULTY DETAILS */}
           <div className="order-3 flex min-w-0 flex-col justify-center lg:pl-2">
             <AnimatePresence mode="wait">
               <motion.div
@@ -187,51 +172,58 @@ const FacultySection = () => {
                   </span>
                 </div>
 
-                <h3 className="mt-3 font-['Playfair_Display'] text-2xl font-bold leading-tight text-black sm:text-3xl">
+                <h3 className="mt-3 font-['Playfair_Display'] text-2xl font-bold leading-tight text-[#201b1b] sm:text-3xl">
                   {activeFaculty.name}
                 </h3>
 
-                <p className="mt-3 text-sm leading-6 text-black">
+                <p className="mt-3 text-sm leading-6 text-[#625959]">
                   {activeFaculty.description}
                 </p>
 
-                <div className="my-5 h-px bg-red-200" />
+                <div className="my-5 h-px bg-[#eadbd7]" />
 
+                {/* QUALIFICATION */}
                 <div className="flex items-start gap-3">
                   <GraduationCap
                     size={20}
                     className="mt-0.5 shrink-0 text-[#a51620]"
                   />
+
                   <div>
                     <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#a51620]">
                       Qualification
                     </p>
-                    <p className="mt-1 text-sm font-bold text-black">
+
+                    <p className="mt-1 text-sm font-bold text-[#201b1b]">
                       {activeFaculty.qualification}
                     </p>
                   </div>
                 </div>
 
+                {/* SUBJECT */}
                 <div className="mt-4 flex items-start gap-3">
                   <BookOpen
                     size={19}
                     className="mt-0.5 shrink-0 text-[#a51620]"
                   />
+
                   <div>
                     <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#a51620]">
                       Subject Expertise
                     </p>
-                    <p className="mt-1 text-sm font-bold text-black">
+
+                    <p className="mt-1 text-sm font-bold text-[#201b1b]">
                       {activeFaculty.subject}
                     </p>
                   </div>
                 </div>
 
+                {/* SUBJECT TAGS */}
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {activeFaculty.expertise.map((item) => (
+                  {activeFaculty.subjects?.map((item) => (
                     <span
                       key={item}
-                      className="rounded-md border border-red-200 bg-white px-3 py-1.5 text-[11px] font-bold text-[#850f18]"
+                      className="rounded-md border border-[#eadbd7] bg-[#faf5f2] px-3 py-1.5 text-[11px] font-bold text-[#850f18]"
                     >
                       {item}
                     </span>
@@ -240,15 +232,17 @@ const FacultySection = () => {
               </motion.div>
             </AnimatePresence>
 
-            {/* COMPACT NAVIGATION */}
-            <div className="mt-6 flex items-center justify-between border-t border-red-200 pt-4">
+            {/* SLIDER NAVIGATION */}
+            <div className="mt-6 flex items-center justify-between border-t border-[#eadbd7] pt-4">
               <div className="flex items-center gap-3">
                 <span className="font-['Playfair_Display'] text-xl font-bold text-[#850f18]">
-                  0{activeIndex + 1}
+                  {String(activeIndex + 1).padStart(2, "0")}
                 </span>
-                <span className="h-px w-8 bg-red-300" />
-                <span className="text-xs font-bold text-black">
-                  0{facultyMembers.length}
+
+                <span className="h-px w-8 bg-[#d9b8b4]" />
+
+                <span className="text-xs font-bold text-[#746868]">
+                  {String(totalFaculty).padStart(2, "0")}
                 </span>
               </div>
 
@@ -257,7 +251,7 @@ const FacultySection = () => {
                   type="button"
                   onClick={prevSlide}
                   aria-label="Previous faculty"
-                  className="flex h-9 w-9 items-center justify-center rounded-full border border-red-200 text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-[#eadbd7] text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
                 >
                   <ArrowLeft size={17} />
                 </button>
@@ -275,18 +269,19 @@ const FacultySection = () => {
           </div>
         </div>
 
-        {/* SLIM FACULTY NAVIGATION */}
+        {/* SLIDER INDICATORS */}
         <div className="mt-4 flex items-center justify-center gap-2 sm:justify-end">
-          {facultyMembers.map((faculty, index) => (
+          {facultyData.map((faculty, index) => (
             <button
               key={faculty.id}
               type="button"
               onClick={() => setActiveIndex(index)}
               aria-label={`View ${faculty.name}`}
+              aria-current={activeIndex === index ? "true" : undefined}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 activeIndex === index
                   ? "w-10 bg-[#850f18]"
-                  : "w-4 bg-red-200 hover:bg-red-400"
+                  : "w-4 bg-[#e5c9c5] hover:bg-[#c98e88]"
               }`}
             />
           ))}
