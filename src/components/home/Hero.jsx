@@ -272,22 +272,25 @@ const Hero = () => {
       </div>
 
       {/* SLIDE INDICATORS */}
-      <div className="absolute bottom-3 left-5 z-20 flex items-center gap-2 sm:bottom-5 sm:left-8 lg:left-14">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.subtitle}
-            type="button"
-            onClick={() => setActiveSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-            aria-current={activeSlide === index ? "true" : undefined}
-            className={`h-2 rounded-full transition-all duration-500 ${
-              activeSlide === index
-                ? "w-9 bg-red-500"
-                : "w-2.5 bg-white/60 hover:bg-white"
-            }`}
-          />
-        ))}
-      </div>
+<div className="absolute bottom-3 left-5 z-20 flex items-center gap-3 sm:bottom-5 sm:left-8 lg:left-14">
+  {slides.map((slide, index) => (
+    <button
+      key={slide.subtitle}
+      type="button"
+      onClick={() => setActiveSlide(index)}
+      aria-label={`Go to slide ${index + 1}`}
+      aria-current={activeSlide === index ? "true" : undefined}
+      className={`h-3 rounded-full border border-white transition-all duration-300
+        focus-visible:outline focus-visible:outline-2
+        focus-visible:outline-offset-4 focus-visible:outline-white
+        ${
+          activeSlide === index
+            ? "w-9 bg-white"
+            : "w-3 bg-white hover:bg-white"
+        }`}
+    />
+  ))}
+</div>
 
       {/* BOTTOM RIGHT LABEL */}
       <div className="absolute bottom-3 right-5 z-20 hidden items-center gap-2 text-[10px] font-semibold tracking-widest text-white/60 sm:flex">
