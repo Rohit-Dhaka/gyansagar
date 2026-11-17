@@ -162,7 +162,7 @@ const CoursesSection = () => {
                 <div className="mt-auto pt-7">
                   <Link
                     to={course.link}
-                    className="flex items-center justify-between border-t border-black/10 pt-4 font-['Lato'] text-sm font-extrabold text-[#a51620] transition hover:text-[#650b12]"
+                    className="flex items-center justify-between border-t border-black/20 pt-4 font-['Lato'] text-sm font-bold text-[#850f18] transition-colors hover:text-[#5f0a11]"
                   >
                     <span>Explore Course</span>
 

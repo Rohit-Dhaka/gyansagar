@@ -254,7 +254,7 @@ Message: ${formData.message || "I would like to know more about the course."}
                       required
                       maxLength={80}
                       autoComplete="name"
-                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/35"
+                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/70"
                     />
                   </div>
                 </div>
@@ -295,7 +295,7 @@ Message: ${formData.message || "I would like to know more about the course."}
                       required
                       inputMode="numeric"
                       autoComplete="tel-national"
-                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/35"
+                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/70"
                     />
                   </div>
                 </div>
@@ -366,7 +366,7 @@ Message: ${formData.message || "I would like to know more about the course."}
                     placeholder="Write your question or message here..."
                     rows={3}
                     maxLength={1000}
-                    className="w-full resize-none border-b border-black/20 bg-transparent py-3 pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/35 "
+                    className="w-full resize-none border-b border-black/20 bg-transparent py-3 pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/70 "
                   />
                 </div>
               </div>

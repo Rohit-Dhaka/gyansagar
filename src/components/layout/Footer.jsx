@@ -1,4 +1,3 @@
-
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 
@@ -9,20 +8,18 @@ import {
   FaWhatsapp,
   FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt,  
+  FaMapMarkerAlt,
   FaHeart,
 } from "react-icons/fa";
 
 import Logo from "../../assets/image/Logo.png";
 
 const Footer = () => {
-  
-
   const quickLinks = [
     { name: "Home", path: "/" },
     { name: "About Us", path: "/about" },
     { name: "Courses", path: "/courses" },
-    { name: "Faculty", path: "/faculty" },    
+    { name: "Faculty", path: "/faculty" },
     { name: "Contact Us", path: "/contact" },
   ];
 
@@ -65,6 +62,9 @@ const Footer = () => {
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover"
             />
+
+            {/* TOP RED GRADIENT */}
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#850f18]/80 via-[#850f18]/35 to-transparent" />
           </div>
 
           {/* RIGHT FOOTER CONTENT */}
@@ -182,7 +182,7 @@ const Footer = () => {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex gap-2">
                   <p className="text-[11px] text-white/70">
-                     © {new Date().getFullYear()} Gyan Sagar NET Classes.
+                    © {new Date().getFullYear()} Gyan Sagar NET Classes.
                   </p>
 
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -221,26 +221,26 @@ const Footer = () => {
         </div>
       </footer>
 
-    <motion.a
-      href="https://wa.me/919728306888?text=Hello%2C%20I%20want%20to%20know%20about%20your%20courses."
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Chat with us on WhatsApp"
-      className="fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-3xl text-white shadow-xl"
-      animate={{
-        scale: [1, 1, 1.15, 1],
-      }}
-      transition={{
-        duration: 2,
-        repeat: Infinity,
-        repeatDelay: 1,
-        ease: "easeInOut",
-      }}
-      whileHover={{ scale: 1.15 }}
-      whileTap={{ scale: 0.9 }}
-    >
-      <FaWhatsapp />
-    </motion.a>
+      <motion.a
+        href="https://wa.me/919728306888?text=Hello%2C%20I%20want%20to%20know%20about%20your%20courses."
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Chat with us on WhatsApp"
+        className="fixed bottom-5 right-5 z-[60] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-3xl text-white shadow-xl"
+        animate={{
+          scale: [1, 1, 1.15, 1],
+        }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          repeatDelay: 1,
+          ease: "easeInOut",
+        }}
+        whileHover={{ scale: 1.15 }}
+        whileTap={{ scale: 0.9 }}
+      >
+        <FaWhatsapp />
+      </motion.a>
     </>
   );
 };

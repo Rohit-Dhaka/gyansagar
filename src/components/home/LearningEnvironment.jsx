@@ -164,7 +164,7 @@ const LearningEnvironment = () => {
                   >
                     <span
                       className={`font-['Playfair_Display'] text-xl font-bold transition-colors ${
-                        isActive ? "text-[#a51620]" : "text-black/35"
+                        isActive ? "text-[#a51620]" : "text-black/70"
                       }`}
                     >
                       {item.number}

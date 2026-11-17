@@ -219,7 +219,7 @@ const TeachingPhilosophy = () => {
                       className={`shrink-0 transition-all duration-300 ${
                         isActive
                           ? "rotate-45 text-[#850f18]"
-                          : "text-black/35 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#850f18]"
+                          : "text-black/70 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-[#850f18]"
                       }`}
                     />
                   </button>
