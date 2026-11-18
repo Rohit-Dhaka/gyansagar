@@ -299,7 +299,7 @@ const ContactEnquiry = () => {
                       required
                       maxLength={80}
                       autoComplete="name"
-                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#850f18]"
+                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40"
                     />
                   </div>
                 </div>
@@ -332,7 +332,7 @@ const ContactEnquiry = () => {
                       maxLength={10}
                       inputMode="numeric"
                       autoComplete="tel-national"
-                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#850f18]"
+                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40"
                     />
                   </div>
                 </div>
@@ -398,7 +398,7 @@ const ContactEnquiry = () => {
                     placeholder="Write your question or message here..."
                     rows={3}
                     maxLength={1000}
-                    className="w-full resize-none border-b border-black/20 bg-transparent py-3 pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#850f18]"
+                    className="w-full resize-none border-b border-black/20 bg-transparent py-3 pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40"
                   />
                 </div>
               </div>

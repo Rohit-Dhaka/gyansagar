@@ -327,7 +327,7 @@ const ContactSection = () => {
                     maxLength={80}
                     required
                     disabled={isSubmitting}
-                    className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
+                    className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 disabled:opacity-60"
                   />
                 </div>
                 {/* MOBILE NUMBER */}
@@ -351,7 +351,7 @@ const ContactSection = () => {
                     inputMode="numeric"
                     required
                     disabled={isSubmitting}
-                    className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
+                    className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 disabled:opacity-60"
                   />
                 </div>
               </div>
@@ -372,7 +372,7 @@ const ContactSection = () => {
                   onChange={handleChange}
                   required
                   disabled={isSubmitting}
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 disabled:opacity-60"
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition disabled:opacity-60"
                 >
                   <option value="">Choose your exam</option>
 
@@ -402,7 +402,7 @@ const ContactSection = () => {
                   maxLength={500}
                   placeholder="Tell us what you would like to know..."
                   disabled={isSubmitting}
-                  className="w-full resize-none rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
+                  className="w-full resize-none rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition  placeholder:text-black/40 disabled:opacity-60"
                 />
               </div>
 

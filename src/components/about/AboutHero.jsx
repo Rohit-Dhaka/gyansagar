@@ -17,40 +17,40 @@ const AboutHero = () => {
         bg-[#16090b]
       "
     >
-      {/* BASE BACKGROUND */}
+      
       <div className="absolute inset-0 -z-30 bg-[#19090d]" />
 
-      {/* MAROON GRADIENT */}
+      
       <div className="absolute inset-0 -z-20 bg-gradient-to-br from-[#390b13] via-[#19090d] to-[#090709]" />
 
-      {/* LEFT RED GLOW */}
+      
       <div className="absolute -left-40 top-[-20%] -z-20 h-[550px] w-[550px] rounded-full bg-[#a51620]/25 blur-[130px]" />
 
-      {/* RIGHT RED GLOW */}
+      
       <div className="absolute -right-32 bottom-[-25%] -z-20 h-[500px] w-[500px] rounded-full bg-[#850f18]/30 blur-[120px]" />
 
-      {/* CENTER LIGHT */}
+      
       <div className="absolute left-[35%] top-[20%] -z-20 h-[300px] w-[300px] rounded-full bg-red-900/15 blur-[110px]" />
 
   
 
-      {/* CIRCULAR OUTLINES */}
+      
       <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 hidden h-[700px] w-[700px] -translate-y-1/2 rounded-full border border-white/[0.07] lg:block">
         <div className="absolute inset-16 rounded-full border border-white/[0.06]" />
         <div className="absolute inset-32 rounded-full border border-white/[0.05]" />
         <div className="absolute inset-48 rounded-full border border-white/[0.04]" />
       </div>
 
-      {/* BOTTOM LIGHT */}
+      
       <div className="absolute bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t from-[#850f18]/20 to-transparent" />
 
-      {/* TOP RIGHT LINE */}
+      
       <div className="absolute right-0 top-0 -z-10 hidden h-full w-px bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block" />
 
-      {/* MAIN CONTENT */}
+      
       <div className="relative z-10 w-full py-12 sm:py-14 px-5 sm:px-8 lg:px-14 xl:px-24">
 
-        {/* TOP NAVIGATION */}
+        
         <motion.div
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -70,17 +70,17 @@ const AboutHero = () => {
           </p>
         </motion.div>
 
-        {/* HERO CONTENT */}
+        
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_350px]">
 
-          {/* LEFT CONTENT */}
+          
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9 }}
             className="relative"
           >
-            {/* LABEL */}
+            
             <div className="mb-4 flex items-center gap-3">
               <GraduationCap
                 size={20}
@@ -92,7 +92,7 @@ const AboutHero = () => {
               </span>
             </div>
 
-            {/* MAIN HEADING */}
+            
             <h1 className=" font-['Playfair_Display'] text-5xl font-bold leading-[1.12] text-white sm:text-6xl md:text-7xl xl:text-[86px]">
               Where Learning
               <span className=" block italic text-red-300">
@@ -102,13 +102,13 @@ const AboutHero = () => {
               
             </h1>
 
-            {/* DESCRIPTION */}
+            
             <p className="mt-7 max-w-lg text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
               We believe every aspiring educator deserves the right
               knowledge, guidance and opportunity to achieve their goals.
             </p>
 
-            {/* BUTTON */}
+            
             <Link
               to="/courses"
               className="group mt-9 inline-flex items-center gap-5 bg-[#a51620] px-7 py-4 text-xs font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-white hover:text-[#850f18]"
@@ -122,7 +122,7 @@ const AboutHero = () => {
             </Link>
           </motion.div>
 
-          {/* RIGHT SIDE */}
+          
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -156,7 +156,7 @@ const AboutHero = () => {
               </p>
             </div>
 
-            {/* VERTICAL TYPOGRAPHY */}
+            
             <span
               className="pointer-events-none absolute -right-2 top-1/2 -translate-y-1/2 font-['Playfair_Display'] text-8xl font-bold text-white/[0.06]"
               style={{ writingMode: "vertical-rl" }}

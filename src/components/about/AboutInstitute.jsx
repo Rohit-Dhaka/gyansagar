@@ -19,7 +19,7 @@ const AboutInstitute = () => {
     <section className="w-full overflow-hidden py-8 sm:py-10 lg:py-12">
       <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
-          {/* LEFT IMAGE */}
+          
           <motion.div
             initial={{ opacity: 0, x: -35 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,7 +37,7 @@ const AboutInstitute = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
             </div>
 
-            {/* EXPERIENCE BOX */}
+            
             <div className="absolute -bottom-5 right-0 bg-[#850f18] px-7 py-5 text-white shadow-xl sm:-right-5 sm:px-9">
               <p className="text-[10px] font-bold uppercase tracking-[3px] text-white/70">
                 Our Establishment
@@ -47,7 +47,7 @@ const AboutInstitute = () => {
               </h3>
             </div>
 
-            {/* IMAGE LABEL */}
+            
             <div className="absolute left-5 top-5 flex items-center gap-2 bg-white px-4 py-3">
               <GraduationCap size={20} className="text-[#850f18]" />
               <span className="text-xs font-extrabold uppercase tracking-wider text-black">
@@ -56,14 +56,14 @@ const AboutInstitute = () => {
             </div>
           </motion.div>
 
-          {/* RIGHT CONTENT */}
+          
           <motion.div
             initial={{ opacity: 0, x: 35 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            {/* SECTION LABEL */}
+            
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#a51620]" />
               <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#850f18]">
@@ -71,7 +71,7 @@ const AboutInstitute = () => {
               </span>
             </div>
 
-            {/* HEADING */}
+            
             <h2 className="font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-5xl">
               Welcome To{" "}
               <span className="sm:mt-1 sm:block text-[#850f18]">
@@ -79,7 +79,7 @@ const AboutInstitute = () => {
               </span>
             </h2>
 
-            {/* DESCRIPTION */}
+            
             <p className="mt-6 text-sm leading-7 text-black/70 sm:text-base sm:leading-8">
               <strong className="font-extrabold text-black">
                 Gyan Sagar NET Classes
