@@ -10,8 +10,8 @@ const OrganizationSchema = () => {
     description:
       "Gyan Sagar NET Classes provides academic guidance and preparation for UGC NET, CSIR NET, HTET, CTET, DSSSB and teaching examinations.",
     telephone: "+91-97283-06888",
-    email: "gyansagar02102018@gmail.com",
-    foundingDate: "2018",
+    email: "gyansagar02102015@gmail.com",
+    foundingDate: "2015",
     address: {
       "@type": "PostalAddress",
       streetAddress:

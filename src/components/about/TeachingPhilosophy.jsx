@@ -22,8 +22,8 @@ const teachingMethods = [
       "Step-by-step topic understanding",
       "Focus on learning rather than memorisation",
     ],
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMM6BSvZObxtyG0P4Q7PcYJAdsPAZoockCiDP8b-FgeQ&s=10",
+      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=90",
     imageAlt: "Teacher explaining concepts to students",
     icon: BookOpen,
   },
@@ -38,8 +38,8 @@ const teachingMethods = [
       "Understanding of examination patterns",
       "Subject-wise preparation strategy",
     ],
-    image:
-      "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=90",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV9rc6uecHKsFYFqUQgeWJe5XJ2kuCHMY3p_JWyJOQmw&s=10",
+      // "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=90",
     imageAlt: "Student preparing for competitive examinations",
     icon: Target,
   },
@@ -54,8 +54,8 @@ const teachingMethods = [
       "Previous year question discussions",
       "Revision and performance improvement",
     ],
-    image:
-      "https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&w=1200&q=90",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDbr0ibPR8-eKW00uVbKfpiI1bIWT0wP7NRih_AxBMZg&s=10",
+      // "https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&w=1200&q=90",
     imageAlt: "Student practising questions in a notebook",
     icon: ClipboardCheck,
   },
@@ -70,8 +70,8 @@ const teachingMethods = [
       "Guidance throughout preparation",
       "A student-focused learning environment",
     ],
-    image:
-      "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLdD1PkPTi8A9LpUqIWTyjx_Sa4khuCsRgK_AHCRmWWA&s=10",
+      // "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=90",
     imageAlt: "Teacher guiding students in a classroom",
     icon: Users,
   },
@@ -88,7 +88,7 @@ const TeachingPhilosophy = () => {
       <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* SECTION HEADER */}
-        <div className="mb-9 grid gap-4 lg:grid-cols-2 lg:items-end lg:gap-10">
+        <div className="mb-4 sm:mb-9 grid gap-4 lg:grid-cols-2 lg:items-end lg:gap-10">
           <div>
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-9 bg-[#850f18]" />
@@ -97,9 +97,9 @@ const TeachingPhilosophy = () => {
               </span>
             </div>
 
-            <h2 className="font-['Playfair_Display'] text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-              Our Teaching
-              <span className="block text-[#850f18]">
+            <h2 className="font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+              Our Teaching{" "}
+              <span className="sm:block text-[#850f18]">
                 Philosophy.
               </span>
             </h2>

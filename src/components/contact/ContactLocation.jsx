@@ -125,7 +125,7 @@ const ContactLocation = () => {
                   Visit Our Institute
                 </span>
 
-                <p className="mt-2 max-w-2xl font-['Playfair_Display'] text-lg font-bold leading-relaxed sm:text-xl lg:text-2xl">
+                <p className="mt-2 max-w-2xl font-['Playfair_Display'] text-sm font-normal sm:font-bold leading-relaxed sm:text-xl lg:text-2xl">
                   DSS 67, Rajgarh Road, Old Courts Commercial Complex,
                   Lajpat Nagar, Hisar, Haryana 125004.
                 </p>

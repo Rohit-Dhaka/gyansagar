@@ -1,119 +1,198 @@
+
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  GraduationCap,
+  BookOpen,
+} from "lucide-react";
 
 const AboutHero = () => {
   return (
     <section
       className="
         relative isolate flex w-full items-center overflow-hidden
-        h-[calc(100svh-76px)]
+        sm:h-[calc(100svh-76px)]
         md:h-[calc(100svh-118px)]
         bg-[#16090b]
       "
     >
-      {/* BACKGROUND IMAGE */}
-      <motion.div
-        initial={{ scale: 1.08 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute inset-0 -z-30 bg-cover bg-center"
+      {/* BASE BACKGROUND */}
+      <div className="absolute inset-0 -z-30 bg-[#19090d]" />
+
+      {/* MAROON GRADIENT */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-br from-[#390b13] via-[#19090d] to-[#090709]" />
+
+      {/* LEFT RED GLOW */}
+      <div className="absolute -left-40 top-[-20%] -z-20 h-[550px] w-[550px] rounded-full bg-[#a51620]/25 blur-[130px]" />
+
+      {/* RIGHT RED GLOW */}
+      <div className="absolute -right-32 bottom-[-25%] -z-20 h-[500px] w-[500px] rounded-full bg-[#850f18]/30 blur-[120px]" />
+
+      {/* CENTER LIGHT */}
+      <div className="absolute left-[35%] top-[20%] -z-20 h-[300px] w-[300px] rounded-full bg-red-900/15 blur-[110px]" />
+
+      {/* SUBTLE GRID */}
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.10]"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=2000&q=90')",
+            "linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)",
+          backgroundSize: "75px 75px",
         }}
       />
 
-      
-      <div className="absolute inset-0 -z-20 bg-black/45" />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-r from-black via-black/85 to-black/25" />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#650b12]/65 via-transparent to-black/20" />
+      {/* CIRCULAR OUTLINES */}
+      <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 hidden h-[700px] w-[700px] -translate-y-1/2 rounded-full border border-white/[0.07] lg:block">
+        <div className="absolute inset-16 rounded-full border border-white/[0.06]" />
+        <div className="absolute inset-32 rounded-full border border-white/[0.05]" />
+        <div className="absolute inset-48 rounded-full border border-white/[0.04]" />
+      </div>
+
+      {/* BOTTOM LIGHT */}
+      <div className="absolute bottom-0 left-0 -z-10 h-1/3 w-full bg-gradient-to-t from-[#850f18]/20 to-transparent" />
+
+      {/* TOP RIGHT LINE */}
+      <div className="absolute right-0 top-0 -z-10 hidden h-full w-px bg-gradient-to-b from-transparent via-white/10 to-transparent lg:block" />
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 w-full px-5 sm:px-8 lg:px-14 xl:px-24">
-        <div className="grid items-center lg:grid-cols-[1fr_auto] lg:gap-10">
+      <div className="relative z-10 w-full py-12 sm:py-14 px-5 sm:px-8 lg:px-14 xl:px-24">
+
+        {/* TOP NAVIGATION */}
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mb-12 flex items-center justify-between sm:mb-16"
+        >
+          <div className="flex items-center gap-3 text-xs font-semibold text-white/60">
+            <Link to="/" className="transition hover:text-white">
+              Home
+            </Link>
+            <span className="text-red-400">/</span>
+            <span className="text-white">About Us</span>
+          </div>
+
+          <p className="hidden text-[10px] font-bold uppercase tracking-[4px] text-white/50 sm:block">
+            Our Identity · Our Purpose
+          </p>
+        </motion.div>
+
+        {/* HERO CONTENT */}
+        <div className="grid items-center gap-12 lg:grid-cols-[1fr_300px] xl:grid-cols-[1fr_350px]">
+
           {/* LEFT CONTENT */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl"
+            transition={{ duration: 0.9 }}
+            className="relative"
           >
-            {/* BREADCRUMB */}
-            <div className="mb-10 flex items-center gap-2 text-xs font-semibold text-white/55">
-              <Link to="/" className="transition hover:text-white">
-                Home
-              </Link>
-              <span>/</span>
-              <span className="text-red-300">About Us</span>
-            </div>
-
             {/* LABEL */}
-            <div className="mb-6 flex items-center gap-3">
-              <span className="h-px w-10 bg-red-400" />
-              <span className="text-xs font-bold uppercase tracking-[4px] text-red-300">
-                The Story Behind Us
+            <div className="mb-8 flex items-center gap-3">
+              <GraduationCap
+                size={20}
+                className="text-red-300"
+              />
+
+              <span className="text-[10px] font-bold uppercase tracking-[4px] text-red-300 sm:text-xs">
+                The Gyan Sagar Story
               </span>
             </div>
 
-            {/* HEADING */}
-            <h1 className="font-['Playfair_Display'] text-5xl font-bold leading-[1.12] text-white sm:text-6xl md:text-7xl xl:text-[88px]">
-              Education
-              <br />
-              With A<span className="italic text-red-300">Purpose.</span>
+            {/* MAIN HEADING */}
+            <h1 className=" font-['Playfair_Display'] text-5xl font-bold leading-[1.12] text-white sm:text-6xl md:text-7xl xl:text-[86px]">
+              Where Learning
+              <span className=" block italic text-red-300">
+                 Meets Ambition.
+              </span>                            
+              
+              
             </h1>
 
             {/* DESCRIPTION */}
-            <p className="mt-7 max-w-xl text-sm leading-7 text-white/75 sm:text-base sm:leading-8">
-              Since 2018, Gyan Sagar NET Classes has been helping aspiring
-              educators turn their teaching dreams into meaningful careers
-              through knowledge and guidance.
+            <p className="mt-7 max-w-lg text-sm leading-7 text-white/70 sm:text-base sm:leading-8">
+              We believe every aspiring educator deserves the right
+              knowledge, guidance and opportunity to achieve their goals.
             </p>
 
             {/* BUTTON */}
             <Link
               to="/courses"
-              className="group mt-9 inline-flex items-center gap-4 border-b border-red-400 pb-3 text-sm font-bold text-white transition hover:text-red-300"
+              className="group mt-9 inline-flex items-center gap-5 bg-[#a51620] px-7 py-4 text-xs font-bold uppercase tracking-[2px] text-white transition-all duration-300 hover:bg-white hover:text-[#850f18]"
             >
-              Discover Our Journey
+              Explore Our Courses
+
               <ArrowUpRight
-                size={19}
-                className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                size={18}
+                className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
               />
             </Link>
           </motion.div>
 
-          {/* RIGHT TYPOGRAPHY */}
+          {/* RIGHT SIDE */}
           <motion.div
-            initial={{ opacity: 0, x: 35 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="hidden lg:flex lg:items-center lg:justify-center"
+            className="relative hidden min-h-[350px] flex-col justify-center border-l border-white/25 pl-9 lg:flex"
           >
-            <div className="border-l border-white/30 py-8 pl-7">
-              <p className="text-[11px] font-bold uppercase tracking-[5px] text-white/60">
-                Gyan Sagar
-              </p>
+            <span className="text-[10px] font-bold uppercase tracking-[5px] text-white/45">
+              Our Belief
+            </span>
 
-              <p
-                className="mt-4 font-['Playfair_Display'] text-5xl font-bold tracking-[8px] text-white/15 xl:text-6xl"
-                style={{
-                  writingMode: "vertical-rl",
-                }}
-              >
-                OUR STORY
-              </p>
+            <h2 className="mt-8 font-['Playfair_Display'] text-5xl font-bold leading-[1.2] text-white xl:text-6xl">
+              Learn
+              <br />
+              <span className="italic text-red-300">
+                Today.
+              </span>
+              <br />
+              Lead
+              <br />
+              Tomorrow.
+            </h2>
 
-              <p className="mt-5 text-[10px] font-bold uppercase tracking-[3px] text-red-300">
-                EST. 2018
+            <div className="mt-9 flex items-center gap-4">
+              <BookOpen
+                size={19}
+                className="text-red-300"
+              />
+
+              <p className="text-[10px] font-bold uppercase tracking-[3px] text-white/55">
+                Knowledge Creates Possibilities
               </p>
             </div>
+
+            {/* VERTICAL TYPOGRAPHY */}
+            <span
+              className="pointer-events-none absolute -right-2 top-1/2 -translate-y-1/2 font-['Playfair_Display'] text-8xl font-bold text-white/[0.06]"
+              style={{ writingMode: "vertical-rl" }}
+            >
+              ABOUT
+            </span>
           </motion.div>
         </div>
-      </div>
 
-      <div className="absolute bottom-7 right-5 hidden text-xs font-bold tracking-[3px] text-white/50 sm:block lg:right-14">
-        HISAR, HARYANA
+        {/* BOTTOM STRIP */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.7 }}
+          className="mt-14 flex flex-wrap items-center justify-between gap-5 border-t border-white/20 pt-6 sm:mt-16"
+        >
+          <p className="text-[10px] font-bold uppercase tracking-[3px] text-white/50">
+            Education · Guidance · Growth
+          </p>
+
+          <div className="flex items-center gap-3">
+            <span className="h-px w-10 bg-red-400" />
+
+            <span className="text-[10px] font-bold uppercase tracking-[3px] text-white/65">
+              Hisar, Haryana
+            </span>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

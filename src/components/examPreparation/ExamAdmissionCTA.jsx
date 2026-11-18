@@ -13,7 +13,7 @@ const ExamAdmissionCTA = () => {
         <div className="pointer-events-none absolute -right-10 -top-14 h-60 w-60 rounded-full border border-white/10" />
         <div className="pointer-events-none absolute -bottom-32 left-1/3 h-72 w-72 rounded-full bg-white/5 blur-3xl" />
 
-        <div className="relative grid items-center lg:grid-cols-2">
+        <div className="relative grid items-center lg:grid-cols-2 ">
 
           {/* Content */}
           <motion.div
@@ -90,10 +90,10 @@ const ExamAdmissionCTA = () => {
             transition={{ duration: 0.7 }}
             className="relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[580px]"
           >
-            <img
-              src="https://www.gyansagarclasses.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-25-at-2.11.42-PM-1-scaled.jpega"
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS02uuG_1YxgUlc-Os9kAaNIiaYFjhXDfXlJlUcCkMAXQ&s=10"
+              // src="https://www.gyansagarclasses.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-25-at-2.11.42-PM-1-scaled.jpega"
               alt="Students studying together and preparing for examinations"
-              className="absolute inset-0 h-full w-full object-cover object-center"
+              className="absolute pe-6 inset-0 h-full w-full object-cover object-center"
               loading="lazy"
             />
 

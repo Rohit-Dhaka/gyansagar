@@ -23,14 +23,18 @@ const Footer = () => {
     { name: "Contact Us", path: "/contact" },
   ];
 
-  const courses = [
-    { name: "UGC NET", path: "/courses/ugc-net" },
-    { name: "CSIR NET", path: "/courses/csir-net" },
-    { name: "HTET", path: "/courses/htet" },
-    { name: "CTET", path: "/courses/ctet" },
-    { name: "DSSSB", path: "/courses/dsssb" },
-    { name: "TGT / PGT", path: "/courses/tgt-pgt" },
-  ];
+const courses = [
+  { name: "UGC NET", path: "/exam-preparation/ugc-net" },
+  { name: "CSIR NET", path: "/exam-preparation/csir-net" },
+  { name: "HTET / CTET", path: "/exam-preparation/htet-ctet" },
+  { name: "PGT / TGT / PRT", path: "/exam-preparation/pgt-tgt-prt" },
+  { name: "DSSSB", path: "/exam-preparation/dsssb" },
+  { name: "UPSC / HCS", path: "/exam-preparation/upsc-hcs" },
+  {
+    name: "UPSC / HCS Foundation",
+    path: "/exam-preparation/upsc-hcs-foundation",
+  },
+];
 
   const socialLinks = [
     {
@@ -113,11 +117,11 @@ const Footer = () => {
                   </a>
 
                   <a
-                    href="mailto:gyansagar02102018@gmail.com"
+                    href="mailto:gyansagar02102015@gmail.com"
                     className="flex items-start gap-3 break-all transition hover:text-yellow-300"
                   >
                     <FaEnvelope className="mt-1 shrink-0 text-yellow-300" />
-                    <span>gyansagar02102018@gmail.com</span>
+                    <span>gyansagar02102015@gmail.com</span>
                   </a>
                 </div>
                 <div className="flex flex-wrap items-center gap-3  pt-5">

@@ -259,7 +259,7 @@ const CoursesHero = () => {
                   Established
                 </p>
                 <p className="mt-1 font-['Playfair_Display'] text-xl font-bold text-white">
-                  2018
+                  2015
                 </p>
               </div>
 

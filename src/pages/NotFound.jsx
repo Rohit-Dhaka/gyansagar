@@ -95,7 +95,7 @@ const NotFound = () => {
                 </div>
 
                 <span className="text-[10px] font-extrabold tracking-widest text-[#850f18]">
-                  EST. 2018
+                  EST. 2015
                 </span>
               </div>
 

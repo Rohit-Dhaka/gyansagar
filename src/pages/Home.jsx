@@ -13,7 +13,7 @@ const Home = () => {
     <div className="flex min-h-0 flex-1 flex-col">
          <SEO
         title="Best UGC NET & CSIR NET Coaching in Hisar"
-        description="Join Gyan Sagar NET Classes in Hisar for UGC NET, CSIR NET, HTET, CTET, DSSSB and teaching exam preparation. Focused academic guidance since 2018."
+        description="Join Gyan Sagar NET Classes in Hisar for UGC NET, CSIR NET, HTET, CTET, DSSSB and teaching exam preparation. Focused academic guidance since 2015."
         keywords={[
           "UGC NET coaching in Hisar",
           "CSIR NET coaching in Hisar",

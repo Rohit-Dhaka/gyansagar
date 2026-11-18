@@ -9,7 +9,7 @@ const Contact = () => {
     <main>
       <SEO
         title="Best UGC NET & CSIR NET Coaching in Hisar"
-        description="Join Gyan Sagar NET Classes in Hisar for UGC NET, CSIR NET, HTET, CTET, DSSSB and teaching exam preparation. Focused academic guidance since 2018."
+        description="Join Gyan Sagar NET Classes in Hisar for UGC NET, CSIR NET, HTET, CTET, DSSSB and teaching exam preparation. Focused academic guidance since 2015."
         keywords={[
           "UGC NET Coaching in Hisar",
           "CSIR NET Coaching in Hisar",

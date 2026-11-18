@@ -122,7 +122,8 @@ const ContactEnquiry = () => {
         );
       }
     } catch (err) {
-      setError("Something went wrong. Please check your internet connection.");
+      
+      setError("Something went wrong. Please check your internet connection.",err);
     } finally {
       setIsSubmitting(false);
     }
@@ -137,7 +138,7 @@ const ContactEnquiry = () => {
 
       <div className="relative z-10 w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
         {/* TOP INTRO */}
-        <div className="mb-12 flex flex-col justify-between gap-6 border-b border-white/20 pb-8 md:flex-row md:items-end">
+        <div className="mb-4 sm:mb-12 flex flex-col justify-between gap-6 border-b border-white/20 pb-8 md:flex-row md:items-end">
           <div>
             <div className="mb-4 flex items-center gap-3">
               <span className="h-px w-9 bg-white/70" />
@@ -231,7 +232,7 @@ const ContactEnquiry = () => {
               <div>
                 <p className="text-sm font-bold">Gyan Sagar NET Classes</p>
                 <p className="mt-1 text-[10px] uppercase tracking-[2px] text-white/55">
-                  Guiding Aspirations Since 2018
+                  Guiding Aspirations Since 2015
                 </p>
               </div>
             </div>

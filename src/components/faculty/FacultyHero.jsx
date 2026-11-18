@@ -14,7 +14,7 @@ const FacultyHero = () => {
   return (
     <section
       className="
-        relative flex h-[calc(100svh-76px)] w-full flex-col
+        relative flex sm:h-[calc(100svh-76px)] w-full flex-col
         overflow-hidden bg-[#faf8f5]
         md:h-[calc(100svh-118px)]
       "
@@ -108,7 +108,7 @@ const FacultyHero = () => {
             </Link>
 
             <span className="text-xs font-bold uppercase tracking-[1.5px] text-black/45">
-              Since 2018
+              Since 2015
             </span>
           </motion.div>
 
@@ -162,7 +162,7 @@ const FacultyHero = () => {
             </span>
 
             <span className="mt-1 font-['Playfair_Display'] text-3xl font-bold">
-              2018
+              2015
             </span>
           </motion.div>
 

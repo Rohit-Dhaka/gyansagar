@@ -84,7 +84,7 @@ const ExamDetailContent = ({ exam }) => {
   ];
 
   return (
-    <section className="w-full overflow-hidden bg-[#faf8f5] px-3 py-12 sm:px-4 sm:py-14 lg:px-6 lg:py-16 xl:px-8 2xl:px-10">
+    <section className="w-full overflow-hidden bg-[#faf8f5]  py-12 sm:py-14 lg:py-16 px-5 sm:px-8 lg:px-14 xl:px-24">
 
       {/* Breadcrumb */}
       <div className="mb-8 flex flex-wrap items-center gap-2 text-xs font-semibold text-gray-500">

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
   BookOpen,
   GraduationCap,
@@ -10,7 +8,7 @@ import {
   Users,
   Target,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+
 
 const learningExperiences = [
   {
@@ -20,8 +18,8 @@ const learningExperiences = [
     title: "Learn Together. Grow Together.",
     description:
       "Experience an engaging classroom environment where students learn through interactive sessions, expert guidance and meaningful discussions.",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhBdmVysrNHb5Sfg_UHJHmh-3f-BUYf50bBX5N2KDtpA&s=10",
+      // "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=90",
     tag: "Interactive Learning",
     icon: Users,
   },
@@ -32,8 +30,8 @@ const learningExperiences = [
     title: "Guidance That Builds Confidence.",
     description:
       "Get structured academic support, concept clarity and focused preparation under experienced educators who understand competitive examinations.",
-    image:
-      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1600&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLK9DL98gd_31_WEqCI0exBoEiSH6eouk4a_jnzi4gxA&s=10",
+      // "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1600&q=90",
     tag: "Expert Mentorship",
     icon: GraduationCap,
   },
@@ -44,8 +42,8 @@ const learningExperiences = [
     title: "Education Beyond Boundaries.",
     description:
       "Learn through flexible online and offline learning options designed to make quality education accessible and convenient.",
-    image:
-      "https://images.unsplash.com/photo-1584697964358-3e14ca57658b?auto=format&fit=crop&w=1600&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKt2s-bud25a1JxsVu-vnWjr0-wD1RpT0S3cyw5oL2ew&s=10",
+      // "https://images.unsplash.com/photo-1584697964358-3e14ca57658b?auto=format&fit=crop&w=1600&q=90",
     tag: "Online + Offline",
     icon: MonitorPlay,
   },
@@ -56,8 +54,8 @@ const learningExperiences = [
     title: "Prepare With The Right Resources.",
     description:
       "Build strong concepts with structured study material, regular practice and exam-oriented learning resources.",
-    image:
-      "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=90",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj4-q1pjfIRkkubcrafCpEP6vxJ7q50xtRrsxfSgRqAQ&s=10",
+      // "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=90",
     tag: "Focused Preparation",
     icon: BookOpen,
   },
@@ -87,16 +85,16 @@ const LearningEnvironment = () => {
   const activeExperience = learningExperiences[activeIndex];
   const ActiveIcon = activeExperience.icon;
 
-  const nextSlide = () => {
-    setActiveIndex((prev) => (prev + 1) % learningExperiences.length);
-  };
+  // const nextSlide = () => {
+  //   setActiveIndex((prev) => (prev + 1) % learningExperiences.length);
+  // };
 
-  const prevSlide = () => {
-    setActiveIndex(
-      (prev) =>
-        (prev - 1 + learningExperiences.length) % learningExperiences.length,
-    );
-  };
+  // const prevSlide = () => {
+  //   setActiveIndex(
+  //     (prev) =>
+  //       (prev - 1 + learningExperiences.length) % learningExperiences.length,
+  //   );
+  // };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -242,14 +240,14 @@ const LearningEnvironment = () => {
                     </span>
                   </div>
 
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9 lg:p-8">
+                  <div className="absolute inset-x-0 bottom-0 p-4 sm:p-9 lg:p-8">
                  
 
-                    <h3 className="mt-3 max-w-xl font-['Playfair_Display'] text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+                    <h3 className="mt-3 max-w-xl font-['Playfair_Display'] text-xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                       {activeExperience.title}
                     </h3>
 
-                    <p className=" max-w-lg text-sm leading-7 text-white/85">
+                    <p className=" max-w-lg text-[12px] sm:text-sm sm:leading-7 text-white/85">
                       {activeExperience.description}
                     </p>
 
@@ -271,7 +269,7 @@ const LearningEnvironment = () => {
         </div>
 
         {/* BOTTOM HIGHLIGHTS */}
-        <div className="mt-9 grid grid-cols-1 gap-5 border-t border-red-200 pt-7 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="sm:mt-9 grid grid-cols-1 gap-3 sm:gap-5 sm:border-t border-red-200 pt-7 sm:grid-cols-2 lg:grid-cols-3">
           {highlights.map((item, index) => {
             const Icon = item.icon;
 

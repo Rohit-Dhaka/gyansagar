@@ -44,8 +44,8 @@ const ExamPreparationSection = () => {
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-8 flex items-end justify-between gap-4 sm:mb-10 lg:mb-12"
+          transition={{ duration: 0.5 }}
+          className="mb-4 flex items-end justify-between gap-4 max-sm:flex-col sm:mb-10 lg:mb-12"
         >
           {/* LEFT CONTENT */}
           <div className="max-w-3xl">
@@ -76,7 +76,7 @@ const ExamPreparationSection = () => {
             <button
               type="button"
               aria-label="Previous exam programs"
-              className="exam-prev flex h-10 w-10 items-center justify-center rounded-full border border-[#a51620]/30 text-[#850f18] transition hover:border-[#850f18] hover:bg-[#850f18] hover:text-white sm:h-11 sm:w-11"
+              className="exam-prev flex h-10 w-10 items-center justify-center border border-[#a51620]/30 text-[#850f18] transition-all duration-300 hover:border-[#850f18] hover:bg-[#850f18] hover:text-white sm:h-11 sm:w-11"
             >
               <ChevronLeft size={20} />
             </button>
@@ -84,7 +84,7 @@ const ExamPreparationSection = () => {
             <button
               type="button"
               aria-label="Next exam programs"
-              className="exam-next flex h-10 w-10 items-center justify-center rounded-full border border-[#a51620]/30 text-[#850f18] transition hover:border-[#850f18] hover:bg-[#850f18] hover:text-white sm:h-11 sm:w-11"
+              className="exam-next flex h-10 w-10 items-center justify-center border border-[#a51620]/30 text-[#850f18] transition-all duration-300 hover:border-[#850f18] hover:bg-[#850f18] hover:text-white sm:h-11 sm:w-11"
             >
               <ChevronRight size={20} />
             </button>
@@ -123,7 +123,7 @@ const ExamPreparationSection = () => {
                 spaceBetween: 20,
               },
             }}
-            className="exam-preparation-swiper !pb-3"
+            className="exam-preparation-swiper !pb-4"
           >
             {examPreparationData.map((program, index) => {
               const Icon = iconMap[program.icon] || GraduationCap;
@@ -138,18 +138,28 @@ const ExamPreparationSection = () => {
                       duration: 0.5,
                       delay: (index % 4) * 0.08,
                     }}
-                    whileHover={{ y: -7 }}
+                    whileHover={{ y: -8 }}
                     className="group h-full"
                   >
-                    <div className="flex h-[420px] flex-col overflow-hidden rounded-xl border border-black/10 bg-white p-5 shadow-[0_5px_25px_rgba(0,0,0,0.04)] transition-all duration-300 hover:border-[#a51620]/40 hover:shadow-[0_15px_40px_rgba(133,15,24,0.10)] sm:p-6">
+                    {/* CARD */}
+                    <div className="relative flex h-[420px] flex-col overflow-hidden rounded border border-black/10 bg-white p-5 shadow-[0_5px_25px_rgba(0,0,0,0.04)] transition-all duration-500   sm:p-6">
+
+                      {/* TOP HOVER LINE */}
+                      <span className="absolute left-0 top-0 z-10 h-[3px] w-0 bg-[#a51620] transition-all duration-500 " />
 
                       {/* CARD TOP */}
                       <div className="mb-5 flex shrink-0 items-start justify-between">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-red-50 text-[#a51620] transition-all duration-300 group-hover:bg-[#a51620] group-hover:text-white">
-                          <Icon size={27} strokeWidth={1.7} />
+                        {/* ICON */}
+                        <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-red-50 text-[#a51620] transition-all duration-500 ">
+                          <Icon
+                            size={27}
+                            strokeWidth={1.7}
+                            className="transition-transform duration-500 "
+                          />
                         </div>
 
-                        <span className="font-['Playfair_Display'] text-3xl font-bold text-black/35 transition-colors group-hover:text-[#a51620]">
+                        {/* PROGRAM NUMBER */}
+                        <span className="font-['Playfair_Display'] text-3xl font-bold text-black/30 transition-all duration-500  ">
                           {program.id}
                         </span>
                       </div>
@@ -160,7 +170,7 @@ const ExamPreparationSection = () => {
                       </span>
 
                       {/* TITLE */}
-                      <h3 className="line-clamp-2 min-h-[56px] shrink-0 font-['Playfair_Display'] text-xl font-bold leading-snug text-black transition group-hover:text-[#a51620]">
+                      <h3 className="line-clamp-2 min-h-[56px] shrink-0 font-['Playfair_Display'] text-xl font-bold leading-snug text-black transition-colors duration-300 group-hover:text-[#a51620]">
                         {program.title}
                       </h3>
 
@@ -174,7 +184,7 @@ const ExamPreparationSection = () => {
                         {program.exams?.map((exam) => (
                           <span
                             key={exam}
-                            className="inline-flex items-center gap-1.5 rounded-md bg-[#faf7f7] px-2.5 py-1.5 font-['Lato'] text-[10px] font-bold text-black"
+                            className="inline-flex items-center gap-1.5 rounded-md bg-[#faf7f7] px-2.5 py-1.5 font-['Lato'] text-[10px] font-bold text-black transition-colors duration-300 group-hover:bg-red-50"
                           >
                             <CheckCircle2
                               size={12}
@@ -190,11 +200,11 @@ const ExamPreparationSection = () => {
                         <Link
                           to={program.path}
                           aria-label={`Explore ${program.title} preparation`}
-                          className="flex items-center justify-between border-t border-black/20 pt-4 font-['Lato'] text-sm font-bold text-[#850f18] transition-colors hover:text-[#5f0a11] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#850f18]"
+                          className="flex items-center justify-between border-t border-black/20 pt-4 font-['Lato'] text-sm font-bold text-[#850f18] transition-colors duration-300 hover:text-[#5f0a11] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#850f18]"
                         >
                           <span>Explore Program</span>
 
-                          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#a51620]/30 transition-all duration-300 group-hover:border-[#a51620] group-hover:bg-[#a51620] group-hover:text-white">
+                          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#a51620]/30 transition-all duration-500">
                             <ArrowUpRight size={18} />
                           </span>
                         </Link>

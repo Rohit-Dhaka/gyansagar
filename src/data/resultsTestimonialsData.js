@@ -7,8 +7,8 @@ const studentsData = [
     achievement: "UGC NET Qualified",
     subject: "Subject Name",
     examYear: "2025",
-    image:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX-_QGsUfgSQ8Xhi3kZvr33ynRRIXy3QcNv5t47Kx-3A&s=10",
+      // "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop",
     testimonial:
       "Add the student's actual feedback about their preparation and learning experience.",
   },
@@ -19,8 +19,8 @@ const studentsData = [
     achievement: "CSIR NET Qualified",
     subject: "Subject Name",
     examYear: "2025",
-    image:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQEA-SsQI0gB-oyFSjxObdwBcKWNA6Ek8J6hyWg4MRAQ&s=10",
+          
     testimonial:
       "Add the student's actual feedback about faculty guidance and exam preparation.",
   },
@@ -31,8 +31,8 @@ const studentsData = [
     achievement: "HTET Qualified",
     subject: "Subject Name",
     examYear: "2025",
-    image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&auto=format&fit=crop",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS445ke3xw-wQI243bVxEP_fV3J1mQ8moEA41wNkPfT2g&s=10",
+      
     testimonial:
       "Add the student's actual feedback about their learning journey.",
   },
@@ -43,8 +43,8 @@ const studentsData = [
     achievement: "UGC NET Qualified",
     subject: "Subject Name",
     examYear: "2025",
-    image:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX-_QGsUfgSQ8Xhi3kZvr33ynRRIXy3QcNv5t47Kx-3A&s=10",
+    // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS38rae32tTc_NGqtIxk9MHU1PYvID2G-Oi77M1W9aCyQ&s=10",      
     testimonial:
       "Add the student's actual feedback about their preparation and learning experience.",
   },
@@ -55,8 +55,7 @@ const studentsData = [
     achievement: "CSIR NET Qualified",
     subject: "Subject Name",
     examYear: "2025",
-    image:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=600&auto=format&fit=crop",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSH8lSTB1e4uYCHU1_qNze8jjKGGxbtZ1hI5xNxytZ0hw&s=10",      
     testimonial:
       "Add the student's actual feedback about faculty guidance and exam preparation.",
   },
@@ -67,8 +66,8 @@ const studentsData = [
     achievement: "HTET Qualified",
     subject: "Subject Name",
     examYear: "2025",
-    image:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&auto=format&fit=crop",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgoS5ZvIfl8x7cjV_nWEngBt8CapiRGirxsFjZkz-ogA&s=10",
+      
     testimonial:
       "Add the student's actual feedback about their learning journey.",
   },

@@ -31,9 +31,9 @@ const contactDetails = [
     number: "03",
     title: "Email Us",
     subtitle: "Write to us for course enquiries.",
-    value: "gyansagar02102018@gmail.com",
+    value: "gyansagar02102015@gmail.com",
     action: "Send Email",
-    href: "mailto:gyansagar02102018@gmail.com",
+    href: "mailto:gyansagar02102015@gmail.com",
     icon: Mail,
   },
   {
@@ -95,7 +95,7 @@ const ContactInformation = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative flex min-h-[270px] flex-col justify-between border-b border-r border-black/10 bg-transparent p-6 transition-all duration-300 hover:bg-white sm:p-7 lg:min-h-[300px] lg:p-6 xl:p-7"
+                className="group relative flex sm:min-h-[270px] flex-col justify-between border-b border-r border-black/10 bg-transparent p-3 sm:p-6 transition-all duration-300 hover:bg-white sm:p-7 lg:min-h-[300px] lg:p-6 xl:p-7"
               >
                 {/* TOP */}
                 <div>
@@ -109,7 +109,7 @@ const ContactInformation = () => {
                     </span>
                   </div>
 
-                  <h3 className="mt-7 font-['Playfair_Display'] text-xl font-bold text-black sm:text-2xl">
+                  <h3 className="  sm:mt-7 font-['Playfair_Display'] text-xl font-bold text-black sm:text-2xl">
                     {item.title}
                   </h3>
 
@@ -117,13 +117,13 @@ const ContactInformation = () => {
                     {item.subtitle}
                   </p>
 
-                  <p className="mt-5 break-words text-sm font-bold leading-6 text-black sm:text-base">
+                  <p className="mt-2 sm:mt-5 break-words text-sm font-bold leading-6 text-black sm:text-base">
                     {item.value}
                   </p>
                 </div>
 
                 {/* BOTTOM ACTION */}
-                <div className="mt-7 flex items-center justify-between border-t border-black/10 pt-4">
+                <div className="mt-3 sm:mt-7 flex items-center justify-between border-t border-black/10 pt-2 sm:pt-4">
                   <span className="text-xs font-extrabold text-[#850f18]">
                     {item.action}
                   </span>

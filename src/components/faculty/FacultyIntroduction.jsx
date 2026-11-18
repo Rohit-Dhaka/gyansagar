@@ -106,12 +106,12 @@ const FacultyIntroduction = () => {
 
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/10" />
 
-            <div className="absolute bottom-0 left-0 p-5 text-white sm:p-8">
-              <span className="text-[10px] font-bold uppercase tracking-[2.5px] text-white/70">
+            <div className="absolute bottom-0 left-0 p-3 text-white sm:p-8">
+              <span className=" text-[8px] sm:text-[10px] font-bold uppercase tracking-[2.5px] text-white/70">
                 The Gyan Sagar Approach
               </span>
 
-              <h3 className="mt-2 max-w-md font-['Playfair_Display'] text-2xl font-bold leading-tight sm:text-3xl lg:text-4xl">
+              <h3 className="sm:mt-2 max-w-md font-['Playfair_Display'] text-lg font-bold leading-tight sm:text-3xl lg:text-4xl">
                 Education Is More Than Just Completing A Syllabus.
               </h3>
             </div>
@@ -182,7 +182,7 @@ const FacultyIntroduction = () => {
                   index !== 2 ? "sm:border-b-0 sm:border-r" : ""
                 } ${index === 0 ? "sm:pl-0" : ""}`}
               >
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#850f18]/5 text-[#850f18]">
+                <div className="flex max-sm:hidden h-11 w-11 shrink-0 items-center justify-center bg-[#850f18]/5 text-[#850f18]">
                   <Icon size={21} strokeWidth={1.7} />
                 </div>
 

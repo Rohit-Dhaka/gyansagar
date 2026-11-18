@@ -109,11 +109,11 @@ const Navbar = () => {
 
           <div className="flex items-center gap-6">
             <a
-              href="mailto:gyansagar02102018@gmail.com"
+              href="mailto:gyansagar02102015@gmail.com"
               className="flex items-center gap-2 text-xs font-medium transition hover:text-yellow-300"
             >
               <Mail size={14} />
-              gyansagar02102018@gmail.com
+              gyansagar02102015@gmail.com
             </a>
 
             <a

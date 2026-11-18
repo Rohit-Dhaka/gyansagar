@@ -57,6 +57,7 @@ const ExamPreparationHero = () => {
         min-h-[calc(100svh-76px)]
         md:h-[calc(100svh-118px)]
         md:min-h-[620px]
+        px-5 sm:px-8 lg:px-14 xl:px-24
       "
     >
       {/* BACKGROUND DECORATION */}

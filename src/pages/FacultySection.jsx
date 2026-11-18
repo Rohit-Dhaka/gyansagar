@@ -95,7 +95,7 @@ const FacultySection = () => {
                 ref={prevRef}
                 type="button"
                 aria-label="Previous faculty"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#cdbbb4] text-[#850f18] transition-all hover:bg-[#850f18] hover:text-white"
+                className="flex h-10 w-10 items-center justify-center  border border-[#cdbbb4] text-[#850f18] transition-all hover:bg-[#850f18] hover:text-white"
               >
                 <ChevronLeft size={19} />
               </button>
@@ -104,7 +104,7 @@ const FacultySection = () => {
                 ref={nextRef}
                 type="button"
                 aria-label="Next faculty"
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#850f18] text-white transition-all hover:bg-[#a51620]"
+                className="flex h-10 w-10 items-center justify-center  bg-[#850f18] text-white transition-all hover:bg-[#a51620]"
               >
                 <ChevronRight size={19} />
               </button>
@@ -141,7 +141,7 @@ const FacultySection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.45 }}
         className="
-          grid h-[700px] grid-cols-1 overflow-hidden rounded-2xl
+          grid sm:h-[700px] grid-cols-1 overflow-hidden rounded-2xl
           bg-[#850f18]
           shadow-[0_18px_45px_rgba(70,15,20,0.13)]
           sm:h-[420px]

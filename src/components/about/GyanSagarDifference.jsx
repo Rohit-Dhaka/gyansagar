@@ -19,8 +19,8 @@ const differences = [
     highlight: "Understanding Before Memorising",
     detail: "Build a strong foundation through concept-focused learning.",
     icon: BookOpen,
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=90",
+    image: "https://cdn.dnaindia.com/sites/default/files/2018/05/28/687056-cbse-students-07.jpg?im=FitAndFill=(1200,900)",
+      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=90",
     imageAlt: "Teacher explaining a lesson in a classroom",
   },
   {
@@ -46,8 +46,8 @@ const differences = [
     highlight: "Guidance That Supports Growth",
     detail: "Get academic support throughout your preparation journey.",
     icon: Users,
-    image:
-      "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=90",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiIQjvEGqZQ92FsrvzTQGNwnWop5n7eN-zgQvCRlXEGg&s=10",
+      // "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=90",
     imageAlt: "Students and teacher interacting during a class",
   },
   {
@@ -59,8 +59,8 @@ const differences = [
     highlight: "Practice. Improve. Progress.",
     detail: "Develop confidence through consistent learning and revision.",
     icon: Lightbulb,
-    image:
-      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1400&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVcN1lEo8PBA5AhB6gnGoHpqLSndxh-fmLOMsz8Surcw&s=10",
+      // "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1400&q=90",
     imageAlt: "Books and study material arranged on a desk",
   },
 ];
@@ -90,9 +90,9 @@ const GyanSagarDifference = () => {
               </span>
             </div>
 
-            <h2 className="max-w-2xl font-['Playfair_Display'] text-4xl font-bold leading-tight text-black sm:text-5xl lg:text-6xl">
-              What Makes Us
-              <span className="block text-[#850f18]">Different?</span>
+            <h2 className="max-w-2xl font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-5xl lg:text-6xl">
+              What Makes Us{" "}
+              <span className="sm:block text-[#850f18]">Different?</span>
             </h2>
           </div>
 
@@ -105,7 +105,7 @@ const GyanSagarDifference = () => {
 
         {/* HORIZONTAL INTERACTIVE SHOWCASE */}
 
-        <div className="mt-10">
+        <div className="mt-8 sm:mt-10">
           {/* FEATURE NAVIGATION */}
           <div className="grid grid-cols-2 border-y border-black/10 sm:grid-cols-4">
             {differences.map((item, index) => {
@@ -116,7 +116,7 @@ const GyanSagarDifference = () => {
                   key={item.number}
                   type="button"
                   onClick={() => setActiveIndex(index)}
-                  className={`group relative flex min-h-[95px] flex-col justify-center gap-2 border-b border-r border-black/10 px-4 py-4 text-left transition duration-300 sm:min-h-[110px] sm:border-b-0 sm:px-5 lg:px-7 ${
+                  className={`group relative flex min-h-[10px] flex-col justify-center gap-2 border-b border-r border-black/10 px-4 py-4 text-left transition duration-300 sm:min-h-[110px] sm:border-b-0 sm:px-5 lg:px-7 ${
                     index === 1 ? "sm:border-r" : ""
                   } ${index === 3 ? "sm:border-r-0" : ""} ${
                     isActive
@@ -232,17 +232,17 @@ const GyanSagarDifference = () => {
                   </div>
 
                   {/* HEADING */}
-                  <h3 className="mt-6 font-['Playfair_Display'] text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+                  <h3 className="sm:mt-6 font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
                     {activeItem.title}
                   </h3>
 
                   {/* DESCRIPTION */}
-                  <p className="mt-6 text-sm leading-7 text-black/65 sm:text-base sm:leading-8">
+                  <p className="mt-4 sm:mt-6 text-sm leading-7 text-black/65 sm:text-base sm:leading-8">
                     {activeItem.description}
                   </p>
 
                   {/* HIGHLIGHT */}
-                  <div className="mt-8 border-y border-black/10 py-5">
+                  <div className="mt-6 sm:mt-8 border-y border-black/10 py-5">
                     <div className="flex items-center gap-4">
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#850f18] text-white">
                         {(() => {

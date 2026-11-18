@@ -143,7 +143,7 @@ const WhyChooseUs = () => {
 
       <div className="pointer-events-none absolute -right-20 -top-20 h-[300px] w-[300px] rounded-full border border-[#a51620]/[0.06]" />
 
-      <div className="relative grid w-full grid-cols-1 gap-10 sm:gap-12  lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+      <div className="relative grid w-full grid-cols-1  gap-6 sm:gap-12  lg:grid-cols-[0.85fr_1.15fr] lg:gap-16 px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* LEFT SIDE */}
         <motion.div
@@ -203,7 +203,7 @@ const WhyChooseUs = () => {
           </div>
 
           {/* FEATURE HIGHLIGHT */}
-          <div className="mt-5 flex items-center gap-5 border-y border-black/10 py-6">
+          <div className="sm:mt-5 flex items-center gap-5 border-y border-black/10 py-6">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-red-50 text-[#a51620]">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -241,8 +241,8 @@ const WhyChooseUs = () => {
           </div>
 
           {/* EXAM TAGS */}
-          <div className="mt-7">
-            <p className="mb-3 font-['Lato'] text-[10px] font-extrabold tracking-[2px] text-black">
+          <div className="mt-4 sm:mt-7">
+            <p className="mb-2 sm:mb-3 font-['Lato'] text-[10px] font-extrabold tracking-[2px] text-black">
               EXAMS WE PREPARE YOU FOR
             </p>
 
@@ -250,7 +250,7 @@ const WhyChooseUs = () => {
               {exams.map((exam) => (
                 <span
                   key={exam}
-                  className="rounded-md border border-black/10 bg-white px-3 py-2 font-['Lato'] text-[11px] font-bold text-black shadow-sm transition hover:border-[#a51620] hover:bg-red-50 hover:text-[#850f18]"
+                  className="rounded-md border border-black/10 bg-white px-2 py-1 sm:px-3 sm:py-2 font-['Lato'] text-[11px] font-bold text-black shadow-sm transition hover:border-[#a51620] hover:bg-red-50 hover:text-[#850f18]"
                 >
                   {exam}
                 </span>

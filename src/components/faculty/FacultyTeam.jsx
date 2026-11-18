@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "motion/react";
 import {
-  ArrowUpRight,
+  
   GraduationCap,
   BookOpen,
   ChevronLeft,
@@ -31,7 +31,7 @@ const FacultyTeam = () => {
     >
       <div className="px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
         {/* SECTION HEADER */}
-        <div className="flex flex-col justify-between gap-6 border-b border-black/10 pb-7 md:flex-row md:items-end lg:pb-9">
+        <div className="flex flex-col justify-between gap-2 sm:gap-6 sm:border-b border-black/10 sm:pb-7 md:flex-row md:items-end lg:pb-9">
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -59,17 +59,13 @@ const FacultyTeam = () => {
             </motion.h2>
           </div>
 
-          <div className="flex items-end justify-between gap-5 md:max-w-sm">
-       
-            
-          </div>
              {totalFaculty > 1 && (
-            <div className="mt-6 flex items-center justify-between gap-4">          
+            <div className="sm:mt-6 max-sm:ms-auto flex items-center justify-between gap-4">          
               <div className="flex shrink-0 gap-2">
                 <button
                   type="button"
                   aria-label="Previous faculty"
-                  className="faculty-team-prev flex h-11 w-11 items-center justify-center border border-black/15 text-black transition hover:border-[#850f18] hover:bg-[#850f18] hover:text-white"
+                  className="faculty-team-prev flex h-8 sm:h-11 w-8 sm:w-11 items-center justify-center border border-black/15 text-black transition hover:border-[#850f18] hover:bg-[#850f18] hover:text-white"
                 >
                   <ChevronLeft size={20} />
                 </button>
@@ -77,7 +73,7 @@ const FacultyTeam = () => {
                 <button
                   type="button"
                   aria-label="Next faculty"
-                  className="faculty-team-next flex h-11 w-11 items-center justify-center bg-[#850f18] text-white transition hover:bg-[#a51620]"
+                  className="faculty-team-next flex h-8 sm:h-11 w-8 sm:w-11 items-center justify-center bg-[#850f18] text-white transition hover:bg-[#a51620]"
                 >
                   <ChevronRight size={20} />
                 </button>
@@ -89,7 +85,7 @@ const FacultyTeam = () => {
         </div>
 
         {/* SWIPER SLIDER */}
-        <div className="relative mt-8 lg:mt-10">
+        <div className="relative mt-6 sm:mt-8 lg:mt-10">
           <Swiper
             modules={[Autoplay, Navigation, Pagination]}
             slidesPerView={1}
@@ -176,10 +172,7 @@ const FacultyTeam = () => {
                       </p>
                     </div>
 
-                    {/* HOVER ARROW */}
-                    <div className="absolute bottom-5 right-4 flex h-9 w-9 translate-y-3 items-center justify-center bg-[#850f18] text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      <ArrowUpRight size={18} />
-                    </div>
+               
                   </div>
 
                   {/* FACULTY DETAILS */}

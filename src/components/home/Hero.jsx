@@ -3,35 +3,45 @@ import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 
 import { ArrowRight, ChevronRight, Play, Award } from "lucide-react";
+import Hero1 from '../../assets/image/Hero1.jpg'
+import Hero2 from '../../assets/image/Hero2.jpg'
+import Hero3 from '../../assets/image/Hero3.jpg'
 
 const slides = [
   {
     subtitle: "WELCOME TO GYAN SAGAR NET CLASSES",
 
-    title: "Your Dream of Becoming a Teacher Starts Here.",
+    title: "Your Journey Towards a Successful Teaching Career Starts Here.",
 
     description:
-      "Prepare for UGC NET, CSIR NET, HTET, CTET and other competitive examinations with expert guidance, strong concepts and the right strategy.",
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=90",
+      "Prepare for UGC NET, CSIR NET, Assistant Professor, PGT, TGT, HTET, CTET and DSSSB examinations with focused academic guidance and expert support.",
+
+    image:Hero1
+      // "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=90",
   },
-  {
-    subtitle: "EXPERT GUIDANCE • BETTER RESULTS",
 
-    title: "Build Strong Concepts. Create a Bright Future.",
+  {
+    subtitle: "EXPERT GUIDANCE • ONLINE & OFFLINE CLASSES",
+
+    title: "Strong Concepts. Smart Preparation. Better Opportunities.",
 
     description:
-      "Improve your preparation with focused learning, experienced faculty and a smart approach designed to move you closer to your teaching career.",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=90",
+      "Learn from a focused teaching approach across Political Science, History, Physics, English, Commerce, Mathematics, Computer Science, Hindi, Economics and more.",
+
+    image:Hero2
+      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=90",
   },
+
   {
-    subtitle: "START YOUR SUCCESS JOURNEY",
-    title: "Turn Your Teaching Dreams Into Reality.",
+    subtitle: "PREPARE TODAY • ACHIEVE TOMORROW",
+
+    title: "Turn Your Government Job Aspirations Into Reality.",
+
     description:
-      "Get dedicated preparation for UGC NET, HTET, CTET, DSSSB, TGT and PGT examinations with the guidance you need to move forward.",
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=90",
+      "Get dedicated preparation for teaching and competitive examinations with online and offline learning options at Gyan Sagar NET Classes, Hisar.",
+
+    image:Hero3
+      // "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=90",
   },
 ];
 
@@ -80,7 +90,7 @@ const Hero = () => {
     <section
       className="
         relative isolate flex w-full items-center justify-center
-        h-[calc(100svh-76px)]
+        sm:h-[calc(100svh-76px)]
         md:h-[calc(100svh-118px)]
         overflow-hidden bg-[#16090b]
       "

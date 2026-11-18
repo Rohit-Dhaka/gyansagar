@@ -123,8 +123,8 @@ const ContactSection = () => {
     {
       icon: Mail,
       title: "Email Us",
-      value: "gyansagar02102018@gmail.com",
-      link: "mailto:gyansagar02102018@gmail.com",
+      value: "gyansagar02102015@gmail.com",
+      link: "mailto:gyansagar02102015@gmail.com",
       description: "Send us your enquiry",
     },
     {
@@ -437,7 +437,7 @@ const ContactSection = () => {
                 />
               </button>
 
-              <p className="text-center font-['Lato'] text-xs text-black/50">
+              <p className="max-sm:hidden text-center font-['Lato'] text-xs text-black/50">
                 Your enquiry will be sent securely to our registered email.
               </p>
             </form>

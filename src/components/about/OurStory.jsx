@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 const journey = [
   {
-    year: "2018",
+    year: "2015",
     title: "A Vision Begins",
     description:
       "Gyan Sagar NET Classes started with a vision to provide quality guidance to aspiring educators.",
@@ -35,20 +35,20 @@ const journey = [
 
 const storyImages = [
   {
-    image:
-      "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQzFvL6KzmildBKJqFfj1jZ-J_MQYgb85TIJj48ZYOfA&s=10",
+      // "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85",
     alt: "Students learning in a classroom",
     label: "Classroom Learning",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnncW3GjIDb_BeulI1SQyPkjvtYme-LjfvuiJVDVgnyg&s=10",
+      // "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85",
     alt: "Students studying together",
     label: "Student Community",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM44UQhh95EZQ7TQKbKWFO5UhMaQSCunjEclPkjvOUaA&s=10",
+      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85",
     alt: "Teacher guiding students",
     label: "Expert Guidance",
   },
@@ -69,14 +69,14 @@ const OurStory = () => {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7 }}
           >
-            <div className="mb-6 flex items-center gap-3">
+            <div className="mb-4 sm:mb-6 flex items-center gap-3">
               <span className="h-px w-10 bg-[#a51620]" />
               <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#850f18]">
                 The Story Of Gyan Sagar
               </span>
             </div>
 
-            <h2 className="font-['Playfair_Display'] text-4xl font-bold leading-[1.15] text-black sm:text-5xl lg:text-6xl">
+            <h2 className="font-['Playfair_Display'] text-[32px] font-bold leading-[1.15] text-black sm:text-5xl lg:text-6xl">
               Shaping Dreams.
               <span className="mt-2 block text-[#850f18]">
                 Inspiring Educators.
@@ -86,7 +86,7 @@ const OurStory = () => {
             <p className="mt-7 max-w-xl text-sm leading-8 text-black/70 sm:text-base">
               Every meaningful journey begins with a purpose. Gyan Sagar NET
               Classes was established in{" "}
-              <strong className="font-extrabold text-black">2018</strong> in
+              <strong className="font-extrabold text-black">2015</strong> in
               Hisar, Haryana, with a commitment to guiding aspiring educators
               towards their professional goals.
             </p>
@@ -101,7 +101,7 @@ const OurStory = () => {
             </p>
 
             {/* QUOTE */}
-            <div className="relative mt-8 border-l-[3px] border-[#850f18] bg-[#faf6f4] px-5 py-5 sm:px-7">
+            <div className="relative mt-4 sm:mt-8 border-l-[3px] border-[#850f18] bg-[#faf6f4] px-4 py-4 sm:px-7">
               <Sparkles
                 size={20}
                 className="mb-3 text-[#a51620]"
@@ -200,7 +200,7 @@ const OurStory = () => {
                 Established In Hisar
               </span>
               <span className="font-['Playfair_Display'] text-2xl font-bold text-[#850f18]">
-                2018
+                2015
               </span>
             </div>
           </motion.div>

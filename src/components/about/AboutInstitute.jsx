@@ -43,7 +43,7 @@ const AboutInstitute = () => {
                 Our Establishment
               </p>
               <h3 className="mt-1 font-['Playfair_Display'] text-4xl font-bold">
-                2018
+                2015
               </h3>
             </div>
 
@@ -72,9 +72,9 @@ const AboutInstitute = () => {
             </div>
 
             {/* HEADING */}
-            <h2 className="font-['Playfair_Display'] text-4xl font-bold leading-tight text-black sm:text-5xl">
-              Welcome To
-              <span className="mt-1 block text-[#850f18]">
+            <h2 className="font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-5xl">
+              Welcome To{" "}
+              <span className="sm:mt-1 sm:block text-[#850f18]">
                 Gyan Sagar NET Classes
               </span>
             </h2>
@@ -86,7 +86,7 @@ const AboutInstitute = () => {
               </strong>
               , established in{" "}
               <strong className="font-bold text-black">
-                2018 in Hisar, Haryana
+                2015 in Hisar, Haryana
               </strong>
               , is dedicated to helping aspiring educators prepare for{" "}
               <strong className="font-bold text-black">

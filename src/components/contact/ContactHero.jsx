@@ -116,7 +116,7 @@ const ContactHero = () => {
                 </p>
 
                 <p className="mt-1 text-[9px] font-semibold tracking-wide text-black/45 sm:text-[10px]">
-                  Helping Aspirants Move Forward Since 2018
+                  Helping Aspirants Move Forward Since 2015
                 </p>
               </div>
             </motion.div>

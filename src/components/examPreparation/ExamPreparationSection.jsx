@@ -53,13 +53,13 @@ const ExamPreparationSection = () => {
               initial={{ opacity: 0, x: 15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex items-center gap-3 text-sm font-bold text-[#850f18]"
+              className="flex items-center max-sm:hidden gap-3 text-sm font-bold text-[#850f18]"
             >
               <span>{examPreparationData.length} Preparation Programs</span>
               <GraduationCap size={22} />
             </motion.div>
           </div>
-      <div className="mb-10 flex flex-col gap-5 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
+      <div className="mb-8 sm:mb-10 flex flex-col sm:gap-5 lg:mb-12 lg:flex-row lg:items-end lg:justify-between">
         
         <div className="max-w-2xl">
         
@@ -68,7 +68,7 @@ const ExamPreparationSection = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-['Playfair_Display'] text-3xl font-bold leading-tight text-[#211416] sm:text-4xl lg:text-5xl"
+            className="font-['Playfair_Display'] text-[32px] font-bold leading-tight text-[#211416] sm:text-4xl lg:text-5xl"
           >
             Choose Your Exam.
             <span className="block text-[#a51620]">Shape Your Future.</span>
@@ -78,7 +78,7 @@ const ExamPreparationSection = () => {
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-4 max-w-xl text-sm leading-7 text-gray-600 sm:text-base"
+            className="mt-3 sm:mt-4 max-w-xl text-sm leading-7 text-gray-600 sm:text-base"
           >
             Explore our exam preparation programs and find the right academic
             guidance to move closer to your career goals.
@@ -86,14 +86,14 @@ const ExamPreparationSection = () => {
         </div>
 
         
-        <div className="mt-2 flex items-center justify-between gap-4">
+        <div className="mt-2 flex max-sm:ms-auto items-center justify-between gap-4">
        
           <div className="flex shrink-0 items-center gap-2">
             <button
               ref={prevRef}
               type="button"
               aria-label="Previous exam"
-              className="flex h-10 w-10 items-center justify-center border border-[#850f18]/20 bg-white text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
+              className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center border border-[#850f18]/20 bg-white text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
             >
               <ChevronLeft size={20} />
             </button>
@@ -102,7 +102,7 @@ const ExamPreparationSection = () => {
               ref={nextRef}
               type="button"
               aria-label="Next exam"
-              className="flex h-10 w-10 items-center justify-center border border-[#850f18]/20 bg-white text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
+              className="flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center border border-[#850f18]/20 bg-white text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
             >
               <ChevronRight size={20} />
             </button>
@@ -152,7 +152,7 @@ const ExamPreparationSection = () => {
         spaceBetween: 20,
       },
     }}
-    className="exam-preparation-swiper !pb-12"
+    className="exam-preparation-swiper sm:!pb-12"
   >
     {examPreparationData.map((exam, index) => {
       const Icon = iconMap[exam.icon] || BookOpen;

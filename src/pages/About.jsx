@@ -10,7 +10,7 @@ const About = () => {
     <main>
       <SEO
         title="About Gyan Sagar NET Classes in Hisar"
-        description="Learn about Gyan Sagar NET Classes, established in 2018 in Hisar, Haryana. Explore our teaching approach and academic guidance for competitive examinations."
+        description="Learn about Gyan Sagar NET Classes, established in 2015 in Hisar, Haryana. Explore our teaching approach and academic guidance for competitive examinations."
         keywords={[
           "NET coaching institute in Hisar",
           "Gyan Sagar NET Classes",
