@@ -164,7 +164,7 @@ const ExamDetailContent = ({ exam }) => {
           initial={{ opacity: 0, x: 25 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative overflow-hidden bg-[#260b10] p-7 text-white sm:p-9"
+          className="relative overflow-hidden bg-[#850f18] p-7 text-white sm:p-9"
         >
           <div className="absolute -right-12 -top-12 h-48 w-48 rounded-full border border-white/10" />
 

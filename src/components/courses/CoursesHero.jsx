@@ -1,14 +1,3 @@
-
-
-// const CoursesHero = () => {
-//   return (
-//     <div>CoursesHero</div>
-//   )
-// }
-
-// export default CoursesHero
-
-
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import {

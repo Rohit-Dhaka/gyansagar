@@ -91,7 +91,7 @@ const ExamAdmissionCTA = () => {
             className="relative min-h-[320px] overflow-hidden sm:min-h-[420px] lg:min-h-[580px]"
           >
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS02uuG_1YxgUlc-Os9kAaNIiaYFjhXDfXlJlUcCkMAXQ&s=10"
-              // src="https://www.gyansagarclasses.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-25-at-2.11.42-PM-1-scaled.jpega"
+              
               alt="Students studying together and preparing for examinations"
               className="absolute pe-6 inset-0 h-full w-full object-cover object-center"
               loading="lazy"

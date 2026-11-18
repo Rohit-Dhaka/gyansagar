@@ -36,19 +36,19 @@ const journey = [
 const storyImages = [
   {
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQzFvL6KzmildBKJqFfj1jZ-J_MQYgb85TIJj48ZYOfA&s=10",
-      // "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=85",
+      
     alt: "Students learning in a classroom",
     label: "Classroom Learning",
   },
   {
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnncW3GjIDb_BeulI1SQyPkjvtYme-LjfvuiJVDVgnyg&s=10",
-      // "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=900&q=85",
+      
     alt: "Students studying together",
     label: "Student Community",
   },
   {
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRM44UQhh95EZQ7TQKbKWFO5UhMaQSCunjEclPkjvOUaA&s=10",
-      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=85",
+      
     alt: "Teacher guiding students",
     label: "Expert Guidance",
   },

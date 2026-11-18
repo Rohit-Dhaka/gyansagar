@@ -57,7 +57,7 @@ const ContactEnquiry = () => {
     setSuccess("");
   };
 
-  // WEB3FORMS SUBMISSION
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 

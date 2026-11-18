@@ -14,16 +14,12 @@ import {
 import studentsData from "../../data/resultsTestimonialsData";
 
 const ResultsTestimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  // Only actual testimonials will appear
+  const [activeIndex, setActiveIndex] = useState(0);  
   const testimonialStudents = studentsData.filter(
     (student) => student.testimonial?.trim()
   );
 
-  const activeTestimonial = testimonialStudents[activeIndex];
-
-  // Featured students for image collage
+  const activeTestimonial = testimonialStudents[activeIndex];  
   const featuredStudents = studentsData.slice(0, 3);
 
   const nextSlide = () => {
@@ -47,7 +43,7 @@ const ResultsTestimonials = () => {
     setActiveIndex(0);
   }, [testimonialStudents.length]);
 
-  // Automatic testimonial slider
+  
   useEffect(() => {
     if (testimonialStudents.length <= 1) return;
 

@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
   ArrowUpRight,
@@ -22,8 +22,8 @@ const teachingMethods = [
       "Step-by-step topic understanding",
       "Focus on learning rather than memorisation",
     ],
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMM6BSvZObxtyG0P4Q7PcYJAdsPAZoockCiDP8b-FgeQ&s=10",
-      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=90",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMM6BSvZObxtyG0P4Q7PcYJAdsPAZoockCiDP8b-FgeQ&s=10",
     imageAlt: "Teacher explaining concepts to students",
     icon: BookOpen,
   },
@@ -38,8 +38,8 @@ const teachingMethods = [
       "Understanding of examination patterns",
       "Subject-wise preparation strategy",
     ],
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV9rc6uecHKsFYFqUQgeWJe5XJ2kuCHMY3p_JWyJOQmw&s=10",
-      // "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=1200&q=90",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV9rc6uecHKsFYFqUQgeWJe5XJ2kuCHMY3p_JWyJOQmw&s=10",
     imageAlt: "Student preparing for competitive examinations",
     icon: Target,
   },
@@ -54,8 +54,8 @@ const teachingMethods = [
       "Previous year question discussions",
       "Revision and performance improvement",
     ],
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDbr0ibPR8-eKW00uVbKfpiI1bIWT0wP7NRih_AxBMZg&s=10",
-      // "https://images.unsplash.com/photo-1453738773917-9c3eff1db985?auto=format&fit=crop&w=1200&q=90",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDbr0ibPR8-eKW00uVbKfpiI1bIWT0wP7NRih_AxBMZg&s=10",
     imageAlt: "Student practising questions in a notebook",
     icon: ClipboardCheck,
   },
@@ -70,8 +70,8 @@ const teachingMethods = [
       "Guidance throughout preparation",
       "A student-focused learning environment",
     ],
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLdD1PkPTi8A9LpUqIWTyjx_Sa4khuCsRgK_AHCRmWWA&s=10",
-      // "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1200&q=90",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLdD1PkPTi8A9LpUqIWTyjx_Sa4khuCsRgK_AHCRmWWA&s=10",
     imageAlt: "Teacher guiding students in a classroom",
     icon: Users,
   },
@@ -79,6 +79,17 @@ const teachingMethods = [
 
 const TeachingPhilosophy = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // AUTO PLAY
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => {
+        return (prevIndex + 1) % teachingMethods.length;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const activeMethod = teachingMethods[activeIndex];
   const ActiveIcon = activeMethod.icon;
@@ -88,10 +99,11 @@ const TeachingPhilosophy = () => {
       <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* SECTION HEADER */}
-        <div className="mb-4 sm:mb-9 grid gap-4 lg:grid-cols-2 lg:items-end lg:gap-10">
+        <div className="mb-4 grid gap-4 sm:mb-9 lg:grid-cols-2 lg:items-end lg:gap-10">
           <div>
             <div className="mb-3 flex items-center gap-3">
               <span className="h-px w-9 bg-[#850f18]" />
+
               <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#850f18]">
                 How We Teach
               </span>
@@ -99,7 +111,7 @@ const TeachingPhilosophy = () => {
 
             <h2 className="font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
               Our Teaching{" "}
-              <span className="sm:block text-[#850f18]">
+              <span className="text-[#850f18] sm:block">
                 Philosophy.
               </span>
             </h2>
@@ -118,6 +130,7 @@ const TeachingPhilosophy = () => {
           {/* LEFT IMAGE */}
           <div className="relative min-w-0">
             <div className="relative h-[300px] overflow-hidden bg-[#f4eeee] sm:h-[420px] lg:h-[520px]">
+
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeMethod.image}
@@ -131,8 +144,10 @@ const TeachingPhilosophy = () => {
                 />
               </AnimatePresence>
 
+              {/* IMAGE OVERLAY */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
 
+              {/* IMAGE CONTENT */}
               <div className="absolute bottom-0 left-0 w-full p-5 sm:p-8">
                 <span className="text-[10px] font-extrabold uppercase tracking-[3px] text-white/70">
                   Gyan Sagar NET Classes
@@ -145,11 +160,22 @@ const TeachingPhilosophy = () => {
                 </h3>
               </div>
 
-              <div className="absolute right-5 top-5 flex h-14 w-14 items-center justify-center border border-white/40 bg-white/15 text-white backdrop-blur-sm">
-                <ActiveIcon size={25} />
-              </div>
+              {/* ACTIVE ICON */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeMethod.number}
+                  initial={{ opacity: 0, scale: 0.7, rotate: -15 }}
+                  animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                  exit={{ opacity: 0, scale: 0.7 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute right-5 top-5 flex h-14 w-14 items-center justify-center border border-white/40 bg-white/15 text-white backdrop-blur-sm"
+                >
+                  <ActiveIcon size={25} />
+                </motion.div>
+              </AnimatePresence>
             </div>
 
+            {/* IMAGE FOOTER */}
             <div className="mt-4 flex items-center justify-between">
               <span className="text-[10px] font-extrabold uppercase tracking-[2px] text-black/45">
                 Our Approach To Education
@@ -158,6 +184,17 @@ const TeachingPhilosophy = () => {
               <span className="text-xs font-bold text-[#850f18]">
                 {activeMethod.number} / 04
               </span>
+            </div>
+
+            {/* AUTO PLAY PROGRESS */}
+            <div className="mt-3 h-[3px] w-full overflow-hidden bg-[#850f18]/10">
+              <motion.div
+                key={activeMethod.number}
+                initial={{ width: "0%" }}
+                animate={{ width: "100%" }}
+                transition={{ duration: 4, ease: "linear" }}
+                className="h-full bg-[#850f18]"
+              />
             </div>
           </div>
 
@@ -186,10 +223,14 @@ const TeachingPhilosophy = () => {
                     key={method.number}
                     type="button"
                     onClick={() => setActiveIndex(index)}
+                    aria-pressed={isActive}
                     className={`group flex w-full items-center gap-4 border-b border-black/10 py-4 text-left transition-all duration-300 sm:py-5 ${
-                      isActive ? "bg-[#fcf7f7] px-3" : "px-0 hover:px-2"
+                      isActive
+                        ? "bg-[#fcf7f7] px-3"
+                        : "px-0 hover:px-2"
                     }`}
                   >
+                    {/* ICON */}
                     <span
                       className={`flex h-11 w-11 shrink-0 items-center justify-center transition-all duration-300 ${
                         isActive
@@ -200,6 +241,7 @@ const TeachingPhilosophy = () => {
                       <MethodIcon size={19} />
                     </span>
 
+                    {/* TITLE */}
                     <span className="min-w-0 flex-1">
                       <span className="block text-[10px] font-extrabold tracking-[2px] text-[#850f18]/65">
                         {method.number}
@@ -214,6 +256,7 @@ const TeachingPhilosophy = () => {
                       </span>
                     </span>
 
+                    {/* ARROW */}
                     <ArrowUpRight
                       size={19}
                       className={`shrink-0 transition-all duration-300 ${
@@ -245,6 +288,7 @@ const TeachingPhilosophy = () => {
                   {activeMethod.description}
                 </p>
 
+                {/* POINTS */}
                 <div className="mt-5 space-y-3">
                   {activeMethod.points.map((point) => (
                     <div key={point} className="flex items-start gap-3">
@@ -252,6 +296,7 @@ const TeachingPhilosophy = () => {
                         size={17}
                         className="mt-0.5 shrink-0 text-[#850f18]"
                       />
+
                       <span className="text-sm leading-6 text-black/75">
                         {point}
                       </span>
@@ -263,9 +308,6 @@ const TeachingPhilosophy = () => {
 
           </div>
         </div>
-
-
-
       </div>
     </section>
   );

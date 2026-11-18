@@ -18,8 +18,7 @@ const learningExperiences = [
     title: "Learn Together. Grow Together.",
     description:
       "Experience an engaging classroom environment where students learn through interactive sessions, expert guidance and meaningful discussions.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhBdmVysrNHb5Sfg_UHJHmh-3f-BUYf50bBX5N2KDtpA&s=10",
-      // "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1600&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhBdmVysrNHb5Sfg_UHJHmh-3f-BUYf50bBX5N2KDtpA&s=10",      
     tag: "Interactive Learning",
     icon: Users,
   },
@@ -31,7 +30,7 @@ const learningExperiences = [
     description:
       "Get structured academic support, concept clarity and focused preparation under experienced educators who understand competitive examinations.",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLK9DL98gd_31_WEqCI0exBoEiSH6eouk4a_jnzi4gxA&s=10",
-      // "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1600&q=90",
+      
     tag: "Expert Mentorship",
     icon: GraduationCap,
   },
@@ -42,8 +41,7 @@ const learningExperiences = [
     title: "Education Beyond Boundaries.",
     description:
       "Learn through flexible online and offline learning options designed to make quality education accessible and convenient.",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKt2s-bud25a1JxsVu-vnWjr0-wD1RpT0S3cyw5oL2ew&s=10",
-      // "https://images.unsplash.com/photo-1584697964358-3e14ca57658b?auto=format&fit=crop&w=1600&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKt2s-bud25a1JxsVu-vnWjr0-wD1RpT0S3cyw5oL2ew&s=10",      
     tag: "Online + Offline",
     icon: MonitorPlay,
   },
@@ -54,8 +52,7 @@ const learningExperiences = [
     title: "Prepare With The Right Resources.",
     description:
       "Build strong concepts with structured study material, regular practice and exam-oriented learning resources.",
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj4-q1pjfIRkkubcrafCpEP6vxJ7q50xtRrsxfSgRqAQ&s=10",
-      // "https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1600&q=90",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSj4-q1pjfIRkkubcrafCpEP6vxJ7q50xtRrsxfSgRqAQ&s=10",      
     tag: "Focused Preparation",
     icon: BookOpen,
   },
@@ -84,17 +81,6 @@ const LearningEnvironment = () => {
 
   const activeExperience = learningExperiences[activeIndex];
   const ActiveIcon = activeExperience.icon;
-
-  // const nextSlide = () => {
-  //   setActiveIndex((prev) => (prev + 1) % learningExperiences.length);
-  // };
-
-  // const prevSlide = () => {
-  //   setActiveIndex(
-  //     (prev) =>
-  //       (prev - 1 + learningExperiences.length) % learningExperiences.length,
-  //   );
-  // };
 
   useEffect(() => {
     const interval = setInterval(() => {

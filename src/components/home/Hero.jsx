@@ -17,7 +17,7 @@ const slides = [
       "Prepare for UGC NET, CSIR NET, Assistant Professor, PGT, TGT, HTET, CTET and DSSSB examinations with focused academic guidance and expert support.",
 
     image:Hero1
-      // "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=2000&q=90",
+      
   },
 
   {
@@ -29,7 +29,7 @@ const slides = [
       "Learn from a focused teaching approach across Political Science, History, Physics, English, Commerce, Mathematics, Computer Science, Hindi, Economics and more.",
 
     image:Hero2
-      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=2000&q=90",
+      
   },
 
   {
@@ -41,7 +41,7 @@ const slides = [
       "Get dedicated preparation for teaching and competitive examinations with online and offline learning options at Gyan Sagar NET Classes, Hisar.",
 
     image:Hero3
-      // "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=90",
+      
   },
 ];
 

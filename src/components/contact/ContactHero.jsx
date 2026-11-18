@@ -153,10 +153,10 @@ const ContactHero = () => {
               </span>
             </div>
 
-            {/* Main image */}
+            
             <div className="relative h-[190px] w-full overflow-hidden sm:h-[250px] lg:h-[min(43vh,360px)]">
               <img src={ContactImg}
-                // src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=90"
+                
                 alt="Students learning together in a classroom"
                 className="h-full w-full object-fit object-center"
               />

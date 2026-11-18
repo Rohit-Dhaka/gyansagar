@@ -8,7 +8,7 @@ const studentsData = [
     subject: "Subject Name",
     examYear: "2025",
     image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX-_QGsUfgSQ8Xhi3kZvr33ynRRIXy3QcNv5t47Kx-3A&s=10",
-      // "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop",
+      
     testimonial:
       "Add the student's actual feedback about their preparation and learning experience.",
   },
@@ -44,7 +44,7 @@ const studentsData = [
     subject: "Subject Name",
     examYear: "2025",
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX-_QGsUfgSQ8Xhi3kZvr33ynRRIXy3QcNv5t47Kx-3A&s=10",
-    // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS38rae32tTc_NGqtIxk9MHU1PYvID2G-Oi77M1W9aCyQ&s=10",      
+    
     testimonial:
       "Add the student's actual feedback about their preparation and learning experience.",
   },

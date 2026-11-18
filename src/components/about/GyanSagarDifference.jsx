@@ -1,13 +1,13 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
-  ArrowUpRight,  
+  ArrowUpRight,
   BookOpen,
   Target,
   Users,
   Lightbulb,
 } from "lucide-react";
-
 
 const differences = [
   {
@@ -19,8 +19,8 @@ const differences = [
     highlight: "Understanding Before Memorising",
     detail: "Build a strong foundation through concept-focused learning.",
     icon: BookOpen,
-    image: "https://cdn.dnaindia.com/sites/default/files/2018/05/28/687056-cbse-students-07.jpg?im=FitAndFill=(1200,900)",
-      // "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1400&q=90",
+    image:
+      "https://cdn.dnaindia.com/sites/default/files/2018/05/28/687056-cbse-students-07.jpg?im=FitAndFill=(1200,900)",
     imageAlt: "Teacher explaining a lesson in a classroom",
   },
   {
@@ -46,8 +46,8 @@ const differences = [
     highlight: "Guidance That Supports Growth",
     detail: "Get academic support throughout your preparation journey.",
     icon: Users,
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiIQjvEGqZQ92FsrvzTQGNwnWop5n7eN-zgQvCRlXEGg&s=10",
-      // "https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=1400&q=90",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiIQjvEGqZQ92FsrvzTQGNwnWop5n7eN-zgQvCRlXEGg&s=10",
     imageAlt: "Students and teacher interacting during a class",
   },
   {
@@ -59,8 +59,8 @@ const differences = [
     highlight: "Practice. Improve. Progress.",
     detail: "Develop confidence through consistent learning and revision.",
     icon: Lightbulb,
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVcN1lEo8PBA5AhB6gnGoHpqLSndxh-fmLOMsz8Surcw&s=10",
-      // "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?auto=format&fit=crop&w=1400&q=90",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSVcN1lEo8PBA5AhB6gnGoHpqLSndxh-fmLOMsz8Surcw&s=10",
     imageAlt: "Books and study material arranged on a desk",
   },
 ];
@@ -68,12 +68,24 @@ const differences = [
 const GyanSagarDifference = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // AUTO PLAY - CHANGE FEATURE EVERY 4 SECONDS
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveIndex((prevIndex) => {
+        return (prevIndex + 1) % differences.length;
+      });
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   const activeItem = differences[activeIndex];
-  
+  const ActiveIcon = activeItem.icon;
 
   return (
-    <section className="w-full overflow-hidden  py-8 sm:py-10 lg:py-12">
+    <section className="w-full overflow-hidden py-8 sm:py-10 lg:py-12">
       <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+
         {/* SECTION HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -85,6 +97,7 @@ const GyanSagarDifference = () => {
           <div>
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#a51620]" />
+
               <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#850f18]">
                 Why Gyan Sagar
               </span>
@@ -92,7 +105,9 @@ const GyanSagarDifference = () => {
 
             <h2 className="max-w-2xl font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-5xl lg:text-6xl">
               What Makes Us{" "}
-              <span className="sm:block text-[#850f18]">Different?</span>
+              <span className="text-[#850f18] sm:block">
+                Different?
+              </span>
             </h2>
           </div>
 
@@ -104,8 +119,8 @@ const GyanSagarDifference = () => {
         </motion.div>
 
         {/* HORIZONTAL INTERACTIVE SHOWCASE */}
-
         <div className="mt-8 sm:mt-10">
+
           {/* FEATURE NAVIGATION */}
           <div className="grid grid-cols-2 border-y border-black/10 sm:grid-cols-4">
             {differences.map((item, index) => {
@@ -116,6 +131,7 @@ const GyanSagarDifference = () => {
                   key={item.number}
                   type="button"
                   onClick={() => setActiveIndex(index)}
+                  aria-pressed={isActive}
                   className={`group relative flex min-h-[10px] flex-col justify-center gap-2 border-b border-r border-black/10 px-4 py-4 text-left transition duration-300 sm:min-h-[110px] sm:border-b-0 sm:px-5 lg:px-7 ${
                     index === 1 ? "sm:border-r" : ""
                   } ${index === 3 ? "sm:border-r-0" : ""} ${
@@ -153,9 +169,11 @@ const GyanSagarDifference = () => {
 
           {/* ACTIVE FEATURE CONTENT */}
           <div className="mt-8 grid items-stretch gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+
             {/* LEFT IMAGE */}
             <div className="relative min-w-0">
               <div className="relative h-[270px] overflow-hidden bg-[#eee5e0] sm:h-[390px] lg:h-[430px]">
+
                 <AnimatePresence mode="wait">
                   <motion.img
                     key={activeItem.image}
@@ -169,6 +187,7 @@ const GyanSagarDifference = () => {
                   />
                 </AnimatePresence>
 
+                {/* IMAGE OVERLAY */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
                 {/* IMAGE LABEL */}
@@ -201,6 +220,7 @@ const GyanSagarDifference = () => {
                       key={item.number}
                       type="button"
                       aria-label={`Show ${item.label}`}
+                      aria-pressed={activeIndex === index}
                       onClick={() => setActiveIndex(index)}
                       className={`h-1.5 transition-all duration-300 ${
                         activeIndex === index
@@ -210,6 +230,17 @@ const GyanSagarDifference = () => {
                     />
                   ))}
                 </div>
+              </div>
+
+              {/* AUTO PLAY PROGRESS */}
+              <div className="mt-3 h-[3px] w-full overflow-hidden bg-[#850f18]/10">
+                <motion.div
+                  key={activeItem.number}
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 4, ease: "linear" }}
+                  className="h-full bg-[#850f18]"
+                />
               </div>
             </div>
 
@@ -223,32 +254,32 @@ const GyanSagarDifference = () => {
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.4 }}
                 >
+
                   {/* LABEL */}
                   <div className="flex items-center gap-3">
                     <span className="h-px w-9 bg-[#a51620]" />
+
                     <span className="text-xs font-extrabold uppercase tracking-[3px] text-[#850f18]">
                       {activeItem.label}
                     </span>
                   </div>
 
                   {/* HEADING */}
-                  <h3 className="sm:mt-6 font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
+                  <h3 className="mt-4 font-['Playfair_Display'] text-[32px] font-bold leading-tight text-black sm:mt-6 sm:text-4xl lg:text-5xl">
                     {activeItem.title}
                   </h3>
 
                   {/* DESCRIPTION */}
-                  <p className="mt-4 sm:mt-6 text-sm leading-7 text-black/65 sm:text-base sm:leading-8">
+                  <p className="mt-4 text-sm leading-7 text-black/65 sm:mt-6 sm:text-base sm:leading-8">
                     {activeItem.description}
                   </p>
 
                   {/* HIGHLIGHT */}
-                  <div className="mt-6 sm:mt-8 border-y border-black/10 py-5">
+                  <div className="mt-6 border-y border-black/10 py-5 sm:mt-8">
                     <div className="flex items-center gap-4">
+
                       <span className="flex h-11 w-11 shrink-0 items-center justify-center bg-[#850f18] text-white">
-                        {(() => {
-                          const Icon = activeItem.icon;
-                          return <Icon size={21} />;
-                        })()}
+                        <ActiveIcon size={21} />
                       </span>
 
                       <div>
@@ -270,24 +301,32 @@ const GyanSagarDifference = () => {
                     </span>
 
                     <div className="flex gap-2">
+
+                      {/* PREVIOUS BUTTON */}
                       <button
                         type="button"
                         onClick={() =>
                           setActiveIndex(
                             (activeIndex - 1 + differences.length) %
-                              differences.length,
+                              differences.length
                           )
                         }
                         aria-label="Previous feature"
                         className="flex h-10 w-10 items-center justify-center border border-black/15 text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
                       >
-                        <ArrowUpRight className="rotate-[225deg]" size={18} />
+                        <ArrowUpRight
+                          className="rotate-[225deg]"
+                          size={18}
+                        />
                       </button>
 
+                      {/* NEXT BUTTON */}
                       <button
                         type="button"
                         onClick={() =>
-                          setActiveIndex((activeIndex + 1) % differences.length)
+                          setActiveIndex(
+                            (activeIndex + 1) % differences.length
+                          )
                         }
                         aria-label="Next feature"
                         className="flex h-10 w-10 items-center justify-center bg-[#850f18] text-white transition hover:bg-[#650910]"
@@ -296,11 +335,12 @@ const GyanSagarDifference = () => {
                       </button>
                     </div>
                   </div>
+
                 </motion.div>
               </AnimatePresence>
             </div>
           </div>
-        </div> 
+        </div>
       </div>
     </section>
   );

@@ -7,8 +7,7 @@ const facultyData = [
     qualification: "M.A. / UGC NET Qualified",
     subject: "UGC NET & Assistant Professor",
     experience: "Experienced Educator",
-    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0gCHrPXpPzHe7bBPA395gJ1GCgLU3kgOp9a50cwlxA&s=10",
-      // "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=900&q=90",
+    image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZ0gCHrPXpPzHe7bBPA395gJ1GCgLU3kgOp9a50cwlxA&s=10",      
     description:
       "Focused on building strong academic concepts and guiding students towards their teaching career goals.",
     subjects: ["UGC NET", "Teaching Aptitude", "Research"],
@@ -21,7 +20,7 @@ const facultyData = [
     subject: "CSIR NET & Subject Preparation",
     experience: "Experienced Educator",
     image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS5T1aPmyKrqSX_tkd7uJejMB5Gc1r5RfTquqQZSK-McQ&s=10",
-      // "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=900&q=90",
+      
     description:
       "Dedicated to simplifying challenging topics through structured explanations and concept-based learning.",
     subjects: ["CSIR NET", "Subject Knowledge", "Practice"],
@@ -34,7 +33,7 @@ const facultyData = [
     subject: "HTET, CTET & Teaching Exams",
     experience: "Experienced Educator",
     image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3yrYrlmWvYAIgKCAI-XViMe3PsHsKT09Q1r3Jpqj4tQ&s=10",
-      // "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=90",
+      
     description:
       "Helping aspiring teachers prepare with a clear strategy, regular practice and focused academic guidance.",
     subjects: ["HTET", "CTET", "Pedagogy"],
@@ -46,8 +45,7 @@ const facultyData = [
     qualification: "Postgraduate / NET Qualified",
     subject: "TGT & PGT Preparation",
     experience: "Experienced Educator",
-    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ51jBdzD1FUNnoPmGsIzUgK1qxx1Zx4v8pVs3srJtEg&s=10",
-      // "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=900&q=90",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ51jBdzD1FUNnoPmGsIzUgK1qxx1Zx4v8pVs3srJtEg&s=10",      
     description:
       "Supporting students through subject-focused preparation and a structured approach to learning.",
     subjects: ["TGT", "PGT", "Subject Preparation"],

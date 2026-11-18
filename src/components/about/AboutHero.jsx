@@ -32,15 +32,7 @@ const AboutHero = () => {
       {/* CENTER LIGHT */}
       <div className="absolute left-[35%] top-[20%] -z-20 h-[300px] w-[300px] rounded-full bg-red-900/15 blur-[110px]" />
 
-      {/* SUBTLE GRID */}
-      <div
-        className="absolute inset-0 -z-10 opacity-[0.10]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.18) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.18) 1px, transparent 1px)",
-          backgroundSize: "75px 75px",
-        }}
-      />
+  
 
       {/* CIRCULAR OUTLINES */}
       <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 hidden h-[700px] w-[700px] -translate-y-1/2 rounded-full border border-white/[0.07] lg:block">
@@ -63,7 +55,7 @@ const AboutHero = () => {
           initial={{ opacity: 0, y: -15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
-          className="mb-12 flex items-center justify-between sm:mb-16"
+          className="mb-8 flex items-center justify-between sm:mb-10"
         >
           <div className="flex items-center gap-3 text-xs font-semibold text-white/60">
             <Link to="/" className="transition hover:text-white">
@@ -89,7 +81,7 @@ const AboutHero = () => {
             className="relative"
           >
             {/* LABEL */}
-            <div className="mb-8 flex items-center gap-3">
+            <div className="mb-4 flex items-center gap-3">
               <GraduationCap
                 size={20}
                 className="text-red-300"
@@ -174,25 +166,7 @@ const AboutHero = () => {
           </motion.div>
         </div>
 
-        {/* BOTTOM STRIP */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="mt-14 flex flex-wrap items-center justify-between gap-5 border-t border-white/20 pt-6 sm:mt-16"
-        >
-          <p className="text-[10px] font-bold uppercase tracking-[3px] text-white/50">
-            Education · Guidance · Growth
-          </p>
-
-          <div className="flex items-center gap-3">
-            <span className="h-px w-10 bg-red-400" />
-
-            <span className="text-[10px] font-bold uppercase tracking-[3px] text-white/65">
-              Hisar, Haryana
-            </span>
-          </div>
-        </motion.div>
+     
       </div>
     </section>
   );

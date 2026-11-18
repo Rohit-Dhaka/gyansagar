@@ -70,7 +70,7 @@ const Navbar = () => {
     setExamOpen(false);
   };
 
-  // Prevent background scrolling while mobile drawer is open
+  
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
 
@@ -79,7 +79,7 @@ const Navbar = () => {
     };
   }, [mobileOpen]);
 
-  // Close mobile drawer when route changes
+  
   useEffect(() => {
     setMobileOpen(false);
     setExamOpen(false);
