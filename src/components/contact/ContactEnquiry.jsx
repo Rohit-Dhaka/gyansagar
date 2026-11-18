@@ -12,16 +12,7 @@ import {
   Sparkles,
 } from "lucide-react";
 
-const courses = [
-  "UGC NET",
-  "CSIR NET",
-  "HTET",
-  "CTET",
-  "DSSSB",
-  "TGT / PGT",
-  "Assistant Professor",
-  "Other",
-];
+import { examPreparationData } from "../../data/examPreparationData";
 
 const ContactEnquiry = () => {
   const [formData, setFormData] = useState({
@@ -32,19 +23,42 @@ const ContactEnquiry = () => {
   });
 
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
 
+    if (name === "phone") {
+      const mobileNumber = value.replace(/\D/g, "").slice(0, 10);
+
+      setFormData((prev) => ({
+        ...prev,
+        phone: mobileNumber,
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
+      }));
+    }
+
+    setError("");
+    setSuccess("");
+  };
+
+  const handleCourseSelect = (course) => {
     setFormData((prev) => ({
       ...prev,
-      [name]: value,
+      course,
     }));
 
     setError("");
+    setSuccess("");
   };
 
-  const handleSubmit = (e) => {
+  // WEB3FORMS SUBMISSION
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!/^[6-9]\d{9}$/.test(formData.phone)) {
@@ -53,39 +67,75 @@ const ContactEnquiry = () => {
     }
 
     if (!formData.course) {
-      setError("Please select your interested course.");
+      setError("Please select your interested exam.");
       return;
     }
 
-    const whatsappMessage = `
-Hello Gyan Sagar NET Classes,
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
 
-I want to make a course enquiry.
+    if (!accessKey) {
+      setError("Web3Forms access key is missing. Please check your .env file.");
+      return;
+    }
 
-Name: ${formData.name}
-Mobile: ${formData.phone}
-Course: ${formData.course}
+    setIsSubmitting(true);
+    setError("");
+    setSuccess("");
 
-Message: ${formData.message || "I would like to know more about the course."}
-    `.trim();
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: "New Admission Enquiry - Gyan Sagar NET Classes",
+          from_name: "Gyan Sagar NET Classes Website",
 
-    const whatsappURL = `https://wa.me/919728306888?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+          name: formData.name,
+          phone: formData.phone,
+          course: formData.course,
+          message:
+            formData.message ||
+            "I would like to know more about this exam preparation program.",
+        }),
+      });
 
-    window.open(whatsappURL, "_blank", "noopener,noreferrer");
+      const result = await response.json();
+
+      if (result.success) {
+        setSuccess(
+          "Thank you! Your enquiry has been submitted successfully. Our team will contact you soon."
+        );
+
+        setFormData({
+          name: "",
+          phone: "",
+          course: "",
+          message: "",
+        });
+      } else {
+        setError(
+          result.message || "Unable to submit your enquiry. Please try again."
+        );
+      }
+    } catch (err) {
+      setError("Something went wrong. Please check your internet connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <section className="relative w-full overflow-hidden bg-[#850f18] py-8 sm:py-10 lg:py-12">
-
       {/* BACKGROUND DETAILS */}
       <div className="pointer-events-none absolute -right-32 -top-32 h-[420px] w-[420px] rounded-full border border-white/10" />
       <div className="pointer-events-none absolute -right-20 -top-20 h-[300px] w-[300px] rounded-full border border-white/10" />
       <div className="pointer-events-none absolute -bottom-40 -left-40 h-[450px] w-[450px] rounded-full border border-white/10" />
 
       <div className="relative z-10 w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-
         {/* TOP INTRO */}
         <div className="mb-12 flex flex-col justify-between gap-6 border-b border-white/20 pb-8 md:flex-row md:items-end">
           <div>
@@ -98,24 +148,20 @@ Message: ${formData.message || "I would like to know more about the course."}
 
             <h2 className="max-w-3xl font-['Playfair_Display'] text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
               Let's Talk About
-              <span className="block text-[#f1c7c9]">
-                Your Future.
-              </span>
+              <span className="block text-[#f1c7c9]">Your Future.</span>
             </h2>
           </div>
 
           <p className="max-w-sm text-sm leading-7 text-white/70 sm:text-base">
             Every successful journey begins with the right conversation.
-            Tell us what you are preparing for.
+            Tell us which examination you are preparing for.
           </p>
         </div>
 
         {/* MAIN CONTENT */}
         <div className="grid items-stretch gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:gap-14">
-
           {/* LEFT EDITORIAL PANEL */}
           <div className="flex flex-col justify-between text-white">
-
             <div>
               <span className="text-[10px] font-extrabold uppercase tracking-[3px] text-[#f1c7c9]">
                 A Simple Process
@@ -128,7 +174,7 @@ Message: ${formData.message || "I would like to know more about the course."}
 
               <p className="mt-5 max-w-md text-sm leading-7 text-white/65">
                 Share a few details with us and let our team help you
-                understand the learning options available for your goals.
+                understand the right exam preparation program for your goals.
               </p>
             </div>
 
@@ -142,13 +188,13 @@ Message: ${formData.message || "I would like to know more about the course."}
                 },
                 {
                   number: "02",
-                  title: "Choose Your Course",
-                  description: "Select the examination you are preparing for.",
+                  title: "Select Your Exam",
+                  description: "Choose the examination you are preparing for.",
                 },
                 {
                   number: "03",
-                  title: "Connect With Us",
-                  description: "Continue your enquiry through WhatsApp.",
+                  title: "Get Personal Guidance",
+                  description: "Our team will connect with you about your enquiry.",
                 },
               ].map((step, index) => (
                 <div
@@ -199,7 +245,6 @@ Message: ${formData.message || "I would like to know more about the course."}
             transition={{ duration: 0.6 }}
             className="bg-white p-5 sm:p-8 lg:p-10"
           >
-
             {/* FORM HEADING */}
             <div className="mb-9 flex items-start justify-between gap-4 border-b border-black/10 pb-6">
               <div>
@@ -225,17 +270,16 @@ Message: ${formData.message || "I would like to know more about the course."}
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-7">
-
               {/* NAME AND PHONE */}
               <div className="grid gap-6 sm:grid-cols-2">
-
+                {/* NAME */}
                 <div>
                   <label
                     htmlFor="enquiry-name"
                     className="mb-2 flex items-center gap-2 text-xs font-bold text-black"
                   >
                     <span className="text-[#850f18]">01.</span>
-                    Full Name *
+                    Student Name *
                   </label>
 
                   <div className="relative">
@@ -254,11 +298,12 @@ Message: ${formData.message || "I would like to know more about the course."}
                       required
                       maxLength={80}
                       autoComplete="name"
-                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/70"
+                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#850f18]"
                     />
                   </div>
                 </div>
 
+                {/* PHONE */}
                 <div>
                   <label
                     htmlFor="enquiry-phone"
@@ -279,29 +324,20 @@ Message: ${formData.message || "I would like to know more about the course."}
                       type="tel"
                       name="phone"
                       value={formData.phone}
-                      onChange={(e) => {
-                        const value = e.target.value
-                          .replace(/\D/g, "")
-                          .slice(0, 10);
-
-                        setFormData((prev) => ({
-                          ...prev,
-                          phone: value,
-                        }));
-
-                        setError("");
-                      }}
+                      onChange={handleChange}
                       placeholder="10-digit number"
                       required
+                      pattern="[6-9][0-9]{9}"
+                      maxLength={10}
                       inputMode="numeric"
                       autoComplete="tel-national"
-                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/70"
+                      className="h-12 w-full border-b border-black/20 bg-transparent pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#850f18]"
                     />
                   </div>
                 </div>
               </div>
 
-              {/* COURSE SELECTOR */}
+              {/* EXAM SELECTOR */}
               <div>
                 <div className="mb-4 flex items-center gap-2">
                   <span className="text-xs font-extrabold text-[#850f18]">
@@ -309,25 +345,20 @@ Message: ${formData.message || "I would like to know more about the course."}
                   </span>
 
                   <label className="text-xs font-bold text-black">
-                    Which Course Are You Interested In? *
+                    Which Exam Are You Interested In? *
                   </label>
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {courses.map((course) => {
-                    const selected = formData.course === course;
+                  {examPreparationData.map((exam) => {
+                    const selected = formData.course === exam.title;
 
                     return (
                       <button
-                        key={course}
+                        key={exam.id}
                         type="button"
-                        onClick={() => {
-                          setFormData((prev) => ({
-                            ...prev,
-                            course,
-                          }));
-                          setError("");
-                        }}
+                        aria-pressed={selected}
+                        onClick={() => handleCourseSelect(exam.title)}
                         className={`inline-flex items-center gap-2 border px-4 py-2.5 text-xs font-semibold transition duration-200 ${
                           selected
                             ? "border-[#850f18] bg-[#850f18] text-white"
@@ -335,7 +366,7 @@ Message: ${formData.message || "I would like to know more about the course."}
                         }`}
                       >
                         {selected && <Check size={13} />}
-                        {course}
+                        {exam.title}
                       </button>
                     );
                   })}
@@ -349,7 +380,7 @@ Message: ${formData.message || "I would like to know more about the course."}
                   className="mb-3 flex items-center gap-2 text-xs font-bold text-black"
                 >
                   <span className="text-[#850f18]">04.</span>
-                  Anything You Would Like To Ask?
+                  Your Message
                 </label>
 
                 <div className="relative">
@@ -366,7 +397,7 @@ Message: ${formData.message || "I would like to know more about the course."}
                     placeholder="Write your question or message here..."
                     rows={3}
                     maxLength={1000}
-                    className="w-full resize-none border-b border-black/20 bg-transparent py-3 pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/70 "
+                    className="w-full resize-none border-b border-black/20 bg-transparent py-3 pl-7 pr-2 text-sm text-black outline-none transition placeholder:text-black/40 focus:border-[#850f18]"
                   />
                 </div>
               </div>
@@ -386,16 +417,35 @@ Message: ${formData.message || "I would like to know more about the course."}
                 )}
               </AnimatePresence>
 
+              {/* SUCCESS */}
+              <AnimatePresence>
+                {success && (
+                  <motion.p
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    role="status"
+                    className="text-xs font-semibold leading-6 text-green-700"
+                  >
+                    {success}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+
               {/* SUBMIT */}
               <button
                 type="submit"
-                className="group flex min-h-14 w-full items-center justify-between bg-[#850f18] px-6 text-sm font-bold text-white transition duration-300 hover:bg-[#a51620]"
+                disabled={isSubmitting}
+                className="group flex min-h-14 w-full items-center justify-between bg-[#850f18] px-6 text-sm font-bold text-white transition duration-300 hover:bg-[#a51620] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 <span className="flex items-center gap-3">
-                  Send Your Enquiry
-                  <span className="hidden text-xs font-normal text-white/60 sm:inline">
-                    via WhatsApp
-                  </span>
+                  {isSubmitting ? "Sending Enquiry..." : "Send Your Enquiry"}
+
+                  {!isSubmitting && (
+                    <span className="hidden text-xs font-normal text-white/60 sm:inline">
+                      Secure Form Submission
+                    </span>
+                  )}
                 </span>
 
                 <ArrowUpRight
@@ -405,8 +455,8 @@ Message: ${formData.message || "I would like to know more about the course."}
               </button>
 
               <p className="text-center text-[10px] leading-5 text-black/45">
-                Your details will be included in a WhatsApp message.
-                You can review and send it yourself.
+                Your details will be sent securely to our registered email.
+                Our team will contact you soon.
               </p>
             </form>
           </motion.div>

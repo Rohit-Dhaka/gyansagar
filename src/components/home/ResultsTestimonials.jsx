@@ -64,7 +64,7 @@ const ResultsTestimonials = () => {
 
   return (
     <section className="w-full overflow-hidden py-8 sm:py-10 lg:py-12">
-      <div className="w-full px-3 sm:px-4 lg:px-6 xl:px-8 2xl:px-10">
+      <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* MAIN RESULTS AREA */}
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">

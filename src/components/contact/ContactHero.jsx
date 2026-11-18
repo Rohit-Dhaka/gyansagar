@@ -8,26 +8,17 @@ import {
   GraduationCap,  
   Sparkles,
 } from "lucide-react";
+import ContactImg from '../../assets/image/contact.webp'
 
 const ContactHero = () => {
   return (
-    <section className="relative isolate flex h-[calc(100svh-76px)] w-full flex-col overflow-hidden bg-[#f8f6f2] md:h-[calc(100svh-118px)]">
-      
-      <div className="grid min-h-0 flex-1 lg:grid-cols-[1.05fr_0.95fr]">
-        
-        <div className="relative flex min-h-0 flex-col justify-center overflow-hidden px-4 py-5 sm:px-8 sm:py-6 lg:px-10 xl:px-16">
-          {/* Decorative background */}
+    <section className="relative isolate flex h-[calc(100svh-76px)] w-full flex-col overflow-hidden bg-[#f8f6f2] md:h-[calc(100svh-118px)]">      
+      <div className="grid min-h-0 flex-1 lg:grid-cols-[1.05fr_0.95fr]">        
+        <div className="relative flex min-h-0 flex-col justify-center overflow-hidden py-5 sm:py-6  px-5 sm:px-8 lg:px-14 xl:px-24">          
           <div className="pointer-events-none absolute -left-28 top-20 h-64 w-64 rounded-full border border-[#850f18]/10" />
           <div className="pointer-events-none absolute -left-16 top-32 h-40 w-40 rounded-full border border-[#850f18]/10" />
-
-          <div className="relative z-10">
-            {/* Breadcrumb */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="mb-5 flex items-center gap-2 text-xs font-semibold text-black/40 lg:mb-7"
-            >
+          <div className="relative z-10">            
+            <motion.div initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-5 flex items-center gap-2 text-xs font-semibold text-black/40 lg:mb-7">
               <Link
                 to="/"
                 className="flex items-center gap-2 transition hover:text-[#850f18]"
@@ -149,7 +140,7 @@ const ContactHero = () => {
             initial={{ opacity: 0, scale: 0.94, x: 25 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="relative z-10 w-full max-w-[520px]"
+            className="relative z-10 w-full max-w-[620px]"
           >
             {/* Top label */}
             <div className="mb-3 flex items-center justify-between">
@@ -163,17 +154,17 @@ const ContactHero = () => {
             </div>
 
             {/* Main image */}
-            <div className="relative h-[190px] overflow-hidden sm:h-[250px] lg:h-[min(43vh,360px)]">
-              <img
-                src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=90"
+            <div className="relative h-[190px] w-full overflow-hidden sm:h-[250px] lg:h-[min(43vh,360px)]">
+              <img src={ContactImg}
+                // src="https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?auto=format&fit=crop&w=1200&q=90"
                 alt="Students learning together in a classroom"
-                className="h-full w-full object-cover object-center"
+                className="h-full w-full object-fit object-center"
               />
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#16090b]/80 via-transparent to-black/10" />
 
               {/* Image caption */}
-              <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
+              {/* <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
                 <span className="text-[8px] font-extrabold uppercase tracking-[3px] text-[#f0b9bc] sm:text-[9px]">
                   Your Aspirations Matter
                 </span>
@@ -184,7 +175,7 @@ const ContactHero = () => {
                     Makes A Difference.
                   </span>
                 </h2>
-              </div>
+              </div> */}
             </div>
 
             {/* Floating contact card */}

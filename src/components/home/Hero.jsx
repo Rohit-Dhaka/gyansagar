@@ -2,12 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 
-import {
-  ArrowRight,
-  ChevronRight,  
-    Play,  
-  Award,    
-} from "lucide-react";
+import { ArrowRight, ChevronRight, Play, Award } from "lucide-react";
 
 const slides = [
   {
@@ -33,8 +28,10 @@ const slides = [
   {
     subtitle: "START YOUR SUCCESS JOURNEY",
     title: "Turn Your Teaching Dreams Into Reality.",
-    description: "Get dedicated preparation for UGC NET, HTET, CTET, DSSSB, TGT and PGT examinations with the guidance you need to move forward.",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=90",
+    description:
+      "Get dedicated preparation for UGC NET, HTET, CTET, DSSSB, TGT and PGT examinations with the guidance you need to move forward.",
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=2000&q=90",
   },
 ];
 
@@ -104,22 +101,12 @@ const Hero = () => {
           style={{ backgroundImage: `url("${currentSlide.image}")` }}
         />
       </AnimatePresence>
-
-      {/* DARK OVERLAY */}
+      
       <div className="absolute inset-0 -z-20 bg-black/65" />
-
-      <div className="absolute inset-0 -z-20 bg-gradient-to-r from-black/90 via-black/65 to-black/20" />
-
-      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#650b12]/70 via-transparent to-black/30" />
-
-      {/* DECORATIVE ELEMENTS */}
+      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#650b12]/50 via-transparent to-black/30" />
       <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 h-[500px] w-[500px] -translate-y-1/2 rounded-full border border-white/10 lg:h-[700px] lg:w-[700px]" />
-
       <div className="pointer-events-none absolute -right-20 top-1/2 -z-10 h-[380px] w-[380px] -translate-y-1/2 rounded-full border border-white/10 lg:h-[540px] lg:w-[540px]" />
-
-      {/* MAIN CONTENT */}
-      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-5 px-5 py-6 sm:px-8 md:py-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10 lg:px-14 lg:py-5 xl:px-20">
-        {/* LEFT CONTENT */}
+      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-5 px-5 py-6 sm:px-8 md:py-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10 lg:px-14 lg:py-5 xl:px-20">        
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide}
@@ -129,8 +116,6 @@ const Hero = () => {
             exit="exit"
             className="w-full max-w-4xl"
           >
-      
-
             {/* SUBTITLE */}
             <motion.p
               variants={itemVariants}
@@ -202,8 +187,6 @@ const Hero = () => {
                 Explore Courses
               </Link>
             </motion.div>
-
-         
           </motion.div>
         </AnimatePresence>
 
@@ -272,25 +255,23 @@ const Hero = () => {
       </div>
 
       {/* SLIDE INDICATORS */}
-<div className="absolute bottom-3 left-5 z-20 flex items-center gap-3 sm:bottom-5 sm:left-8 lg:left-14">
-  {slides.map((slide, index) => (
-    <button
-      key={slide.subtitle}
-      type="button"
-      onClick={() => setActiveSlide(index)}
-      aria-label={`Go to slide ${index + 1}`}
-      aria-current={activeSlide === index ? "true" : undefined}
-      className={`h-3 rounded-full border border-white transition-all duration-300
+      <div className="absolute bottom-3 left-5 z-20 flex items-center gap-3 sm:bottom-5 sm:left-8 lg:left-14">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.subtitle}
+            type="button"
+            onClick={() => setActiveSlide(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            aria-current={activeSlide === index ? "true" : undefined}
+            className={`h-3 rounded-full border border-white transition-all duration-300
         focus-visible:outline focus-visible:outline-2
         focus-visible:outline-offset-4 focus-visible:outline-white
         ${
-          activeSlide === index
-            ? "w-9 bg-white"
-            : "w-3 bg-white hover:bg-white"
+          activeSlide === index ? "w-9 bg-white" : "w-3 bg-white hover:bg-white"
         }`}
-    />
-  ))}
-</div>
+          />
+        ))}
+      </div>
 
       {/* BOTTOM RIGHT LABEL */}
       <div className="absolute bottom-3 right-5 z-20 hidden items-center gap-2 text-[10px] font-semibold tracking-widest text-white/60 sm:flex">

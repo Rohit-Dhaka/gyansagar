@@ -1,6 +1,6 @@
 import AboutSection from "../components/home/AboutSection";
 import ContactSection from "../components/home/ContactSection";
-import CoursesSection from "../components/home/CoursesSection";
+import ExamPreparationSection from "../components/home/ExamPreparationSection";
 import Hero from "../components/home/Hero";
 import LearningEnvironment from "../components/home/LearningEnvironment";
 import ResultsTestimonials from "../components/home/ResultsTestimonials";
@@ -12,8 +12,8 @@ const Home = () => {
     <div className="flex min-h-0 flex-1 flex-col">
       <Hero />
       <AboutSection/>
-      <WhyChooseUs/>
-      <CoursesSection/>
+      <WhyChooseUs/>      
+      <ExamPreparationSection/>
       <FacultySection/>
       <ResultsTestimonials/>
       <LearningEnvironment/>

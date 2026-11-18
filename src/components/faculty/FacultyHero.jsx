@@ -123,7 +123,8 @@ const FacultyHero = () => {
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.1, ease: "easeOut" }}
-            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1800&q=90"
+            // src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1800&q=90"
+            src="https://www.gyansagarclasses.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-25-at-2.13.59-PM.jpeg"
             alt="Educators guiding students in a classroom"
             className="absolute inset-0 h-full w-full object-cover object-center"
           />

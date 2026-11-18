@@ -12,6 +12,8 @@ import {
   Navigation,
 } from "lucide-react";
 
+import { examPreparationData } from "../../data/examPreparationData";
+
 const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -20,28 +22,107 @@ const ContactSection = () => {
     message: "",
   });
 
+  const [status, setStatus] = useState("");
+  const [statusType, setStatusType] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    if (name === "phone" && !/^\d{0,10}$/.test(value)) {
+      return;
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    setStatus("");
+    setStatusType("");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const message = `Hello Gyan Sagar NET Classes!
+    if (!/^[6-9]\d{9}$/.test(formData.phone)) {
+      setStatus("Please enter a valid 10-digit mobile number.");
+      setStatusType("error");
+      return;
+    }
 
-Name: ${formData.name}
-Mobile: ${formData.phone}
-Course: ${formData.course}
-Message: ${formData.message}`;
+    if (!formData.course) {
+      setStatus("Please select your interested exam.");
+      setStatusType("error");
+      return;
+    }
 
-    const whatsappUrl = `https://wa.me/919728306888?text=${encodeURIComponent(
-      message
-    )}`;
+    setIsSubmitting(true);
+    setStatus("");
+    setStatusType("");
 
-    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+    try {
+      const submissionData = new FormData();
+
+      submissionData.append(
+        "access_key",
+        import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+      );
+
+      submissionData.append("name", formData.name);
+      submissionData.append("phone", formData.phone);
+      submissionData.append("course", formData.course);
+      submissionData.append(
+        "message",
+        formData.message ||
+          "I want to know more about this exam preparation program."
+      );
+
+      submissionData.append(
+        "subject",
+        "New Admission Enquiry - Gyan Sagar NET Classes"
+      );
+
+      submissionData.append(
+        "from_name",
+        "Gyan Sagar NET Classes Website"
+      );
+
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: submissionData,
+        }
+      );
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus(
+          "Thank you! Your enquiry has been submitted successfully."
+        );
+        setStatusType("success");
+
+        setFormData({
+          name: "",
+          phone: "",
+          course: "",
+          message: "",
+        });
+      } else {
+        throw new Error(
+          result.message || "Unable to submit your enquiry."
+        );
+      }
+    } catch (error) {
+      setStatus(
+        error.message || "Something went wrong. Please try again."
+      );
+      setStatusType("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactDetails = [
@@ -76,7 +157,7 @@ Message: ${formData.message}`;
 
       <div className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-red-50/40 blur-3xl" />
 
-      <div className="relative w-full px-3 sm:px-4 lg:px-6 xl:px-8 2xl:px-10">
+      <div className="relative w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* SECTION HEADER */}
         <motion.div
@@ -101,8 +182,8 @@ Message: ${formData.message}`;
           </h2>
 
           <p className="mx-auto mt-4 max-w-2xl font-['Lato'] text-sm leading-7 text-black/65 sm:text-base">
-            Have questions about our courses or admissions? Get in touch with
-            Gyan Sagar NET Classes. We are here to guide you.
+            Have questions about our exam preparation programs or admissions?
+            Get in touch with Gyan Sagar NET Classes. We are here to guide you.
           </p>
         </motion.div>
 
@@ -131,8 +212,8 @@ Message: ${formData.message}`;
               </h3>
 
               <p className="mt-4 font-['Lato'] text-sm leading-7 text-white/85">
-                Connect with our team to learn about courses, batches, online
-                and offline classes, and admission opportunities.
+                Connect with our team to learn about exam preparation
+                programs, batches, classes and admission opportunities.
               </p>
 
               {/* CONTACT DETAILS */}
@@ -195,7 +276,7 @@ Message: ${formData.message}`;
 
             {/* WHATSAPP CTA */}
             <a
-              href="https://wa.me/919728306888?text=Hello%2C%20I%20want%20to%20know%20about%20your%20courses."
+              href="https://wa.me/919728306888?text=Hello%2C%20I%20want%20to%20know%20about%20your%20exam%20preparation%20programs."
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 flex items-center justify-between rounded-xl border border-green-200 bg-white p-5 transition hover:border-green-500 hover:shadow-md"
@@ -229,26 +310,27 @@ Message: ${formData.message}`;
             className="rounded-xl border border-black/10 bg-white p-6 shadow-sm sm:p-8"
           >
             <span className="font-['Lato'] text-xs font-extrabold tracking-[2px] text-[#a51620]">
-              SEND AN ENQUIRY
+              ADMISSION ENQUIRY
             </span>
 
             <h3 className="mt-3 font-['Playfair_Display'] text-2xl font-bold text-black sm:text-3xl">
-              Get In Touch With Us
+              Start Your Preparation
             </h3>
 
             <p className="mt-3 font-['Lato'] text-sm leading-6 text-black/60">
-              Fill in your details and our team will connect with you.
+              Share your details and our academic team will help you find the
+              right exam preparation program.
             </p>
 
             <form onSubmit={handleSubmit} className="mt-7 space-y-5">
 
-              {/* NAME */}
+              {/* STUDENT NAME */}
               <div>
                 <label
                   htmlFor="contact-name"
                   className="mb-2 block font-['Lato'] text-sm font-bold text-black"
                 >
-                  Your Name *
+                  Student Name *
                 </label>
 
                 <input
@@ -259,12 +341,14 @@ Message: ${formData.message}`;
                   onChange={handleChange}
                   placeholder="Enter your full name"
                   autoComplete="name"
+                  maxLength={80}
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40"
+                  disabled={isSubmitting}
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
                 />
               </div>
 
-              {/* PHONE */}
+              {/* MOBILE NUMBER */}
               <div>
                 <label
                   htmlFor="contact-phone"
@@ -279,23 +363,24 @@ Message: ${formData.message}`;
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="Enter your mobile number"
+                  placeholder="Enter 10-digit mobile number"
                   pattern="[6-9][0-9]{9}"
                   maxLength={10}
                   autoComplete="tel"
                   inputMode="numeric"
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 "
+                  disabled={isSubmitting}
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
                 />
               </div>
 
-              {/* COURSE */}
+              {/* SELECT EXAM */}
               <div>
                 <label
                   htmlFor="contact-course"
                   className="mb-2 block font-['Lato'] text-sm font-bold text-black"
                 >
-                  Select Course *
+                  Select Exam *
                 </label>
 
                 <select
@@ -304,19 +389,16 @@ Message: ${formData.message}`;
                   value={formData.course}
                   onChange={handleChange}
                   required
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition "
+                  disabled={isSubmitting}
+                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 disabled:opacity-60"
                 >
-                  <option value="">Choose your course</option>
-                  <option value="UGC NET / CSIR NET">
-                    UGC NET / CSIR NET
-                  </option>
-                  <option value="Assistant Professor">
-                    Assistant Professor
-                  </option>
-                  <option value="PGT / TGT">PGT / TGT</option>
-                  <option value="HTET / CTET / DSSSB">
-                    HTET / CTET / DSSSB
-                  </option>
+                  <option value="">Choose your exam</option>
+
+                  {examPreparationData.map((exam) => (
+                    <option key={exam.id} value={exam.title}>
+                      {exam.title}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -335,26 +417,46 @@ Message: ${formData.message}`;
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
+                  maxLength={500}
                   placeholder="Tell us what you would like to know..."
-                  className="w-full resize-none rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition placeholder:text-black/40 "
+                  disabled={isSubmitting}
+                  className="w-full resize-none rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
                 />
               </div>
 
-              {/* SUBMIT */}
+              {/* STATUS MESSAGE */}
+              {status && (
+                <p
+                  role="status"
+                  aria-live="polite"
+                  className={`rounded-lg px-4 py-3 text-sm font-semibold ${
+                    statusType === "success"
+                      ? "bg-green-50 text-green-700"
+                      : "bg-red-50 text-red-700"
+                  }`}
+                >
+                  {status}
+                </p>
+              )}
+
+              {/* SUBMIT BUTTON */}
               <button
                 type="submit"
-                className="group flex w-full items-center justify-center gap-3 rounded-lg bg-[#850f18] px-6 py-4 font-['Lato'] text-sm font-extrabold text-white transition hover:bg-[#650b12]"
+                disabled={isSubmitting}
+                className="group flex w-full items-center justify-center gap-3 rounded-lg bg-[#850f18] px-6 py-4 font-['Lato'] text-sm font-extrabold text-white transition hover:bg-[#650b12] disabled:cursor-not-allowed disabled:opacity-70"
               >
-                Send Enquiry on WhatsApp
+                {isSubmitting ? "Submitting Enquiry..." : "Send Enquiry"}
 
                 <Send
                   size={17}
-                  className="transition group-hover:translate-x-1"
+                  className={`transition group-hover:translate-x-1 ${
+                    isSubmitting ? "animate-pulse" : ""
+                  }`}
                 />
               </button>
 
               <p className="text-center font-['Lato'] text-xs text-black/50">
-                Your enquiry will open directly in WhatsApp.
+                Your enquiry will be sent securely to our registered email.
               </p>
             </form>
           </motion.div>

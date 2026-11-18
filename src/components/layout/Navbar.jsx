@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   Menu,
   X,
@@ -16,7 +16,10 @@ import Logo from "../../assets/image/Logo.png";
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [courseOpen, setCourseOpen] = useState(false);
+  const [examOpen, setExamOpen] = useState(false);
+
+  const location = useLocation();
+  const currentPath = location.pathname;
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -25,18 +28,47 @@ const Navbar = () => {
     { name: "Contact", path: "/contact" },
   ];
 
-  const courses = [
-    { name: "UGC NET", path: "/courses/ugc-net", tag: "Popular" },
-    { name: "CSIR NET", path: "/courses/csir-net" },
-    { name: "HTET", path: "/courses/htet" },
-    { name: "CTET", path: "/courses/ctet" },
-    { name: "DSSSB", path: "/courses/dsssb" },
-    { name: "TGT / PGT", path: "/courses/tgt-pgt" },
+  const examPrograms = [
+    {
+      name: "UGC NET",
+      path: "/exam-preparation/ugc-net",
+      tag: "Popular",
+    },
+    {
+      name: "CSIR NET",
+      path: "/exam-preparation/csir-net",
+    },
+    {
+      name: "HTET / CTET",
+      path: "/exam-preparation/htet-ctet",
+    },
+    {
+      name: "PGT / TGT / PRT",
+      path: "/exam-preparation/pgt-tgt-prt",
+    },
+    {
+      name: "DSSSB",
+      path: "/exam-preparation/dsssb",
+    },
+    {
+      name: "UPSC / HCS",
+      subtitle: "Prelims & Mains",
+      path: "/exam-preparation/upsc-hcs",
+    },
+    {
+      name: "UPSC / HCS Foundation",
+      subtitle: "3-Year Foundation Program",
+      path: "/exam-preparation/upsc-hcs-foundation",
+    },
   ];
+
+  const isExamActive =
+    currentPath === "/exam-preparation" ||
+    currentPath.startsWith("/exam-preparation/");
 
   const closeMobileMenu = () => {
     setMobileOpen(false);
-    setCourseOpen(false);
+    setExamOpen(false);
   };
 
   const navClass = ({ isActive }) =>
@@ -49,16 +81,13 @@ const Navbar = () => {
         : "text-slate-700 after:w-0 hover:text-[#a51620] hover:after:w-full"
     }`;
 
-  const courseActive = courses.some(
-    (course) => window.location.pathname === course.path
-  );
-
   return (
     <header className="relative z-50 w-full shrink-0 bg-white">
 
       {/* TOP INFORMATION BAR */}
       <div className="hidden h-9 w-full items-center bg-[#850f18] text-white md:flex">
         <div className="flex w-full items-center justify-between gap-4 px-6 lg:px-10">
+
           <div className="flex items-center gap-2 text-xs font-medium text-red-50">
             <GraduationCap size={16} />
             <span>Welcome to Gyan Sagar NET Classes</span>
@@ -114,89 +143,99 @@ const Navbar = () => {
               </NavLink>
             ))}
 
-            {/* DESKTOP COURSES */}
+            {/* DESKTOP EXAM PREPARATION */}
             <div
               className="group relative flex h-full items-center"
-              onMouseEnter={() => setCourseOpen(true)}
-              onMouseLeave={() => setCourseOpen(false)}
+              onMouseEnter={() => setExamOpen(true)}
+              onMouseLeave={() => setExamOpen(false)}
             >
               <div className="flex items-center gap-1">
+
                 <NavLink
-                  to="/courses"
+                  to="/exam-preparation"
                   className={() =>
                     `relative whitespace-nowrap py-2 text-sm font-bold transition-colors duration-200 ${
-                      courseActive ||
-                      window.location.pathname === "/courses"
+                      isExamActive
                         ? "text-[#a51620]"
                         : "text-slate-700 hover:text-[#a51620]"
                     }`
                   }
                 >
-                  Courses
+                  Exam Preparation
                 </NavLink>
 
                 <button
                   type="button"
-                  onClick={() => setCourseOpen((prev) => !prev)}
-                  aria-label="Open courses dropdown"
-                  aria-expanded={courseOpen}
-                  className="flex h-8 w-7 items-center justify-center text-slate-700 transition hover:text-[#a51620]"
+                  onClick={() => setExamOpen((prev) => !prev)}
+                  aria-label="Open exam preparation dropdown"
+                  aria-expanded={examOpen}
+                  className="flex h-8 w-7 items-center justify-center text-slate-700 transition hover:text-[#a51620] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#850f18]"
                 >
                   <ChevronDown
                     size={16}
                     className={`transition-transform duration-300 ${
-                      courseOpen ? "rotate-180" : ""
+                      examOpen ? "rotate-180" : ""
                     }`}
                   />
                 </button>
               </div>
 
-              {/* DROPDOWN */}
+              {/* DESKTOP DROPDOWN */}
               <div
-                className={`absolute left-0 top-full z-50 w-64 rounded-xl border border-slate-100 bg-white p-2 shadow-xl transition-all duration-200 ${
-                  courseOpen
+                className={`absolute left-0 top-full z-50 w-72 rounded-xl border border-slate-100 bg-white p-2 shadow-xl transition-all duration-200 ${
+                  examOpen
                     ? "visible translate-y-0 opacity-100"
                     : "invisible translate-y-2 opacity-0"
                 }`}
               >
                 <div className="border-b border-slate-100 px-4 py-3">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#a51620]">
-                    Our Courses
+                    Exam Preparation
                   </p>
+
                   <p className="mt-1 text-xs text-slate-500">
-                    Choose your preparation program
+                    Choose your target examination
                   </p>
                 </div>
 
                 <div className="py-1">
-                  {courses.map((course) => (
+                  {examPrograms.map((program) => (
                     <NavLink
-                      key={course.name}
-                      to={course.path}
-                      onClick={() => setCourseOpen(false)}
+                      key={program.path}
+                      to={program.path}
+                      onClick={() => setExamOpen(false)}
                       className={({ isActive }) =>
-                        `group/item flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold transition ${
+                        `group/item flex items-center justify-between gap-3 rounded-lg px-4 py-3 text-sm font-semibold transition ${
                           isActive
                             ? "bg-red-50 text-[#a51620]"
                             : "text-slate-700 hover:bg-red-50 hover:text-[#a51620]"
                         }`
                       }
                     >
-                      <span>{course.name}</span>
+                      <span>
+                        <span className="block">{program.name}</span>
+
+                        {program.subtitle && (
+                          <span className="mt-0.5 block text-[10px] font-medium text-slate-400">
+                            {program.subtitle}
+                          </span>
+                        )}
+                      </span>
+
                       <ArrowUpRight
                         size={15}
-                        className="text-slate-400 transition group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-[#a51620]"
+                        className="shrink-0 text-slate-400 transition group-hover/item:-translate-y-0.5 group-hover/item:translate-x-0.5 group-hover/item:text-[#a51620]"
                       />
                     </NavLink>
                   ))}
                 </div>
 
                 <Link
-                  to="/courses"
-                  onClick={() => setCourseOpen(false)}
+                  to="/exam-preparation"
+                  onClick={() => setExamOpen(false)}
                   className="mt-1 flex items-center justify-center rounded-lg bg-red-50 px-4 py-3 text-xs font-bold text-[#a51620] transition hover:bg-[#a51620] hover:text-white"
                 >
-                  Explore All Courses
+                  Explore All Exams
                   <ArrowUpRight size={14} className="ml-2" />
                 </Link>
               </div>
@@ -220,6 +259,7 @@ const Navbar = () => {
               className="group flex items-center gap-3 rounded-lg bg-[#a51620] px-5 py-3 text-sm font-bold text-white shadow-md shadow-red-900/15 transition duration-300 hover:-translate-y-0.5 hover:bg-[#800e17] hover:shadow-lg"
             >
               <span>Apply Now</span>
+
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/15 transition group-hover:translate-x-1">
                 <ArrowUpRight size={16} />
               </span>
@@ -231,7 +271,7 @@ const Navbar = () => {
             type="button"
             onClick={() => {
               setMobileOpen((prev) => !prev);
-              setCourseOpen(false);
+              setExamOpen(false);
             }}
             aria-label="Toggle navigation menu"
             aria-expanded={mobileOpen}
@@ -269,48 +309,44 @@ const Navbar = () => {
             </NavLink>
           ))}
 
-          {/* MOBILE COURSES */}
+          {/* MOBILE EXAM PREPARATION */}
           <div>
             <div className="flex items-center justify-between rounded-lg px-4 py-3 transition hover:bg-slate-50">
+
               <NavLink
-                to="/courses"
+                to="/exam-preparation"
                 onClick={closeMobileMenu}
-                className={({ isActive }) =>
-                  `text-sm font-bold ${
-                    isActive ||
-                    courses.some(
-                      (course) => window.location.pathname === course.path
-                    )
-                      ? "text-[#a51620]"
-                      : "text-slate-700"
-                  }`
-                }
+                className={`text-sm font-bold ${
+                  isExamActive
+                    ? "text-[#a51620]"
+                    : "text-slate-700"
+                }`}
               >
-                Our Courses
+                Exam Preparation
               </NavLink>
 
               <button
                 type="button"
-                onClick={() => setCourseOpen((prev) => !prev)}
-                aria-label="Expand courses"
-                aria-expanded={courseOpen}
-                className="flex h-7 w-7 items-center justify-center text-slate-700"
+                onClick={() => setExamOpen((prev) => !prev)}
+                aria-label="Expand exam preparation"
+                aria-expanded={examOpen}
+                className="flex h-8 w-8 items-center justify-center rounded-md text-slate-700 transition hover:bg-red-50 hover:text-[#a51620] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#850f18]"
               >
                 <ChevronDown
                   size={18}
                   className={`transition-transform duration-300 ${
-                    courseOpen ? "rotate-180 text-[#a51620]" : ""
+                    examOpen ? "rotate-180 text-[#a51620]" : ""
                   }`}
                 />
               </button>
             </div>
 
-            {courseOpen && (
+            {examOpen && (
               <div className="ml-4 flex flex-col border-l-2 border-red-100 pl-3">
-                {courses.map((course) => (
+                {examPrograms.map((program) => (
                   <NavLink
-                    key={course.name}
-                    to={course.path}
+                    key={program.path}
+                    to={program.path}
                     onClick={closeMobileMenu}
                     className={({ isActive }) =>
                       `rounded-lg px-4 py-2.5 text-sm font-medium transition ${
@@ -320,16 +356,22 @@ const Navbar = () => {
                       }`
                     }
                   >
-                    {course.name}
+                    <span className="block">{program.name}</span>
+
+                    {program.subtitle && (
+                      <span className="mt-0.5 block text-[10px] text-slate-400">
+                        {program.subtitle}
+                      </span>
+                    )}
                   </NavLink>
                 ))}
 
                 <Link
-                  to="/courses"
+                  to="/exam-preparation"
                   onClick={closeMobileMenu}
                   className="px-4 py-2.5 text-sm font-bold text-[#a51620]"
                 >
-                  View All Courses →
+                  View All Exams →
                 </Link>
               </div>
             )}

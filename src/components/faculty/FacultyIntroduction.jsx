@@ -37,7 +37,7 @@ const FacultyIntroduction = () => {
   return (
     <section className="w-full overflow-hidden bg-white py-8 sm:py-10 lg:py-12">
 
-      <div className="px-3 sm:px-4 lg:px-6 xl:px-8 2xl:px-10">
+      <div className="px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         {/* SECTION HEADING */}
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
@@ -97,7 +97,8 @@ const FacultyIntroduction = () => {
             className="group relative min-h-[260px] overflow-hidden bg-[#eee7e1] sm:min-h-[360px] lg:min-h-[430px]"
           >
             <img
-              src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=1400&q=90"
+              
+              src="https://www.gyansagarclasses.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-25-at-2.13.40-PM-scaled.jpeg"
               alt="Students learning together in an educational environment"
               loading="lazy"
               className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

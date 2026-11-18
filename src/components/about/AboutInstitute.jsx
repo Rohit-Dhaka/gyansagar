@@ -29,7 +29,7 @@ const AboutInstitute = () => {
           >
             <div className="relative h-[380px] overflow-hidden sm:h-[500px]">
               <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=90"
+                src="https://www.gyansagarclasses.com/wp-content/uploads/2025/05/WhatsApp-Image-2025-05-25-at-1.17.51-PM-3-scaled.jpeg"
                 alt="Students learning in a classroom"
                 className="h-full w-full object-cover"
               />
