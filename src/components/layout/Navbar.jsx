@@ -1,13 +1,12 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import {
   Menu,
   X,
   ChevronDown,
   Phone,
-  ArrowUpRight,
-  MapPin,
+  ArrowUpRight,  
   Mail,
   GraduationCap,
 } from "lucide-react";
@@ -70,6 +69,21 @@ const Navbar = () => {
     setMobileOpen(false);
     setExamOpen(false);
   };
+
+  // Prevent background scrolling while mobile drawer is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
+  // Close mobile drawer when route changes
+  useEffect(() => {
+    setMobileOpen(false);
+    setExamOpen(false);
+  }, [location.pathname]);
 
   const navClass = ({ isActive }) =>
     `relative whitespace-nowrap py-2 text-sm font-bold transition-colors duration-200
@@ -282,141 +296,211 @@ const Navbar = () => {
         </div>
       </nav>
 
-      {/* MOBILE NAVIGATION */}
+      {/* MOBILE MENU OVERLAY */}
       <div
-        className={`absolute left-0 top-full z-50 w-full border-b border-slate-100 bg-white shadow-xl transition-all duration-300 xl:hidden ${
+        onClick={closeMobileMenu}
+        aria-hidden="true"
+        className={`fixed inset-0 z-[55] bg-black/50 backdrop-blur-[3px] transition-opacity duration-300 xl:hidden ${
           mobileOpen
-            ? "visible max-h-[calc(100svh-125px)] overflow-y-auto opacity-100"
-            : "invisible max-h-0 overflow-hidden opacity-0"
+            ? "visible opacity-100"
+            : "invisible opacity-0"
+        }`}
+      />
+
+      {/* MOBILE SIDE DRAWER */}
+      <div
+        id="mobile-navigation"
+        aria-hidden={!mobileOpen}
+        className={`fixed right-0 top-0 z-[60] flex h-[100dvh] w-[85%] max-w-[420px] flex-col overflow-hidden bg-white shadow-2xl transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] xl:hidden ${
+          mobileOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="flex flex-col gap-1 px-5 py-5">
 
-          {navLinks.slice(0, 2).map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              onClick={closeMobileMenu}
-              className={({ isActive }) =>
-                `rounded-lg px-4 py-3 text-sm font-bold transition ${
-                  isActive
-                    ? "bg-red-50 text-[#a51620]"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
+        {/* DRAWER HEADER */}
+        <div className="flex shrink-0 items-center justify-between border-b border-slate-100 px-5 py-4">
 
-          {/* MOBILE EXAM PREPARATION */}
-          <div>
-            <div className="flex items-center justify-between rounded-lg px-4 py-3 transition hover:bg-slate-50">
-
-              <NavLink
-                to="/exam-preparation"
-                onClick={closeMobileMenu}
-                className={`text-sm font-bold ${
-                  isExamActive
-                    ? "text-[#a51620]"
-                    : "text-slate-700"
-                }`}
-              >
-                Exam Preparation
-              </NavLink>
-
-              <button
-                type="button"
-                onClick={() => setExamOpen((prev) => !prev)}
-                aria-label="Expand exam preparation"
-                aria-expanded={examOpen}
-                className="flex h-8 w-8 items-center justify-center rounded-md text-slate-700 transition hover:bg-red-50 hover:text-[#a51620] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#850f18]"
-              >
-                <ChevronDown
-                  size={18}
-                  className={`transition-transform duration-300 ${
-                    examOpen ? "rotate-180 text-[#a51620]" : ""
-                  }`}
-                />
-              </button>
-            </div>
-
-            {examOpen && (
-              <div className="ml-4 flex flex-col border-l-2 border-red-100 pl-3">
-                {examPrograms.map((program) => (
-                  <NavLink
-                    key={program.path}
-                    to={program.path}
-                    onClick={closeMobileMenu}
-                    className={({ isActive }) =>
-                      `rounded-lg px-4 py-2.5 text-sm font-medium transition ${
-                        isActive
-                          ? "bg-red-50 text-[#a51620]"
-                          : "text-slate-600 hover:bg-red-50 hover:text-[#a51620]"
-                      }`
-                    }
-                  >
-                    <span className="block">{program.name}</span>
-
-                    {program.subtitle && (
-                      <span className="mt-0.5 block text-[10px] text-slate-400">
-                        {program.subtitle}
-                      </span>
-                    )}
-                  </NavLink>
-                ))}
-
-                <Link
-                  to="/exam-preparation"
-                  onClick={closeMobileMenu}
-                  className="px-4 py-2.5 text-sm font-bold text-[#a51620]"
-                >
-                  View All Exams →
-                </Link>
-              </div>
-            )}
-          </div>
-
-          {navLinks.slice(2).map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.path}
-              onClick={closeMobileMenu}
-              className={({ isActive }) =>
-                `rounded-lg px-4 py-3 text-sm font-bold transition ${
-                  isActive
-                    ? "bg-red-50 text-[#a51620]"
-                    : "text-slate-700 hover:bg-slate-50"
-                }`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
-
-          {/* APPLY BUTTON */}
-          <Link
-            to="/admissions"
-            onClick={closeMobileMenu}
-            className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-[#a51620] px-5 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-[#800e17]"
-          >
-            Apply for Admission
-            <ArrowUpRight size={18} />
+          <Link to="/" onClick={closeMobileMenu}>
+            <img
+              src={Logo}
+              alt="Gyan Sagar NET Classes"
+              className="h-12 w-auto object-contain"
+            />
           </Link>
 
-          {/* PHONE */}
+          <button
+            type="button"
+            onClick={closeMobileMenu}
+            aria-label="Close navigation menu"
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-red-50 text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
+          >
+            <X size={22} />
+          </button>
+        </div>
+
+        {/* DRAWER CONTENT */}
+        <div className="flex-1 overflow-y-auto px-5 py-6">
+
+     
+
+          {/* MAIN LINKS */}
+          <div className="flex flex-col gap-1">
+
+            {navLinks.slice(0, 2).map((link, index) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                onClick={closeMobileMenu}
+                className={({ isActive }) =>
+                  `flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-bold transition ${
+                    isActive
+                      ? "bg-red-50 text-[#a51620]"
+                      : "text-slate-700 hover:bg-slate-50 hover:text-[#a51620]"
+                  }`
+                }
+              >
+                <span className="flex items-center gap-3">
+                  <span className="text-xs text-slate-400">
+                    0{index + 1}
+                  </span>
+                  {link.name}
+                </span>
+
+                <ArrowUpRight size={16} />
+              </NavLink>
+            ))}
+
+            {/* EXAM PREPARATION */}
+            <div className="rounded-xl">
+
+              <div className="flex items-center justify-between rounded-xl px-4 py-3.5 transition hover:bg-slate-50">
+
+                <NavLink
+                  to="/exam-preparation"
+                  onClick={closeMobileMenu}
+                  className={`flex items-center gap-3 text-sm font-bold ${
+                    isExamActive
+                      ? "text-[#a51620]"
+                      : "text-slate-700"
+                  }`}
+                >
+                  <span className="text-xs text-slate-400">03</span>
+                  Exam Preparation
+                </NavLink>
+
+                <button
+                  type="button"
+                  onClick={() => setExamOpen((prev) => !prev)}
+                  aria-label="Expand exam preparation"
+                  aria-expanded={examOpen}
+                  className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-[#850f18] transition hover:bg-[#850f18] hover:text-white"
+                >
+                  <ChevronDown
+                    size={17}
+                    className={`transition-transform duration-300 ${
+                      examOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </div>
+
+              {/* EXAM SUBMENU */}
+              <div
+                className={`grid transition-all duration-300 ${
+                  examOpen
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="ml-7 flex flex-col border-l-2 border-red-100 py-1 pl-3">
+
+                    {examPrograms.map((program) => (
+                      <NavLink
+                        key={program.path}
+                        to={program.path}
+                        onClick={closeMobileMenu}
+                        className={({ isActive }) =>
+                          `rounded-lg px-3 py-2.5 text-xs font-semibold transition ${
+                            isActive
+                              ? "bg-red-50 text-[#a51620]"
+                              : "text-slate-600 hover:bg-red-50 hover:text-[#a51620]"
+                          }`
+                        }
+                      >
+                        <span className="block">{program.name}</span>
+
+                        {program.subtitle && (
+                          <span className="mt-0.5 block text-[10px] font-normal text-slate-400">
+                            {program.subtitle}
+                          </span>
+                        )}
+                      </NavLink>
+                    ))}
+
+                    <Link
+                      to="/exam-preparation"
+                      onClick={closeMobileMenu}
+                      className="px-3 py-2.5 text-xs font-extrabold text-[#a51620]"
+                    >
+                      View All Exams →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* REMAINING LINKS */}
+            {navLinks.slice(2).map((link, index) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                onClick={closeMobileMenu}
+                className={({ isActive }) =>
+                  `flex items-center justify-between rounded-xl px-4 py-3.5 text-sm font-bold transition ${
+                    isActive
+                      ? "bg-red-50 text-[#a51620]"
+                      : "text-slate-700 hover:bg-slate-50 hover:text-[#a51620]"
+                  }`
+                }
+              >
+                <span className="flex items-center gap-3">
+                  <span className="text-xs text-slate-400">
+                    0{index + 4}
+                  </span>
+                  {link.name}
+                </span>
+
+                <ArrowUpRight size={16} />
+              </NavLink>
+            ))}
+          </div>
+
+ 
+        </div>
+
+        {/* DRAWER FOOTER */}
+        <div className="shrink-0 border-t border-slate-100 bg-white px-5 py-4">
+
           <a
             href="tel:+919728306888"
-            className="mt-2 flex items-center justify-center gap-2 rounded-lg border border-red-100 px-5 py-3 text-sm font-bold text-[#850f18] transition hover:bg-red-50"
+            className="flex items-center gap-3 rounded-xl border border-red-100 p-3 transition hover:bg-red-50"
           >
-            <Phone size={17} />
-            +91 97283-06888
+            <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-red-50 text-[#850f18]">
+              <Phone size={18} />
+            </span>
+
+            <span>
+              <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                Call Us
+              </span>
+
+              <span className="mt-1 block text-sm font-extrabold text-[#850f18]">
+                +91 97283-06888
+              </span>
+            </span>
           </a>
 
-          <div className="mt-3 flex items-center justify-center gap-2 text-xs text-slate-500">
-            <MapPin size={14} className="text-[#a51620]" />
-            Hisar, Haryana
-          </div>
+        
         </div>
       </div>
     </header>

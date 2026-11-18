@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "motion/react";
 import {
@@ -8,7 +7,6 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
@@ -32,10 +30,8 @@ const FacultyTeam = () => {
       className="w-full overflow-hidden bg-[#faf8f5] py-8 sm:py-10 lg:py-12"
     >
       <div className="px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-
         {/* SECTION HEADER */}
         <div className="flex flex-col justify-between gap-6 border-b border-black/10 pb-7 md:flex-row md:items-end lg:pb-9">
-
           <div>
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -59,32 +55,41 @@ const FacultyTeam = () => {
               className="font-['Playfair_Display'] text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl xl:text-6xl"
             >
               Meet Our Expert
-              <span className="block text-[#850f18]">
-                Faculty Members.
-              </span>
+              <span className="block text-[#850f18]">Faculty Members.</span>
             </motion.h2>
           </div>
 
           <div className="flex items-end justify-between gap-5 md:max-w-sm">
-            <p className="text-sm leading-7 text-black/55 sm:text-base">
-              Dedicated educators bringing knowledge, experience and
-              inspiration to every classroom.
-            </p>
-
-            <div className="shrink-0 text-right">
-              <span className="block font-['Playfair_Display'] text-3xl font-bold text-[#850f18]">
-                {String(totalFaculty).padStart(2, "0")}
-              </span>
-              <span className="text-[9px] font-extrabold uppercase tracking-[1.5px] text-black/45">
-                Educators
-              </span>
-            </div>
+       
+            
           </div>
+             {totalFaculty > 1 && (
+            <div className="mt-6 flex items-center justify-between gap-4">          
+              <div className="flex shrink-0 gap-2">
+                <button
+                  type="button"
+                  aria-label="Previous faculty"
+                  className="faculty-team-prev flex h-11 w-11 items-center justify-center border border-black/15 text-black transition hover:border-[#850f18] hover:bg-[#850f18] hover:text-white"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+
+                <button
+                  type="button"
+                  aria-label="Next faculty"
+                  className="faculty-team-next flex h-11 w-11 items-center justify-center bg-[#850f18] text-white transition hover:bg-[#a51620]"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+
+            </div>
+          )}
+
         </div>
 
         {/* SWIPER SLIDER */}
         <div className="relative mt-8 lg:mt-10">
-
           <Swiper
             modules={[Autoplay, Navigation, Pagination]}
             slidesPerView={1}
@@ -120,10 +125,8 @@ const FacultyTeam = () => {
             }}
             className="faculty-team-swiper !pb-2"
           >
-
             {facultyData.map((faculty, index) => (
               <SwiperSlide key={faculty.id} className="h-auto">
-
                 <motion.article
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -131,10 +134,8 @@ const FacultyTeam = () => {
                   transition={{ duration: 0.4 }}
                   className="group h-full bg-white"
                 >
-
                   {/* FACULTY IMAGE */}
                   <div className="relative aspect-[4/4.2] overflow-hidden bg-[#e9dfd7]">
-
                     {faculty.image && (
                       <img
                         src={faculty.image}
@@ -155,6 +156,7 @@ const FacultyTeam = () => {
                     <span className="absolute right-3 top-4 max-w-[65%] bg-white px-3 py-2 text-[9px] font-extrabold uppercase tracking-[1px] text-[#850f18]">
                       {faculty.role}
                     </span>
+                    
 
                     {/* NAME */}
                     <div className="absolute bottom-0 left-0 right-0 p-5">
@@ -182,7 +184,6 @@ const FacultyTeam = () => {
 
                   {/* FACULTY DETAILS */}
                   <div className="flex flex-col border-b border-black/10 px-4 py-5 sm:px-5">
-
                     <div className="flex items-start gap-3">
                       <BookOpen
                         size={18}
@@ -202,89 +203,13 @@ const FacultyTeam = () => {
 
                     <p className="mt-4 min-h-[72px] text-xs leading-6 text-black/55">
                       {faculty.description}
-                    </p>              
+                    </p>
                   </div>
-
                 </motion.article>
-
               </SwiperSlide>
             ))}
-
           </Swiper>
-
-          {/* SLIDER NAVIGATION */}
-          {totalFaculty > 1 && (
-            <div className="mt-6 flex items-center justify-between gap-4">
-
-              {/* PROGRESS */}
-              <div className="flex flex-1 items-center gap-3">
-
-                <span className="text-xs font-extrabold text-[#850f18]">
-                  {String(currentIndex + 1).padStart(2, "0")}
-                </span>
-
-                <div className="h-[3px] flex-1 overflow-hidden bg-black/10">
-                  <motion.div
-                    className="h-full bg-[#850f18]"
-                    animate={{
-                      width: `${((currentIndex + 1) / totalFaculty) * 100}%`,
-                    }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-
-                <span className="text-xs font-bold text-black/40">
-                  {String(totalFaculty).padStart(2, "0")}
-                </span>
-              </div>
-
-              {/* ARROWS */}
-              <div className="flex shrink-0 gap-2">
-                <button
-                  type="button"
-                  aria-label="Previous faculty"
-                  className="faculty-team-prev flex h-11 w-11 items-center justify-center border border-black/15 text-black transition hover:border-[#850f18] hover:bg-[#850f18] hover:text-white"
-                >
-                  <ChevronLeft size={20} />
-                </button>
-
-                <button
-                  type="button"
-                  aria-label="Next faculty"
-                  className="faculty-team-next flex h-11 w-11 items-center justify-center bg-[#850f18] text-white transition hover:bg-[#a51620]"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </div>
-
-            </div>
-          )}
-
-          {/* PAGINATION */}
-          <div className="faculty-team-pagination mt-5 flex justify-center" />
-
         </div>
-
-        {/* BOTTOM STATEMENT */}
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-black/10 pt-6 sm:flex-row sm:items-center">
-
-          <p className="max-w-xl font-['Playfair_Display'] text-lg font-bold leading-relaxed text-black sm:text-xl">
-            Behind every successful learner is a teacher who believes in them.
-          </p>
-
-          <Link
-            to="/contact"
-            className="group inline-flex w-fit items-center gap-4 text-xs font-extrabold uppercase tracking-[1px] text-[#850f18]"
-          >
-            Talk To Our Team
-            <ArrowUpRight
-              size={18}
-              className="transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1"
-            />
-          </Link>
-
-        </div>
-
       </div>
     </section>
   );

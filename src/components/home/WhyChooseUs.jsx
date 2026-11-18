@@ -316,7 +316,7 @@ const WhyChooseUs = () => {
 
                   {/* ICON */}
                   <div
-                    className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border transition-all duration-300 ${
+                    className={`flex h-11 max-sm:hidden w-11 shrink-0 items-center justify-center rounded-lg border transition-all duration-300 ${
                       isActive
                         ? "border-[#a51620] bg-[#a51620] text-white"
                         : "border-red-100 bg-red-50 text-[#a51620] group-hover:border-[#a51620]"

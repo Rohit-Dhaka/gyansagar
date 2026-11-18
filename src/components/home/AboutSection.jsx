@@ -43,7 +43,8 @@ const AboutSection = () => {
         >
           <div className="relative h-[260px] overflow-hidden rounded-xl sm:h-[340px] lg:h-[390px]">
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2wLH29b62Ne4CpySq7rTHb0Iz_4BdowkAwgAyuxvg1A&s=10"
+              src="https://www.google.com/maps/place/Gyan+Sagar+Nta+Net+Classes+%E2%80%93+HISAR/@29.1468357,75.7209729,3a,75y,90t/data=!3m8!1e2!3m6!1sCIABIhA5v6MeA8caEMmK7zfBcmoH!2e10!3e12!6shttps:%2F%2Flh3.googleusercontent.com%2Fgps-cs-s%2FANWiy9TOz8YybCc96wnBdqmM19YvoCRBd_NrF8uH9ziF86zxqQLFISpas6nhMsdCQL6EUroBjt9P8kVFM3k1WbruB_9pgAeFh2zcZCDyg-nd7X29OS1jONuPLq8hch8K4rc7qQIYXXK2OTS1ZHAq%3Dw529-h298-k-no!7i1280!8i720!4m9!3m8!1s0x3912332e6a4aff15:0x4120a818a926f051!8m2!3d29.1468357!4d75.7209729!10e5!14m1!1BCgwKCC9tLzBjZ2g0MAE!16s%2Fg%2F11f384_vkz?entry=ttu&g_ep=EgoyMDI2MTExNS4wIKXMDSoASAFQAw%3D%3D#"
+              
               alt="Students learning at an educational institute"
               loading="lazy"
               className="h-full w-full object-cover transition duration-700 hover:scale-105"

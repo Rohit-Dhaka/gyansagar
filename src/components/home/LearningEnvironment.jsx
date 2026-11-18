@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
@@ -9,7 +8,7 @@ import {
   GraduationCap,
   MonitorPlay,
   Users,
-  Target,  
+  Target,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -95,8 +94,7 @@ const LearningEnvironment = () => {
   const prevSlide = () => {
     setActiveIndex(
       (prev) =>
-        (prev - 1 + learningExperiences.length) %
-        learningExperiences.length
+        (prev - 1 + learningExperiences.length) % learningExperiences.length,
     );
   };
 
@@ -111,7 +109,6 @@ const LearningEnvironment = () => {
   return (
     <section className="w-full overflow-hidden bg-[#faf7f7] py-8 sm:py-10 lg:py-12">
       <div className="w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-
         {/* SECTION HEADER */}
         <div className="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <div>
@@ -136,7 +133,6 @@ const LearningEnvironment = () => {
 
         {/* MAIN SHOWCASE */}
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-[0.72fr_1.28fr] lg:gap-10">
-
           {/* LEFT NAVIGATION */}
           <div className="flex flex-col">
             <div className="mb-4 flex items-center justify-between border-b border-red-200 pb-3">
@@ -246,56 +242,17 @@ const LearningEnvironment = () => {
                     </span>
                   </div>
 
-                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9 lg:p-10">
-                    <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-red-200">
-                      {activeExperience.category}
-                    </span>
+                  <div className="absolute inset-x-0 bottom-0 p-6 sm:p-9 lg:p-8">
+                 
 
                     <h3 className="mt-3 max-w-xl font-['Playfair_Display'] text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
                       {activeExperience.title}
                     </h3>
 
-                    <p className="mt-4 max-w-lg text-sm leading-7 text-white/85">
+                    <p className=" max-w-lg text-sm leading-7 text-white/85">
                       {activeExperience.description}
                     </p>
 
-                    <div className="mt-7 flex items-center justify-between gap-4">
-                      <div className="flex items-center gap-2">
-                        {learningExperiences.map((item, index) => (
-                          <button
-                            key={item.id}
-                            type="button"
-                            onClick={() => setActiveIndex(index)}
-                            aria-label={`Show ${item.category}`}
-                            className={`h-1.5 rounded-full transition-all duration-300 ${
-                              activeIndex === index
-                                ? "w-9 bg-white"
-                                : "w-4 bg-white/40 hover:bg-white/70"
-                            }`}
-                          />
-                        ))}
-                      </div>
-
-                      <div className="flex items-center gap-2">
-                        <button
-                          type="button"
-                          onClick={prevSlide}
-                          aria-label="Previous learning experience"
-                          className="flex h-10 w-10 items-center justify-center rounded-full border border-white/50 text-white transition hover:bg-white hover:text-[#850f18]"
-                        >
-                          <ArrowLeft size={17} />
-                        </button>
-
-                        <button
-                          type="button"
-                          onClick={nextSlide}
-                          aria-label="Next learning experience"
-                          className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[#850f18] transition hover:bg-red-100"
-                        >
-                          <ArrowRight size={17} />
-                        </button>
-                      </div>
-                    </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -344,25 +301,7 @@ const LearningEnvironment = () => {
           })}
         </div>
 
-        {/* BOTTOM ADMISSION STRIP */}
-        <div className="mt-8 flex flex-col justify-between gap-4 rounded-xl bg-white px-5 py-5 shadow-sm sm:flex-row sm:items-center sm:px-7">
-          <div>
-            <h3 className="text-base font-extrabold text-black">
-              Ready To Begin Your Success Journey?
-            </h3>
-            <p className="mt-1 text-xs text-black">
-              Take the next step towards your teaching career.
-            </p>
-          </div>
-
-          <Link
-            to="/admissions"
-            className="inline-flex items-center justify-center gap-2 rounded-md bg-[#850f18] px-5 py-3 text-xs font-extrabold text-white transition hover:bg-[#a51620]"
-          >
-            Explore Admissions
-            <ArrowUpRight size={16} />
-          </Link>
-        </div>
+   
       </div>
     </section>
   );

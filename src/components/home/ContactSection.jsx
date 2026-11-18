@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { motion } from "motion/react";
 import {
@@ -66,7 +65,7 @@ const ContactSection = () => {
 
       submissionData.append(
         "access_key",
-        import.meta.env.VITE_WEB3FORMS_ACCESS_KEY
+        import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
       );
 
       submissionData.append("name", formData.name);
@@ -75,33 +74,25 @@ const ContactSection = () => {
       submissionData.append(
         "message",
         formData.message ||
-          "I want to know more about this exam preparation program."
+          "I want to know more about this exam preparation program.",
       );
 
       submissionData.append(
         "subject",
-        "New Admission Enquiry - Gyan Sagar NET Classes"
+        "New Admission Enquiry - Gyan Sagar NET Classes",
       );
 
-      submissionData.append(
-        "from_name",
-        "Gyan Sagar NET Classes Website"
-      );
+      submissionData.append("from_name", "Gyan Sagar NET Classes Website");
 
-      const response = await fetch(
-        "https://api.web3forms.com/submit",
-        {
-          method: "POST",
-          body: submissionData,
-        }
-      );
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: submissionData,
+      });
 
       const result = await response.json();
 
       if (result.success) {
-        setStatus(
-          "Thank you! Your enquiry has been submitted successfully."
-        );
+        setStatus("Thank you! Your enquiry has been submitted successfully.");
         setStatusType("success");
 
         setFormData({
@@ -111,14 +102,10 @@ const ContactSection = () => {
           message: "",
         });
       } else {
-        throw new Error(
-          result.message || "Unable to submit your enquiry."
-        );
+        throw new Error(result.message || "Unable to submit your enquiry.");
       }
     } catch (error) {
-      setStatus(
-        error.message || "Something went wrong. Please try again."
-      );
+      setStatus(error.message || "Something went wrong. Please try again.");
       setStatusType("error");
     } finally {
       setIsSubmitting(false);
@@ -151,45 +138,67 @@ const ContactSection = () => {
 
   return (
     <section className="relative w-full overflow-hidden bg-white py-8 sm:py-10 lg:py-12">
-
       {/* BACKGROUND DECORATION */}
       <div className="pointer-events-none absolute -right-32 top-0 h-80 w-80 rounded-full bg-red-50/40 blur-3xl" />
 
       <div className="pointer-events-none absolute -left-32 bottom-0 h-80 w-80 rounded-full bg-red-50/40 blur-3xl" />
 
       <div className="relative w-full px-5 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-
-        {/* SECTION HEADER */}
+        {/* SECTION HEADER - LEFT CONTENT + RIGHT QUICK CONTACT */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-9 text-center sm:mb-12"
+          className="mb-9 grid grid-cols-1 items-end gap-6 sm:mb-12 lg:grid-cols-[1fr_auto] lg:gap-10"
         >
-          <div className="mb-4 flex items-center justify-center gap-3">
-            <span className="h-[2px] w-9 bg-[#a51620]" />
+          {/* LEFT CONTENT */}
+          <div>
+            <div className="mb-3 flex items-center gap-3">
+              <span className="h-[2px] w-9 bg-[#a51620]" />
 
-            <span className="font-['Lato'] text-xs font-extrabold tracking-[2px] text-[#a51620]">
-              GET IN TOUCH
-            </span>
+              <span className="font-['Lato'] text-xs font-extrabold tracking-[2px] text-[#a51620]">
+                GET IN TOUCH
+              </span>
+            </div>
 
-            <span className="h-[2px] w-9 bg-[#a51620]" />
+            <h2 className="font-['Playfair_Display'] text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
+              Contact <span className="italic text-[#a51620]">Us</span>
+            </h2>
+
+            <p className="mt-4 max-w-2xl font-['Lato'] text-sm leading-7 text-black/65 sm:text-base">
+              Have questions about our exam preparation programs or admissions?
+              Get in touch with Gyan Sagar NET Classes. We are here to guide
+              you.
+            </p>
           </div>
 
-          <h2 className="font-['Playfair_Display'] text-3xl font-bold text-black sm:text-4xl lg:text-5xl">
-            Contact <span className="italic text-[#a51620]">Us</span>
-          </h2>
+          {/* RIGHT QUICK CONTACT CARD */}
+          
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="tel:+919728306888"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg bg-[#850f18] px-4 py-3 font-['Lato'] text-sm font-bold text-white transition hover:bg-[#650b12]"
+              >
+                <Phone size={16} />
+                Call Now
+              </a>
 
-          <p className="mx-auto mt-4 max-w-2xl font-['Lato'] text-sm leading-7 text-black/65 sm:text-base">
-            Have questions about our exam preparation programs or admissions?
-            Get in touch with Gyan Sagar NET Classes. We are here to guide you.
-          </p>
+              <a
+                href="https://wa.me/919728306888?text=Hello%2C%20I%20want%20admission%20guidance."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex flex-1 items-center justify-center gap-2 rounded-lg border border-green-600/30 bg-white px-4 py-3 font-['Lato'] text-sm font-bold text-green-700 transition hover:bg-green-50"
+              >
+                <MessageCircle size={16} />
+                WhatsApp
+              </a>
+            </div>
+          
         </motion.div>
 
         {/* MAIN CONTENT */}
         <div className="grid grid-cols-1 gap-7 lg:grid-cols-[0.9fr_1.1fr] lg:gap-10">
-
           {/* LEFT - CONTACT INFORMATION */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -199,7 +208,6 @@ const ContactSection = () => {
             className="flex flex-col"
           >
             <div className="rounded-xl bg-[#850f18] p-6 text-white sm:p-8">
-
               <span className="font-['Lato'] text-xs font-extrabold tracking-[2px] text-white/70">
                 CONTACT INFORMATION
               </span>
@@ -212,8 +220,8 @@ const ContactSection = () => {
               </h3>
 
               <p className="mt-4 font-['Lato'] text-sm leading-7 text-white/85">
-                Connect with our team to learn about exam preparation
-                programs, batches, classes and admission opportunities.
+                Connect with our team to learn about exam preparation programs,
+                batches, classes and admission opportunities.
               </p>
 
               {/* CONTACT DETAILS */}
@@ -274,31 +282,7 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* WHATSAPP CTA */}
-            <a
-              href="https://wa.me/919728306888?text=Hello%2C%20I%20want%20to%20know%20about%20your%20exam%20preparation%20programs."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 flex items-center justify-between rounded-xl border border-green-200 bg-white p-5 transition hover:border-green-500 hover:shadow-md"
-            >
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-full bg-green-100 text-green-600">
-                  <MessageCircle size={22} />
-                </div>
-
-                <div>
-                  <p className="font-['Lato'] text-sm font-extrabold text-black">
-                    Chat With Us
-                  </p>
-
-                  <p className="mt-1 font-['Lato'] text-xs text-black/60">
-                    Connect directly on WhatsApp
-                  </p>
-                </div>
-              </div>
-
-              <ArrowUpRight size={20} className="text-green-600" />
-            </a>
+         
           </motion.div>
 
           {/* RIGHT - ENQUIRY FORM */}
@@ -323,55 +307,53 @@ const ContactSection = () => {
             </p>
 
             <form onSubmit={handleSubmit} className="mt-7 space-y-5">
-
-              {/* STUDENT NAME */}
-              <div>
-                <label
-                  htmlFor="contact-name"
-                  className="mb-2 block font-['Lato'] text-sm font-bold text-black"
-                >
-                  Student Name *
-                </label>
-
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Enter your full name"
-                  autoComplete="name"
-                  maxLength={80}
-                  required
-                  disabled={isSubmitting}
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
-                />
-              </div>
-
-              {/* MOBILE NUMBER */}
-              <div>
-                <label
-                  htmlFor="contact-phone"
-                  className="mb-2 block font-['Lato'] text-sm font-bold text-black"
-                >
-                  Mobile Number *
-                </label>
-
-                <input
-                  id="contact-phone"
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter 10-digit mobile number"
-                  pattern="[6-9][0-9]{9}"
-                  maxLength={10}
-                  autoComplete="tel"
-                  inputMode="numeric"
-                  required
-                  disabled={isSubmitting}
-                  className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
-                />
+              <div className="flex gap-2">
+                
+                <div className="w-full">
+                  <label
+                    htmlFor="contact-name"
+                    className="mb-2 block font-['Lato'] text-sm font-bold text-black"
+                  >
+                    Student Name *
+                  </label>
+                  <input
+                    id="contact-name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    autoComplete="name"
+                    maxLength={80}
+                    required
+                    disabled={isSubmitting}
+                    className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
+                  />
+                </div>
+                {/* MOBILE NUMBER */}
+                <div className="w-full">
+                  <label
+                    htmlFor="contact-phone"
+                    className="mb-2 block font-['Lato'] text-sm font-bold text-black"
+                  >
+                    Mobile Number *
+                  </label>
+                  <input
+                    id="contact-phone"
+                    type="tel"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Enter 10-digit mobile number"
+                    pattern="[6-9][0-9]{9}"
+                    maxLength={10}
+                    autoComplete="tel"
+                    inputMode="numeric"
+                    required
+                    disabled={isSubmitting}
+                    className="w-full rounded-lg border border-black/15 bg-white px-4 py-3 font-['Lato'] text-sm text-black outline-none transition focus:border-[#850f18] focus:ring-2 focus:ring-[#850f18]/10 placeholder:text-black/40 disabled:opacity-60"
+                  />
+                </div>
               </div>
 
               {/* SELECT EXAM */}

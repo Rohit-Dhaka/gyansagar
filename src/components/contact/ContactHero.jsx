@@ -12,7 +12,7 @@ import ContactImg from '../../assets/image/contact.webp'
 
 const ContactHero = () => {
   return (
-    <section className="relative isolate flex h-[calc(100svh-76px)] w-full flex-col overflow-hidden bg-[#f8f6f2] md:h-[calc(100svh-118px)]">      
+    <section className="relative isolate flex sm:h-[calc(100svh-76px)] w-full flex-col overflow-hidden bg-[#f8f6f2] md:h-[calc(100svh-118px)]">      
       <div className="grid min-h-0 flex-1 lg:grid-cols-[1.05fr_0.95fr]">        
         <div className="relative flex min-h-0 flex-col justify-center overflow-hidden py-5 sm:py-6  px-5 sm:px-8 lg:px-14 xl:px-24">          
           <div className="pointer-events-none absolute -left-28 top-20 h-64 w-64 rounded-full border border-[#850f18]/10" />
@@ -163,22 +163,10 @@ const ContactHero = () => {
 
               <div className="absolute inset-0 bg-gradient-to-t from-[#16090b]/80 via-transparent to-black/10" />
 
-              {/* Image caption */}
-              {/* <div className="absolute bottom-4 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6">
-                <span className="text-[8px] font-extrabold uppercase tracking-[3px] text-[#f0b9bc] sm:text-[9px]">
-                  Your Aspirations Matter
-                </span>
-
-                <h2 className="mt-2 max-w-sm font-['Playfair_Display'] text-2xl font-bold leading-tight text-white sm:text-3xl lg:text-4xl">
-                  The Right Guidance
-                  <span className="block italic text-[#f0b9bc]">
-                    Makes A Difference.
-                  </span>
-                </h2>
-              </div> */}
+         
             </div>
 
-            {/* Floating contact card */}
+            
             <motion.div
               initial={{ opacity: 0, y: 25 }}
               animate={{ opacity: 1, y: 0 }}

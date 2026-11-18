@@ -55,7 +55,7 @@ const Footer = () => {
       <footer className="w-full overflow-hidden bg-[#850f18] text-white">
         <div className="grid w-full grid-cols-1 lg:grid-cols-[30%_70%]">
           {/* LEFT CLEAN IMAGE */}
-          <div className="relative h-[230px] overflow-hidden sm:h-[280px] lg:h-full lg:min-h-[400px]">
+          <div className="relative max-sm:hidden h-[230px] overflow-hidden sm:h-[280px] lg:h-full lg:min-h-[400px]">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJ6QGaDkrHaEHeT81Qk59q1ToMzIpwyNCxl_BJBUMKSw&s=10"
               alt="Students at an educational institution"
@@ -89,7 +89,7 @@ const Footer = () => {
             </div>
 
             {/* FOOTER COLUMNS */}
-            <div className="grid grid-cols-1 gap-7 py-7 sm:grid-cols-2 xl:grid-cols-[1.3fr_0.8fr_0.9fr] xl:gap-6">
+            <div className="grid grid-cols-1 gap-7 py-7 sm:grid-cols-2 xl:grid-cols-2 xl:gap-6">
               {/* CONTACT */}
               <div>
                 <h3 className="mb-4 text-lg font-bold">Got A Question?</h3>
@@ -140,47 +140,46 @@ const Footer = () => {
                 </div>
               </div>
 
-              {/* QUICK LINKS */}
-              <div>
-                <h3 className="mb-4 text-lg font-bold">Quick Links</h3>
-
-                <ul className="space-y-2.5 text-[13px] text-white/85">
-                  {quickLinks.map((link) => (
-                    <li key={link.name}>
-                      <Link
-                        to={link.path}
-                        className="inline-block transition hover:translate-x-1 hover:text-yellow-300"
-                      >
-                        {link.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* COURSES */}
-              <div>
-                <h3 className="mb-4 text-lg font-bold">Our Courses</h3>
-
-                <ul className="space-y-2.5 text-[13px] text-white/85">
-                  {courses.map((course) => (
-                    <li key={course.name}>
-                      <Link
-                        to={course.path}
-                        className="inline-block transition hover:translate-x-1 hover:text-yellow-300"
-                      >
-                        {course.name}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <div className="grid grid-cols-2">
+                {/* QUICK LINKS */}
+                <div>
+                  <h3 className="mb-4 text-lg font-bold">Quick Links</h3>
+                  <ul className="space-y-2.5 text-[13px] text-white/85">
+                    {quickLinks.map((link) => (
+                      <li key={link.name}>
+                        <Link
+                          to={link.path}
+                          className="inline-block transition hover:translate-x-1 hover:text-yellow-300"
+                        >
+                          {link.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {/* COURSES */}
+                <div>
+                  <h3 className="mb-4 text-lg font-bold">Our Courses</h3>
+                  <ul className="space-y-2.5 text-[13px] text-white/85">
+                    {courses.map((course) => (
+                      <li key={course.name}>
+                        <Link
+                          to={course.path}
+                          className="inline-block transition hover:translate-x-1 hover:text-yellow-300"
+                        >
+                          {course.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div> 
             </div>
 
             {/* COPYRIGHT AND LEGAL LINKS */}
             <div className="mt-5 flex flex-col gap-3 border-t border-white/20 pt-5 text-xs text-white/80">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="flex gap-2">
+                <div className="flex gap-2 max-sm:flex-wrap">
                   <p className="text-[11px] text-white/70">
                     © {new Date().getFullYear()} Gyan Sagar NET Classes.
                   </p>

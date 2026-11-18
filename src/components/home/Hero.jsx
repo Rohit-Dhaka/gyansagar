@@ -71,7 +71,6 @@ const Hero = () => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -101,12 +100,12 @@ const Hero = () => {
           style={{ backgroundImage: `url("${currentSlide.image}")` }}
         />
       </AnimatePresence>
-      
+
       <div className="absolute inset-0 -z-20 bg-black/65" />
-      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#650b12]/50 via-transparent to-black/30" />
+      <div className="absolute inset-0 -z-20 bg-gradient-to-t from-[#650b12]/40 via-transparent to-black/30" />
       <div className="pointer-events-none absolute -right-40 top-1/2 -z-10 h-[500px] w-[500px] -translate-y-1/2 rounded-full border border-white/10 lg:h-[700px] lg:w-[700px]" />
       <div className="pointer-events-none absolute -right-20 top-1/2 -z-10 h-[380px] w-[380px] -translate-y-1/2 rounded-full border border-white/10 lg:h-[540px] lg:w-[540px]" />
-      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-5 px-5 py-6 sm:px-8 md:py-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10 lg:px-14 lg:py-5 xl:px-20">        
+      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] grid-cols-1 items-center gap-5 px-5 py-6 sm:px-8 md:py-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-10 lg:px-14 lg:py-5 xl:px-20">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide}
@@ -252,32 +251,6 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-      </div>
-
-      {/* SLIDE INDICATORS */}
-      <div className="absolute bottom-3 left-5 z-20 flex items-center gap-3 sm:bottom-5 sm:left-8 lg:left-14">
-        {slides.map((slide, index) => (
-          <button
-            key={slide.subtitle}
-            type="button"
-            onClick={() => setActiveSlide(index)}
-            aria-label={`Go to slide ${index + 1}`}
-            aria-current={activeSlide === index ? "true" : undefined}
-            className={`h-3 rounded-full border border-white transition-all duration-300
-        focus-visible:outline focus-visible:outline-2
-        focus-visible:outline-offset-4 focus-visible:outline-white
-        ${
-          activeSlide === index ? "w-9 bg-white" : "w-3 bg-white hover:bg-white"
-        }`}
-          />
-        ))}
-      </div>
-
-      {/* BOTTOM RIGHT LABEL */}
-      <div className="absolute bottom-3 right-5 z-20 hidden items-center gap-2 text-[10px] font-semibold tracking-widest text-white/60 sm:flex">
-        <span>0{activeSlide + 1}</span>
-        <span className="h-px w-7 bg-white/40" />
-        <span>0{slides.length}</span>
       </div>
     </section>
   );
